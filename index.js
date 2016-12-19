@@ -1,3 +1,4 @@
+let config = require('./common/websocket')
 let xbeeRx = require('xbee-rx');
 let express = require('express');
 let app = express();
@@ -5,7 +6,7 @@ let server = require('http').Server(app);
 let io = require('socket.io')(server);
 
 let xbee = xbeeRx({
-    serialport: '/dev/ttyUSB2',
+    serialport: '/dev/ttyUSB1',
     serialPortOptions: {
         baudrate: 9600,
     },
@@ -28,19 +29,19 @@ io.on('connection', function (client) {
     client.on('event', function (data) {
         console.log(data);
     });
-    
+
     client.on('disconnect', function () {
         console.log('client disconnected');
     });
 
-    client.on('battery level?', function (msg) {
+    client.on(config.messageTypes.getBatteryLevel, function (msg) {
         console.log('battery level?');
 
         xbee.remoteCommand({
             command: "%V",
             broadcast: true
         }).subscribe(response => {
-            client.emit('battery level', {
+            client.emit(config.messageTypes.batteryLevel, {
                 deviceType: 'xbee',
                 deviceId: response.remote64,
                 volt: byteArrayToLong(response.commandData) * 1200 / 1024 / 1000,
@@ -50,12 +51,12 @@ io.on('connection', function (client) {
         });
     });
 });
-server.listen(3000);
+server.listen(4000);
 
 
 function byteArrayToLong(byteArray) {
     let n = 0;
-    for (let i=0; i<byteArray.length; i++) {
+    for (let i = 0; i < byteArray.length; i++) {
         n = n * 256 + byteArray[i];
     }
     return n;
