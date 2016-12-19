@@ -1,0 +1,17 @@
+{
+  "name": "xbee-clicker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Fredrik Teschke <f@ftes.de>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "^1.7.2",
+    "xbee-rx": "file:../xbee-rx"
+  }
+}
