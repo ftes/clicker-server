@@ -1,5 +1,5 @@
-let websocket = require('./common/websocket')
-let devices = require('./common/devices')
+let websocket = require('../common/websocket')
+let devices = require('../common/devices')
 let xbeeRx = require('xbee-rx');
 let express = require('express');
 let app = express();
