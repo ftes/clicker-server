@@ -1,13 +1,15 @@
 import { connect } from 'react-redux'
 import { requestBatteryLevel } from './'
-import RequestBatteryLevel from './RequestBatteryLevel'
+import Button from '../components/Button'
 
 const mapStateToProps = () => ({})
 
 const mapDispatchToProps = (dispatch) => ({
-  requestBatteryLevel: () => dispatch(requestBatteryLevel())
+  faIcon: 'battery-half',
+  label: 'Update Battery Levels',
+  callback: () => dispatch(requestBatteryLevel()),
 })
 
-const RequestBatteryLevelC = connect(mapStateToProps, mapDispatchToProps)(RequestBatteryLevel)
+const RequestBatteryLevelC = connect(mapStateToProps, mapDispatchToProps)(Button)
 
 export default RequestBatteryLevelC

@@ -1,14 +1,23 @@
 import React, { PropTypes } from 'react'
-import ButtonPress from '../button-press/ButtonPress'
+import DeviceTypeIcon from './DeviceTypeIcon'
 import BatteryLevel from '../battery-level/BatteryLevel'
 
-const Device = ({ deviceType, deviceId, pressed, batteryLevel }) => (
-  <div>
-    {deviceType}: {deviceId}<br/>
-    <ButtonPress pressed={pressed}/><br/>
-    <BatteryLevel batteryLevel={batteryLevel}/>
-  </div>
-)
+const Device = ({ deviceType, deviceId, pressed, batteryLevel }) => {
+  if (deviceType === 'empty') return null
+  return (
+    <div
+      style={{
+        backgroundColor: pressed ? 'lightgrey' : 'white',
+      }}
+    >
+      <div style={{fontSize: '1.3em'}}>
+        <DeviceTypeIcon deviceType={deviceType}/>
+        &nbsp; {deviceId.substr(-6)}
+      </div>
+      <BatteryLevel batteryLevel={batteryLevel}/>
+    </div>
+  )
+}
 
 Device.propTypes = {
   deviceType: PropTypes.string.isRequired,
