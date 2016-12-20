@@ -1,4 +1,5 @@
-let config = require('./common/websocket')
+let websocket = require('./common/websocket')
+let devices = require('./common/devices')
 let xbeeRx = require('xbee-rx');
 let express = require('express');
 let app = express();
@@ -19,11 +20,8 @@ io.on('connection', function (client) {
     console.log('client connected');
 
     ioData.subscribe(data => {
-        client.emit('button event', {
-            deviceType: 'xbee',
-            deviceId: data.remote64,
-            pressed: data.digitalSamples.DIO4 === 0,
-        });
+        client.emit(websocket.BUTTON_EVENT, devices.json(devices.XBEE, data.remote64,
+          { pressed: data.digitalSamples.DIO4 === 0, }));
     });
 
     client.on('event', function (data) {
@@ -34,18 +32,15 @@ io.on('connection', function (client) {
         console.log('client disconnected');
     });
 
-    client.on(config.messageTypes.getBatteryLevel, function (msg) {
+    client.on(websocket.BATTERY_LEVEL_REQUEST, function (msg) {
         console.log('battery level?');
 
         xbee.remoteCommand({
             command: "%V",
             broadcast: true
         }).subscribe(response => {
-            client.emit(config.messageTypes.batteryLevel, {
-                deviceType: 'xbee',
-                deviceId: response.remote64,
-                volt: byteArrayToLong(response.commandData) * 1200 / 1024 / 1000,
-            });
+            client.emit(websocket.BATTERY_LEVEL_RESPONSE, devices.json(devices.XBEE, response.remote64,
+              { raw: byteArrayToLong(response.commandData) * 1200 / 1024 / 1000, }));
         }, e => {
             console.log("Check battery command failed:\n", e);
         });
