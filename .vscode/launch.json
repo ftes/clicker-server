@@ -9,7 +9,10 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceRoot}/server/index.js",
-            "cwd": "${workspaceRoot}"
+            "cwd": "${workspaceRoot}",
+            "args": [
+              "--tty=/dev/ttyUSB1"
+            ]
         },
         {
             "type": "node",

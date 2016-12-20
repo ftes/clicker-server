@@ -1,66 +1,31 @@
 let websocket = require('../common/websocket')
-let devices = require('../common/devices')
-let xbeeRx = require('xbee-rx')
-let express = require('express')
-let app = express()
-let server = require('http').Server(app)
+let server = require('http').Server()
 let io = require('socket.io')(server)
-
 let rxjs = require('rxjs')
-let sendToClient = new rxjs.Subject()
+let argv = require('yargs').argv
+let Xbee = require('./connectors/xbee')
 
-let xbee = xbeeRx({
-  serialport: '/dev/ttyUSB1',
-  serialPortOptions: {
-    baudrate: 9600,
-  },
-  module: 'ZigBee'
-})
+/** expects events of format [type, payload] */
+let outboundMessages = new rxjs.Subject()
+let send = (type, payload) => outboundMessages.next([type, payload])
 
-let ioData = xbee.monitorIODataPackets()
-ioData.subscribe(msg => sendToClient.next(msg))
+// device connectors
+let connectors = [new Xbee(send, argv.tty)]
 
-app.use(express.static('public'))
-
+// open websocket and handle events
 io.on('connection', function (client) {
   console.log('client connected')
 
-  sendToClient.subscribe(data => {
-    client.emit(websocket.BUTTON_EVENT, devices.json(devices.XBEE, data.remote64, {
-      pressed: data.digitalSamples.DIO4 === 0,
-    }))
-  })
+  // emit outboundMessages
+  outboundMessages.subscribe(([type, payload]) => client.emit(type, payload))
 
-  client.on('event', function (data) {
-    console.log(data)
-  })
+  client.on('disconnect', () => console.log('client disconnected'))
 
-  client.on('disconnect', function () {
-    console.log('client disconnected')
-  })
-
-  client.on(websocket.BATTERY_LEVEL_REQUEST, function () {
-    console.log('battery level?')
-
-    xbee.remoteCommand({
-      command: '%V',
-      broadcast: true
-    }).subscribe(response => {
-      client.emit(websocket.BATTERY_LEVEL_RESPONSE, devices.json(devices.XBEE, response.remote64, {
-        raw: byteArrayToLong(response.commandData) * 1200 / 1024 / 1000,
-      }))
-    }, e => {
-      console.log('Check battery command failed:\n', e)
-    })
+  // pass on battery level request to connectors
+  client.on(websocket.BATTERY_LEVEL_REQUEST, () => {
+    console.log('request battery level')
+    connectors.map(c => c.requestBatteryLevel())
   })
 })
-server.listen(4000)
 
-
-function byteArrayToLong(byteArray) {
-  let n = 0
-  for (let i = 0; i < byteArray.length; i++) {
-    n = n * 256 + byteArray[i]
-  }
-  return n
-}
+server.listen(argv.p || 4000)
