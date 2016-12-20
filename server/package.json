@@ -10,6 +10,7 @@
   "author": "Fredrik Teschke <f@ftes.de>",
   "license": "ISC",
   "dependencies": {
+    "chokidar": "^1.6.1",
     "express": "^4.14.0",
     "rxjs": "^5.0.1",
     "socket.io": "^1.7.2",
