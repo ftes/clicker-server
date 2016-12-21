@@ -5,6 +5,7 @@ export default function reducer(state = {}, action) {
   switch (action.type) {
   case BUTTON_EVENT: {
     let data = action.payload
+    data.pressed = data.pressed || undefined
     return {
       ...state,
       [key(data)]: data.pressed
