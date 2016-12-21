@@ -4,7 +4,7 @@ import BatteryLevel from '../../battery-level/BatteryLevel'
 import DeviceName from '../device-name/DeviceNameC'
 
 const Device = ({ deviceKey, deviceType, deviceId,
-  deviceName, pressed, batteryLevel }) => {
+  deviceName, pressed, batteryLevel, tabIndex }) => {
   if (deviceType === 'empty') return null
   return (
     <div
@@ -26,6 +26,7 @@ const Device = ({ deviceKey, deviceType, deviceId,
             deviceKey={deviceKey}
             deviceId={deviceId}
             deviceName={deviceName}
+            tabIndex={tabIndex}
           />
         </span>
       </div>
@@ -41,6 +42,7 @@ Device.propTypes = {
   deviceName: PropTypes.string,
   pressed: PropTypes.bool,
   batteryLevel: PropTypes.number,
+  tabIndex: PropTypes.number,
 }
 
 export default Device

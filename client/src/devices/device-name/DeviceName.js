@@ -2,18 +2,21 @@ import React, { PropTypes } from 'react'
 import { FormControl } from 'react-bootstrap'
 
 const DeviceName = ({ deviceKey, deviceId, deviceName, edit,
-  editCallback, finishCallback }) => {
+  editCallback, finishCallback, tabIndex }) => {
   let text = deviceName || deviceId.substr(-6)
 
   if (!edit) return (
     <span
-      onClick={() => editCallback(deviceKey, deviceName)}
+      tabIndex={tabIndex}
+      onFocus={() => editCallback(deviceKey, deviceName)}
+      title='Click to edit'
     >{text}</span>
   )
 
   return (
     <FormControl
       autoFocus
+      tabIndex={tabIndex}
       type='text'
       onChange={(event) => editCallback(deviceKey, event.target.value)}
       onBlur={(event) => finishCallback(false, deviceKey, event.target.value)}
@@ -31,6 +34,7 @@ DeviceName.propTypes = {
   edit: PropTypes.bool.isRequired,
   editCallback: PropTypes.func.isRequired,
   finishCallback: PropTypes.func.isRequired,
+  tabIndex: PropTypes.number,
 }
 
 export default DeviceName
