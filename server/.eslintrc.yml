@@ -19,3 +19,6 @@ rules:
   max-len:
     - error
     - 80
+  object-curly-spacing:
+    - error
+    - always
