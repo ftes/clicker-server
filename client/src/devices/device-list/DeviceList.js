@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Table } from 'react-bootstrap'
-import Device from './DeviceC'
+import Device from '../device/DeviceC'
 import './DeviceList.css'
 
 const DeviceList = ({ devices }) => {

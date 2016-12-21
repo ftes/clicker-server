@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import DeviceTypeIcon from './DeviceTypeIcon'
-import BatteryLevel from '../battery-level/BatteryLevel'
+import BatteryLevel from '../../battery-level/BatteryLevel'
 import DeviceName from '../device-name/DeviceNameC'
 
 const Device = ({ deviceKey, deviceType, deviceId,

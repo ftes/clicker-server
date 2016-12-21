@@ -1,8 +1,10 @@
 import { connect } from 'react-redux'
 import DeviceList from './DeviceList'
 
+const local = (state) => state.devices.deviceList
+
 const mapStateToProps = (state) => ({
-  devices: Object.values(state.devices),
+  devices: Object.values(local(state)),
 })
 
 const mapDispatchToProps = () => ({})

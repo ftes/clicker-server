@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { addEmpty } from './'
-import Button from '../components/Button'
+import Button from '../../components/Button'
 
 const mapStateToProps = () => ({})
 

@@ -1,18 +1,14 @@
 export const EDIT = 'clicker-xbee/device-name/EDIT'
 export const FINISH = 'clicker-xbee/device-name/FINISH'
 
-export default function reducer(state = { editing: false }, action) {
+export default function reducer(state = {}, action) {
   switch (action.type) {
   case FINISH:
-    return {
-      ...state,
-      editing: false,  
-    }
+    return {}
   case EDIT:
     return {
       deviceKey: action.deviceKey,
       deviceName: action.deviceName,
-      editing: true,
     }
   default: return state
   }

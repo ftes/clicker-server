@@ -2,16 +2,16 @@ import { connect } from 'react-redux'
 import DeviceName from './DeviceName'
 import { edit, finish } from './'
 
+const local = (state) => state.devices.editDeviceName
+
 function isEditing(state, ownProps) {
-  return state.editDeviceName.editing &&
-    state.editDeviceName.deviceKey === ownProps.deviceKey
+  return local(state).deviceKey === ownProps.deviceKey
 }
 
 const mapStateToProps = (state, ownProps) => ({
   edit: isEditing(state, ownProps),
   deviceName: isEditing(state, ownProps) ?
-    state.editDeviceName.deviceName :
-    ownProps.deviceName,
+    local(state).deviceName : ownProps.deviceName,
 })
 
 const mapDispatchToProps = (dispatch) => ({

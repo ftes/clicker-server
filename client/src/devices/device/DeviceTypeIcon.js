@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import FontAwesome from 'react-fontawesome'
-import { XBEE, DUMMY } from '../../../common/devices'
+import { XBEE, DUMMY } from '../../../../common/devices'
 
 function getIcon(deviceType) {
   switch(deviceType) {
