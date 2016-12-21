@@ -4,10 +4,12 @@ import buttonPress from '../button-press'
 import devices from '../devices'
 import deviceNames from '../device-name'
 import className from '../class-name'
+import editText from '../edit-text'
 
 export const OVERWRITE = 'clicker/core/OVERWRITE'
 
 const reducers = combineReducers({
+  editText,
   batteryLevel,
   buttonPress,
   devices,

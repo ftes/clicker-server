@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import DeviceList from './DeviceList'
-import { edit } from '../../device-name'
+import { edit } from '../../edit-text'
+import { keyPrefix } from '../../device-name'
 
 const local = (state) => state.devices
 
@@ -9,7 +10,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  editCallback: (deviceKey) => dispatch(edit(deviceKey)),
+  editCallback: (deviceKey) => dispatch(edit(keyPrefix + deviceKey)),
 })
 
 const DeviceListC = connect(mapStateToProps, mapDispatchToProps)(DeviceList)

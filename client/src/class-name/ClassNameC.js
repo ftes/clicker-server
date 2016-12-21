@@ -1,19 +1,15 @@
 import { connect } from 'react-redux'
-import ClassName from './ClassName'
-import { edit, finish } from './'
+import EditText from '../edit-text/EditTextC'
 
 const local = (state) => state.className
 
 const mapStateToProps = (state) => ({
-  edit: local(state).tmp !== undefined,
-  className: local(state).tmp || local(state).name,
+  editKey: 'className',
+  defaultText: local(state),
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  editCallback: (className) => dispatch(edit(className)),
-  finishCallback: (cancelled) => dispatch(finish(cancelled))
-})
+const mapDispatchToProps = () => ({})
 
-const ClassNameC = connect(mapStateToProps, mapDispatchToProps)(ClassName)
+const ClassNameC = connect(mapStateToProps, mapDispatchToProps)(EditText)
 
 export default ClassNameC
