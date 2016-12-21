@@ -29,3 +29,6 @@ rules:
     - never
   react/jsx-uses-react:
     - error
+  max-len:
+    - error
+    - 80

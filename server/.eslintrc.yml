@@ -16,3 +16,6 @@ rules:
     - error
     - never
   no-console: off
+  max-len:
+    - error
+    - 80
