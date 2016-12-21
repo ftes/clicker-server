@@ -5,7 +5,7 @@ import Button from '../../components/Button'
 const mapStateToProps = () => ({})
 
 const mapDispatchToProps = (dispatch) => ({
-  callback: () => dispatch(addEmpty()),
+  onClick: () => dispatch(addEmpty()),
   label: 'Add Empty Element',
   faIcon: 'tag'
 })

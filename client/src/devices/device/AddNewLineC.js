@@ -5,7 +5,7 @@ import Button from '../../components/Button'
 const mapStateToProps = () => ({})
 
 const mapDispatchToProps = (dispatch) => ({
-  callback: () => dispatch(addNewLine()),
+  onClick: () => dispatch(addNewLine()),
   label: 'Add New Line',
   glyph: 'triangle-bottom'
 })

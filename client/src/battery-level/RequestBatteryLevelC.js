@@ -7,9 +7,10 @@ const mapStateToProps = () => ({})
 const mapDispatchToProps = (dispatch) => ({
   faIcon: 'battery-half',
   label: 'Update Battery Levels',
-  callback: () => dispatch(requestBatteryLevel()),
+  onClick: () => dispatch(requestBatteryLevel()),
 })
 
-const RequestBatteryLevelC = connect(mapStateToProps, mapDispatchToProps)(Button)
+const RequestBatteryLevelC =
+  connect(mapStateToProps, mapDispatchToProps)(Button)
 
 export default RequestBatteryLevelC

@@ -3,7 +3,7 @@ import Button from '../components/Button'
 import { saveAs } from 'file-saver'
 
 const mapStateToProps = (state) => ({
-  callback: () => {
+  onClick: () => {
     let file = new File(
       [JSON.stringify(state)],
       'clicker.json',

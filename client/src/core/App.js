@@ -5,15 +5,14 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Devices from '../devices/Devices'
 import Navbar from '../components/Navbar'
 
-let style = {
-  fontFamily: 'Nunito Sans, sans-serif',
-  padding: '0px 50px',
-}
+import './App.css'
 
 const App = () => (
-  <div style={style}>
+  <div>
     <Navbar/>
-    <Devices/>
+    <div className='content'>
+      <Devices/>
+    </div>
   </div>
 )
 
