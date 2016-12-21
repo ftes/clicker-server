@@ -2,10 +2,18 @@ import { connect } from 'react-redux'
 import Button from '../components/Button'
 import { saveAs } from 'file-saver'
 
+const overwrite = {
+  batteryLevel: {}
+}
+
 const mapStateToProps = (state) => ({
   onClick: () => {
+    let overwritten = {
+      ...state,
+      ...overwrite,
+    }
     let file = new File(
-      [JSON.stringify(state)],
+      [JSON.stringify(overwritten)],
       'clicker.json',
       { type: 'application/json' }
     )
