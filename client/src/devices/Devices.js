@@ -4,8 +4,9 @@ import RequestBatteryLevel from '../battery-level/RequestBatteryLevelC'
 import DeviceList from './device-list/DeviceListC'
 import AddNewLine from './device/AddNewLineC'
 import AddEmpty from './device/AddEmptyC'
-import SaveDeviceList from './device-list/SaveDeviceListC'
 import FA from 'react-fontawesome'
+
+import './Devices.css'
 
 const Devices = () =>
   <div>
@@ -14,9 +15,9 @@ const Devices = () =>
       <RequestBatteryLevel/>
       <AddNewLine/>
       <AddEmpty/>
-      <SaveDeviceList/>
     </ButtonToolbar>
-    <div style={{ marginTop: '30px' }}>
+    <hr/>
+    <div className='hints'>
       <h3>Hints</h3>
       <ListGroup>
         <ListGroupItem header='Add Devices'>

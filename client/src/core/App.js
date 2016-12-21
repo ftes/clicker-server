@@ -1,9 +1,9 @@
 import React from 'react'
-import { PageHeader } from 'react-bootstrap'
 import 'font-awesome/css/font-awesome.css'
 import 'bootstrap/dist/css/bootstrap.css'
 
 import Devices from '../devices/Devices'
+import Navbar from '../components/Navbar'
 
 let style = {
   fontFamily: 'Nunito Sans, sans-serif',
@@ -12,8 +12,8 @@ let style = {
 
 const App = () => (
   <div style={style}>
-    <PageHeader>XBee Clicker App</PageHeader>
-    <Devices />
+    <Navbar/>
+    <Devices/>
   </div>
 )
 
