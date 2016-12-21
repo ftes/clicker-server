@@ -17,9 +17,9 @@ const MyNavbar = () => {
         <Nav pullRight>
           <Save Wrapper={NavItem}/>
           <Load Wrapper={NavItem} getInput={() => input}/>
-          <input type='file' style={{ display: 'none' }} ref={c => input = c}/>
         </Nav>
       </Navbar.Collapse>
+      <input type='file' style={{ display: 'none' }} ref={c => input = c}/>
     </Navbar>
   )
 }

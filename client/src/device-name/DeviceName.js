@@ -9,8 +9,9 @@ const DeviceName = ({ deviceKey, deviceId, deviceName, edit,
     <span
       tabIndex={tabIndex}
       onFocus={() => editCallback(deviceKey)}
-      title='Click to edit'
-    >{text}</span>
+    >
+      {text}
+    </span>
   )
 
   return (

@@ -3,6 +3,7 @@ import batteryLevel from '../battery-level'
 import buttonPress from '../button-press'
 import devices from '../devices'
 import deviceNames from '../device-name'
+import className from '../class-name'
 
 export const OVERWRITE = 'clicker/core/OVERWRITE'
 
@@ -11,6 +12,7 @@ const reducers = combineReducers({
   buttonPress,
   devices,
   deviceNames,
+  className,
 })
 
 const coreReducer = (state = {}, action) => {
