@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import DeviceTypeIcon from './DeviceTypeIcon'
 import BatteryLevel from '../../battery-level/BatteryLevel'
-import DeviceName from '../device-name/DeviceNameC'
+import DeviceName from '../../device-name/DeviceNameC'
 
 const Device = ({ deviceKey, deviceType, deviceId,
   deviceName, pressed, batteryLevel, tabIndex }) => {
@@ -12,8 +12,8 @@ const Device = ({ deviceKey, deviceType, deviceId,
         backgroundColor: pressed ? 'lightgrey' : 'white',
       }}
     >
-      <div style={{fontSize: '1.3em'}}>
-        <span style={{display: 'table-cell'}}>
+      <div style={{ fontSize: '1.3em' }}>
+        <span style={{ display: 'table-cell' }}>
           <DeviceTypeIcon deviceType={deviceType}/>
         </span>
         <span
@@ -25,7 +25,6 @@ const Device = ({ deviceKey, deviceType, deviceId,
           <DeviceName
             deviceKey={deviceKey}
             deviceId={deviceId}
-            deviceName={deviceName}
             tabIndex={tabIndex}
           />
         </span>
@@ -39,7 +38,6 @@ Device.propTypes = {
   deviceKey: PropTypes.string.isRequired,
   deviceType: PropTypes.string.isRequired,
   deviceId: PropTypes.string.isRequired,
-  deviceName: PropTypes.string,
   pressed: PropTypes.bool,
   batteryLevel: PropTypes.number,
   tabIndex: PropTypes.number,

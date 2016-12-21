@@ -26,8 +26,9 @@ const DeviceList = ({ devices, editCallback }) => {
           {row.map(device =>
             <td
               key={device.deviceKey}
-              onFocus={() => editCallback(device.deviceKey, device.deviceName)}
-              tabIndex='-1' //make it focusable, but do not influence tab order
+              onFocus={() => editCallback(device.deviceKey)}
+              //make it focusable, but do not influence tab order
+              tabIndex={device.deviceType !== 'empty' ? '-1': null}
               title='Click to edit'
             >
               <Device

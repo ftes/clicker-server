@@ -1,16 +1,15 @@
 import { key as getKey } from '../../util/device'
-import { BUTTON_EVENT, BATTERY_LEVEL_RESPONSE }
+import { BUTTON_EVENT }
   from '../../../../common/websocket'
-import { FINISH as EDIT_NAME_FINISH } from '../device-name'
 
 export const ADD_NEW_LINE = 'clicker-xbee/devices/ADD_NEW_LINE'
 export const ADD_EMPTY = 'clicker-xbee/devices/ADD_EMPTY'
 
 let i = 0
 
-export default function reducer(state = {}, action) {
+export default function reducer(state = undefined, action) {
   switch (action.type) {
-  case BATTERY_LEVEL_RESPONSE:
+  // add device upon button press
   case BUTTON_EVENT: {
     let data = action.payload
     let deviceType = data.deviceType
@@ -35,12 +34,6 @@ export default function reducer(state = {}, action) {
       deviceKey: `empty/${i}`
     }
   }
-  case EDIT_NAME_FINISH:
-    if (action.cancelled) return state
-    return {
-      ...state,
-      deviceName: action.deviceName || undefined,
-    }
   default: return state
   }
 }

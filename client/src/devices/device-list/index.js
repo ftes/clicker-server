@@ -1,6 +1,5 @@
 import { BUTTON_EVENT, BATTERY_LEVEL_RESPONSE }
   from '../../../../common/websocket'
-import { FINISH as EDIT_NAME_FINISH } from '../device-name'
 import deviceReducer, { ADD_NEW_LINE, ADD_EMPTY } from '../device'
 
 export default function reducer(state = {}, action) {
@@ -8,9 +7,9 @@ export default function reducer(state = {}, action) {
   case BATTERY_LEVEL_RESPONSE:
   case BUTTON_EVENT:
   case ADD_NEW_LINE:
-  case ADD_EMPTY:
-  case EDIT_NAME_FINISH: {
+  case ADD_EMPTY: {
     let device = deviceReducer(state[action.deviceKey], action)
+    if (!device) return state
     return {
       ...state,
       [device.deviceKey]: device

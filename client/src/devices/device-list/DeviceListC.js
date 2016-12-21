@@ -1,16 +1,15 @@
 import { connect } from 'react-redux'
 import DeviceList from './DeviceList'
-import { edit } from '../device-name'
+import { edit } from '../../device-name'
 
-const local = (state) => state.devices.deviceList
+const local = (state) => state.devices
 
 const mapStateToProps = (state) => ({
   devices: Object.values(local(state)),
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  editCallback: (deviceKey, deviceName) =>
-    dispatch(edit(deviceKey, deviceName)),
+  editCallback: (deviceKey) => dispatch(edit(deviceKey)),
 })
 
 const DeviceListC = connect(mapStateToProps, mapDispatchToProps)(DeviceList)

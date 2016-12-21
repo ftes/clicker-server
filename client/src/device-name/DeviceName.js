@@ -8,7 +8,7 @@ const DeviceName = ({ deviceKey, deviceId, deviceName, edit,
   if (!edit) return (
     <span
       tabIndex={tabIndex}
-      onFocus={() => editCallback(deviceKey, deviceName)}
+      onFocus={() => editCallback(deviceKey)}
       title='Click to edit'
     >{text}</span>
   )
@@ -19,9 +19,8 @@ const DeviceName = ({ deviceKey, deviceId, deviceName, edit,
       tabIndex={tabIndex}
       type='text'
       onChange={(event) => editCallback(deviceKey, event.target.value)}
-      onBlur={(event) => finishCallback(false, deviceKey, event.target.value)}
-      onKeyPress={(event) => event.key === 'Enter'  &&
-        finishCallback(false, deviceKey, event.target.value)}
+      onBlur={() => finishCallback()}
+      onKeyPress={(event) => event.key === 'Enter' && finishCallback()}
       value={deviceName !== undefined ? deviceName : deviceId}
     />
   )
