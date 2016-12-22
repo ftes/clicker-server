@@ -6,6 +6,5 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = () => ({})
 
-const ShowSettingsDependentC = connect(mapStateToProps, mapDispatchToProps)
-
-export default ShowSettingsDependentC
+export default (component) =>
+  connect(mapStateToProps, mapDispatchToProps)(component)

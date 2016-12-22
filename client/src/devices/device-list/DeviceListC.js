@@ -8,6 +8,7 @@ const local = (state) => state.devices
 
 const mapStateToProps = (state) => ({
   devices: local(state),
+  showSettings: state.showSettings,
 })
 
 const mapDispatchToProps = (dispatch) => ({

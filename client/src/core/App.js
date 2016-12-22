@@ -6,11 +6,16 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Devices from '../devices/Devices'
 import Questions from '../questions/QuestionsC'
 import Navbar from '../components/Navbar'
+import ShowSettingsDependent from '../components/ShowSettingsDependentC'
 import ClassName from '../class-name/ClassNameC'
 import Hints from '../components/Hints'
 import console from '../util/console'
 
 import './App.css'
+
+const NavbarC = ShowSettingsDependent(Navbar)
+const DevicesC = ShowSettingsDependent(Devices)
+const HintsC = ShowSettingsDependent(Hints)
 
 class App extends React.Component {
   /**
@@ -34,12 +39,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Navbar/>
+        <NavbarC/>
         <div className='content'>
           <h3><ClassName/></h3>
-          <Devices/><hr/>
+          <DevicesC/><hr/>
           <Questions/><hr/>
-          <Hints/>
+          <HintsC/>
         </div>
       </div>
     )

@@ -1,18 +1,22 @@
 import React, { PropTypes } from 'react'
 import { Table, Button } from 'react-bootstrap'
+import { isIgnored } from '../'
 import Device from '../device/DeviceC'
 import { tabIndex as startTabIndex } from '../../core/globals'
 
 import './DeviceList.css'
 
-const DeviceList = ({ devices, editCallback, deleteCallback }) => {
+const DeviceList = ({ devices, editCallback, deleteCallback,
+  showSettings }) => {
   let row = []
   let rows = []
   for (let device of devices) {
-    row.push(device)
     if (device.deviceType === 'newLine') {
+      if (showSettings) row.push(device)
       rows.push(row)
       row = []
+    } else {
+      row.push(device)
     }
   }
   if (row.length > 0) rows.push(row)
@@ -32,7 +36,10 @@ const DeviceList = ({ devices, editCallback, deleteCallback }) => {
               }}
             >
               <span
-                style={{ display: 'table-cell', width: '100%' }}
+                style={{
+                  display: showSettings ? 'table-cell' : null,
+                  width: '100%'
+                }}
                 title='Click to edit'
                 onFocus={() => editCallback(device.deviceKey)}
                 //make it focusable, but do not influence tab order
@@ -42,18 +49,20 @@ const DeviceList = ({ devices, editCallback, deleteCallback }) => {
                   {...device}
                   // the input field must have the proper tabIndex,
                   // because it will have the focus
-                  tabIndex={tabIndex++}
+                  tabIndex={isIgnored(device.deviceType) ? null : tabIndex++}
                 />
               </span>
-              <span style={{ display: 'table-cell' }}>
-                <Button
-                  bsSize='xsmall'
-                  onClick={() => deleteCallback(device.deviceKey)}
-                  title='Delete'
-                >
-                  ✕
-                </Button>
-              </span>
+              {showSettings &&
+                <span style={{ display: 'table-cell' }}>
+                  <Button
+                    bsSize='xsmall'
+                    onClick={() => deleteCallback(device.deviceKey)}
+                    title='Delete'
+                  >
+                    ✕
+                  </Button>
+                </span>
+              }
             </td>
           )}
           </tr>
@@ -70,6 +79,7 @@ DeviceList.propTypes = {
   }).isRequired).isRequired,
   editCallback: PropTypes.func.isRequired,
   deleteCallback: PropTypes.func.isRequired,
+  showSettings: PropTypes.bool.isRequired,
 }
 
 export default DeviceList

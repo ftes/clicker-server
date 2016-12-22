@@ -5,7 +5,7 @@ import DeviceName from '../../device-name/DeviceNameC'
 import { isIgnored } from '../'
 
 const Device = ({ deviceKey, deviceType, deviceId,
-  pressed, batteryLevel, tabIndex }) => {
+  pressed, batteryLevel, tabIndex, showSettings }) => {
   if (isIgnored(deviceType)) return null
   return (
     <div
@@ -14,9 +14,11 @@ const Device = ({ deviceKey, deviceType, deviceId,
       }}
     >
       <div style={{ fontSize: '1.3em' }}>
-        <span style={{ display: 'table-cell' }}>
-          <DeviceTypeIcon deviceType={deviceType}/>
-        </span>
+        {showSettings &&
+          <span style={{ display: 'table-cell' }}>
+            <DeviceTypeIcon deviceType={deviceType}/>
+          </span>
+        }
         <span
           style={{
             display: 'table-cell',
@@ -30,7 +32,9 @@ const Device = ({ deviceKey, deviceType, deviceId,
           />
         </span>
       </div>
-      <BatteryLevel batteryLevel={batteryLevel}/>
+      {showSettings &&
+        <BatteryLevel batteryLevel={batteryLevel}/>
+      }
     </div>
   )
 }
@@ -42,6 +46,7 @@ Device.propTypes = {
   pressed: PropTypes.bool,
   batteryLevel: PropTypes.number,
   tabIndex: PropTypes.number,
+  showSettings: PropTypes.bool.isRequired,
 }
 
 export default Device

@@ -6,6 +6,8 @@ import { getDevice } from '../devices/index'
 const local = (state) => state.deviceNames
 
 function getCustomized(state, ownProps, icon=false) {
+  if (icon && ! state.showSettings) return null
+  
   // return most customized value, in descending order
   let customName = local(state)[ownProps.deviceKey]
   let mappedId = state.idMappings[ownProps.deviceKey]
