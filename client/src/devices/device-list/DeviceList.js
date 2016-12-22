@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Table, Button } from 'react-bootstrap'
 import Device from '../device/DeviceC'
-import startTabIndex from '../../core/tab-index'
+import { tabIndex as startTabIndex } from '../../core/globals'
 
 import './DeviceList.css'
 

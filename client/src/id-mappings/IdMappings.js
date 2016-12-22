@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Table } from 'react-bootstrap'
 import EditMapping from './EditMappingC'
-import startTabIndex from '../core/tab-index'
+import { tabIndex as startTabIndex } from '../core/globals'
 
 const IdMappings = ({ mappings, editMapping, devices }) => {
   let tabIndex = startTabIndex.idMappings

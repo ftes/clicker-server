@@ -1,37 +1,18 @@
 import { BUTTON_EVENT } from '../../../../common/websocket'
-import questionReducer, { START, FINISH, finish } from '../question'
+import questionReducer, { START } from '../question'
 
 export const DELETE = 'clicker/questions/DELETE'
 
 export default function reducer(state = [], action) {
   switch (action.type) {
   case START: {
-    let last = state.slice(-1)[0]
-    if (last && last.active) {
-      last = questionReducer(last, finish(last.id))
-      state = [
-        ...state.slice(0, -1),
-        last
-      ]
-    }
     return [
       ...state,
       questionReducer(undefined, action)
     ]
   }
-  case FINISH: {
-    let oldQ = getQuestion(state, action.id)
-    if (! oldQ) return state
-    let oldIndex = state.indexOf(oldQ)
-    let newQ = questionReducer(oldQ, action)
-    return [
-      ...state.slice(0, oldIndex),
-      newQ,
-      ...state.slice(oldIndex + 1)
-    ]
-  }
   case BUTTON_EVENT: {
-    let last = state.slice(-1)[0]
+    let last = getLastQuestion(state)
     if (! last) return state
     let newLast = questionReducer(last, action)
     if (last === newLast) return state
@@ -59,4 +40,8 @@ export function getNextId(state) {
 
 export function getQuestion(state, id) {
   return state.find(q => q.id === id)
+}
+
+export function getLastQuestion(state) {
+  return state.slice(-1)[0]
 }

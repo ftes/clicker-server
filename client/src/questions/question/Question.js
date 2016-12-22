@@ -1,11 +1,7 @@
 import React, { PropTypes } from 'react'
 
-const Question = ({ title, active, answeredBy }) => (
-  <span
-    style={{
-      color: active ? 'green' : null,
-    }}
-  >
+const Question = ({ title, answeredBy }) => (
+  <span>
     <b>{title}: </b>
     {answeredBy.join(', ')}
   </span>
@@ -13,7 +9,6 @@ const Question = ({ title, active, answeredBy }) => (
 
 Question.propTypes = {
   title: PropTypes.string.isRequired,
-  active: PropTypes.bool,
   answeredBy: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 

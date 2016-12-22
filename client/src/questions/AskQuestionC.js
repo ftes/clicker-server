@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import AskQuestion from './AskQuestion'
-import { start, finish } from './question'
+import { start } from './question'
 import { getNextId } from './question-list'
 
 const local = (state) => state.questions
@@ -12,9 +12,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   startCallback: (title, durationMs, id) => {
-    let startAction = start(title, id)
+    let startAction = start(title, id, durationMs)
     dispatch(startAction)
-    setTimeout(() => dispatch(finish(startAction.id)), durationMs)
   }
 })
 

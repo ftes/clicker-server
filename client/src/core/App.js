@@ -4,7 +4,7 @@ import 'font-awesome/css/font-awesome.css'
 import 'bootstrap/dist/css/bootstrap.css'
 
 import Devices from '../devices/Devices'
-import Questions from '../questions/Questions'
+import Questions from '../questions/QuestionsC'
 import Navbar from '../components/Navbar'
 import ClassName from '../class-name/ClassNameC'
 import Hints from '../components/Hints'

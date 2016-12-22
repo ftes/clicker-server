@@ -6,6 +6,7 @@ import IdMappings from '../id-mappings/IdMappingsC'
 import Button from './Button'
 import AskQuestion from '../questions/AskQuestionC'
 import Reset from '../save/ResetC'
+import { zIndex } from '../core/globals'
 
 class MyNavbar extends React.Component {
   constructor(props) {
@@ -24,7 +25,8 @@ class MyNavbar extends React.Component {
   render() {
     let input
     return (
-      <Navbar collapseOnSelect>
+      // in front of countdown
+      <Navbar collapseOnSelect style={{ zIndex: zIndex.navbar }}>
         <Navbar.Header>
           <Navbar.Brand>XBee Clicker App</Navbar.Brand>
           <Navbar.Toggle />

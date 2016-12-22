@@ -3,7 +3,7 @@ import Button from '../components/Button'
 import { saveAs } from 'file-saver'
 
 const overwrite = {
-  batteryLevel: {}
+  batteryLevel: {},
 }
 
 const mapStateToProps = (state) => ({
