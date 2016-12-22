@@ -22,7 +22,7 @@ const reducers = combineReducers({
 })
 
 const coreReducer = (state = {}, action) => {
-  if (action.type === OVERWRITE) return action.state
+  if (action.type === OVERWRITE) state = action.state
   return reducers(state, action)
 }
 

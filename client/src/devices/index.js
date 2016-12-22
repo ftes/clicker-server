@@ -2,7 +2,12 @@ import deviceListReducer from './device-list'
 
 export default deviceListReducer
 
+const ignore = ['newLine', 'empty']
+
+export function isIgnored(deviceType) {
+  return ignore.indexOf(deviceType) !== -1
+}
+
 export function getDevices(state) {
-  const ignore = ['newLine', 'empty']
-  return Object.values(state).filter(d => ignore.indexOf(d.deviceType) === -1)
+  return Object.values(state).filter(d => !isIgnored(d.deviceType))
 }

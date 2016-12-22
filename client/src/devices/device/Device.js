@@ -2,10 +2,11 @@ import React, { PropTypes } from 'react'
 import DeviceTypeIcon from './DeviceTypeIcon'
 import BatteryLevel from '../../battery-level/BatteryLevel'
 import DeviceName from '../../device-name/DeviceNameC'
+import { isIgnored } from '../'
 
 const Device = ({ deviceKey, deviceType, deviceId,
   pressed, batteryLevel, tabIndex }) => {
-  if (deviceType === 'empty') return null
+  if (isIgnored(deviceType)) return null
   return (
     <div
       style={{

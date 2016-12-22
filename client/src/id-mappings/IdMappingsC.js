@@ -8,7 +8,7 @@ const local = (state) => state.idMappings
 
 const mapStateToProps = (state) => ({
   mappings: local(state),
-  devices: Object.values(getDevices(state.devices)),
+  devices: getDevices(state.devices),
 })
 
 const mapDispatchToProps = (dispatch) => ({
