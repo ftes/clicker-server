@@ -4,6 +4,8 @@ import Save from '../save/SaveC'
 import Load from '../save/LoadC'
 import IdMappings from '../id-mappings/IdMappingsC'
 import Button from './Button'
+import AskQuestion from '../questions/AskQuestionC'
+import Reset from '../save/ResetC'
 
 class MyNavbar extends React.Component {
   constructor(props) {
@@ -24,13 +26,15 @@ class MyNavbar extends React.Component {
     return (
       <Navbar collapseOnSelect>
         <Navbar.Header>
-          <Navbar.Brand>
-            XBee Clicker App
-          </Navbar.Brand>
+          <Navbar.Brand>XBee Clicker App</Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
+          <Navbar.Form pullLeft>
+            <AskQuestion/>
+          </Navbar.Form>
           <Nav pullRight>
+            <Reset Wrapper={NavItem}/>
             <Button
               Wrapper={NavItem}
               onClick={() => this.openIdMappings()}

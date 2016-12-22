@@ -11,3 +11,7 @@ export function isIgnored(deviceType) {
 export function getDevices(state) {
   return Object.values(state).filter(d => !isIgnored(d.deviceType))
 }
+
+export function getDevice(state, deviceKey) {
+  return state.find(d => d.deviceKey === deviceKey)
+}

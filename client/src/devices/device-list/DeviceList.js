@@ -47,6 +47,7 @@ const DeviceList = ({ devices, editCallback, deleteCallback }) => {
               </span>
               <span style={{ display: 'table-cell' }}>
                 <Button
+                  bsSize='xsmall'
                   onClick={() => deleteCallback(device.deviceKey)}
                   title='Delete'
                 >

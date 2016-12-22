@@ -4,6 +4,7 @@ import 'font-awesome/css/font-awesome.css'
 import 'bootstrap/dist/css/bootstrap.css'
 
 import Devices from '../devices/Devices'
+import Questions from '../questions/Questions'
 import Navbar from '../components/Navbar'
 import ClassName from '../class-name/ClassNameC'
 import Hints from '../components/Hints'
@@ -12,6 +13,10 @@ import console from '../util/console'
 import './App.css'
 
 class App extends React.Component {
+  /**
+   * Read from local storage on start.
+   * Write to local storage on end.
+   */
   componentDidMount() {
     try {
       let state = JSON.parse(localStorage.getItem('redux-state'))
@@ -32,7 +37,8 @@ class App extends React.Component {
         <Navbar/>
         <div className='content'>
           <h3><ClassName/></h3>
-          <Devices/>
+          <Devices/><hr/>
+          <Questions/><hr/>
           <Hints/>
         </div>
       </div>

@@ -1,6 +1,6 @@
 export const SETTING = 'clicker/questions/SETTING'
 
-export default function reducer(state = {}, action) {
+export default function reducer(state = { durationMs: 2000 }, action) {
   switch (action.type) {
   case SETTING:
     return {

@@ -13,7 +13,6 @@ const Devices = () =>
       <AddNewLine/>
       <AddEmpty/>
     </ButtonToolbar>
-    <hr/>
   </div>
 
 export default Devices

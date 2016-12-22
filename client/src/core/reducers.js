@@ -9,6 +9,7 @@ import questions from '../questions'
 import idMappings from '../id-mappings'
 
 export const OVERWRITE = 'clicker/core/OVERWRITE'
+export const RESET = 'clicker/core/RESET'
 
 const reducers = combineReducers({
   editText,
@@ -23,6 +24,7 @@ const reducers = combineReducers({
 
 const coreReducer = (state = {}, action) => {
   if (action.type === OVERWRITE) state = action.state
+  if (action.type === RESET) state = undefined
   return reducers(state, action)
 }
 
@@ -30,4 +32,8 @@ export default coreReducer
 
 export function overwrite(state) {
   return { type: OVERWRITE, state }
+}
+
+export function reset() {
+  return { type: RESET }
 }

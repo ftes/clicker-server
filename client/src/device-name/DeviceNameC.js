@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import EditText from '../edit-text/EditTextC'
 import { keyPrefix } from './'
+import { getDevice } from '../devices/index'
 
 const local = (state) => state.deviceNames
 
@@ -13,6 +14,11 @@ function getCustomized(state, ownProps, icon=false) {
   if (customName) return icon ? 'user-o' : customName
   if (mappedId) return icon ? 'edit' : mappedId
   return icon ? 'gear' : deviceId
+}
+
+export function getName(state, deviceKey) {
+  let deviceId = getDevice(state.devices, deviceKey).deviceId
+  return getCustomized(state, { deviceKey, deviceId })
 }
 
 const mapStateToProps = (state, ownProps) => ({
