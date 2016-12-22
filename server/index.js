@@ -11,9 +11,11 @@ let outboundMessages = new rxjs.Subject()
 let send = (type, payload) => outboundMessages.next([type, payload])
 
 // device connectors
-let tty = argv.tty || '/dev/ttyUSB0'
-let dummyFile = argv.dummy || '/tmp/dummy'
-let connectors = [new Xbee(send, tty), new Dummy(send, dummyFile)]
+let tty = argv.tty
+let dummyFile = argv.dummy
+let connectors = []
+if (tty) connectors.push(new Xbee(send, tty))
+if (dummyFile) connectors.push(new Dummy(send, dummyFile))
 
 // open websocket and handle events
 io.on('connection', function (socket) {
