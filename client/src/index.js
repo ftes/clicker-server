@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import App from './core/App'
+import App from './core/AppC'
 import reducer from './core/reducers'
 import { init as websocketInit } from './util/websocket'
 

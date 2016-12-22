@@ -5,6 +5,8 @@ import devices from '../devices'
 import deviceNames from '../device-name'
 import className from '../class-name'
 import editText from '../edit-text'
+import questions from '../questions'
+import idMappings from '../id-mappings'
 
 export const OVERWRITE = 'clicker/core/OVERWRITE'
 
@@ -15,6 +17,8 @@ const reducers = combineReducers({
   devices,
   deviceNames,
   className,
+  questions,
+  idMappings,
 })
 
 const coreReducer = (state = {}, action) => {

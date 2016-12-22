@@ -30,3 +30,7 @@ export function edit(editKey, text) {
 export function save(editKey, text, cancelled=false) {
   return { type: SAVE, editKey, text, cancelled }
 }
+
+export function isForMe(action, keyPrefix) {
+  return action.editKey.startsWith(keyPrefix) && ! action.cancelled
+}

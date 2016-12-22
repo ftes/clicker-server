@@ -1,11 +1,11 @@
-import { SAVE } from '../edit-text'
+import { SAVE, isForMe } from '../edit-text'
 
 export const keyPrefix = 'deviceName/'
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
   case SAVE: {
-    if (action.cancelled || ! action.editKey.startsWith(keyPrefix)) return state
+    if (!isForMe(action, keyPrefix)) return state
     let deviceName = action.text
     let deviceKey = action.editKey.slice(keyPrefix.length)
     // empty name was set -> delete name

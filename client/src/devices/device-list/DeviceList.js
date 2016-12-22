@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
 import { Table } from 'react-bootstrap'
 import Device from '../device/DeviceC'
+import startTabIndex from '../../core/tab-index'
+
 import './DeviceList.css'
 
 const DeviceList = ({ devices, editCallback }) => {
@@ -16,7 +18,7 @@ const DeviceList = ({ devices, editCallback }) => {
   }
   if (row.length > 0) rows.push(row)
   let rowIndex = 0
-  let tabIndex = 1
+  let tabIndex = startTabIndex.devices
 
   return (
     <Table responsive bordered>

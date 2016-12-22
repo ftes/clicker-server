@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
     }
     let file = new File(
       [JSON.stringify(overwritten)],
-      'clicker.json',
+      state.className + '.json',
       { type: 'application/json' }
     )
     saveAs(file)

@@ -4,7 +4,7 @@ import { XBEE, DUMMY } from '../../../../common/devices'
 
 function getIcon(deviceType) {
   switch(deviceType) {
-  case XBEE: return 'wifi'
+  case XBEE: return 'microchip'
   case DUMMY: return 'terminal'
   default: return 'question'
   }

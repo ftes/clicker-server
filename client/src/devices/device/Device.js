@@ -4,7 +4,7 @@ import BatteryLevel from '../../battery-level/BatteryLevel'
 import DeviceName from '../../device-name/DeviceNameC'
 
 const Device = ({ deviceKey, deviceType, deviceId,
-  deviceName, pressed, batteryLevel, tabIndex }) => {
+  pressed, batteryLevel, tabIndex }) => {
   if (deviceType === 'empty') return null
   return (
     <div

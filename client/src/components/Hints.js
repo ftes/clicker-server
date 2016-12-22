@@ -21,6 +21,18 @@ const Hints = () => (
       <ListGroupItem header='Edit Class Name'>
         You can edit the class name by clicking on it.
       </ListGroupItem>
+      <ListGroupItem header='Map IDs'>
+        You can map the technical device IDs to something you can understand
+        using the <FA name='edit'/> ID Mappings dialog.
+      </ListGroupItem>
+      <ListGroupItem header='Understanding the Displayed Names'>
+        Each displayed name has an icon next to it that explains where this
+        name is defined. In the list below, each setting overrides the ones
+        below it.<br/>
+        <FA name='user-o'/>: Custom Device name<br/>
+        <FA name='edit'/>: ID Mapping<br/>
+        <FA name='gear'/>: Technical Device ID<br/>
+      </ListGroupItem>
     </ListGroup>
   </div>
 )
