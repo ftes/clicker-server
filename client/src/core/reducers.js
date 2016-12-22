@@ -7,6 +7,7 @@ import className from '../class-name'
 import editText from '../edit-text'
 import questions from '../questions'
 import idMappings from '../id-mappings'
+import showSettings from '../show-settings'
 
 export const OVERWRITE = 'clicker/core/OVERWRITE'
 export const RESET = 'clicker/core/RESET'
@@ -20,6 +21,7 @@ const reducers = combineReducers({
   className,
   questions,
   idMappings,
+  showSettings,
 })
 
 const coreReducer = (state = {}, action) => {
