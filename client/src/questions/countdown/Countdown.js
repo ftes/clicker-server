@@ -8,11 +8,11 @@ class Countdown extends React.Component {
   }
 
   componentDidMount() {
-    this.tick()
     this.timerID = setInterval(
       () => this.tick(),
       1000
     )
+    this.tick()
   }
 
   componentWillUnmount() {

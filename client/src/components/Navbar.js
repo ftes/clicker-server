@@ -8,6 +8,7 @@ import AskQuestion from '../questions/AskQuestionC'
 import Reset from '../save/ResetC'
 import { zIndex } from '../core/globals'
 import ShowSettings from '../show-settings/ShowSettingsC'
+import Showdown from '../questions/showdown/ShowdownC'
 
 const MyNavbar = ({ showSettings }) => {
   let input
@@ -24,6 +25,9 @@ const MyNavbar = ({ showSettings }) => {
         <Navbar.Form pullLeft>
           <AskQuestion/>
         </Navbar.Form>
+        <Nav pullLeft>
+          <Showdown Wrapper={NavItem}/>
+        </Nav>
         <Nav pullRight>
           <ShowSettings Wrapper={NavItem}/>
         </Nav>

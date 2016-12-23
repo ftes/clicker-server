@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
     delete copy.batteryLevel
     delete copy.showSettings
     delete copy.devices.showdown
+    delete copy.questions.countdown
 
     try {
       let content = yaml.safeDump(copy)

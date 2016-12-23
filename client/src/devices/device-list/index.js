@@ -1,7 +1,6 @@
 import { BUTTON_EVENT }
   from '../../../../common/websocket'
 import deviceReducer, { ADD_NEW_LINE, ADD_EMPTY } from '../device'
-import { getState as getParentState } from '../'
 
 export const DELETE = 'clicker/devices/DELETE'
 
@@ -44,7 +43,7 @@ export function getNextId(state) {
 }
 
 export function getState(state) {
-  return getParentState(state).list
+  return state.devices
 }
 
 const ignore = ['newLine', 'empty']
