@@ -24,9 +24,6 @@ if (web) connectors.push(new Website(send, parseInt(web, 10)))
 io.on('connection', function (socket) {
   console.log('client connected')
 
-  // emit outboundMessages
-  outboundMessages.subscribe(([type, payload]) => socket.emit(type, payload))
-
   socket.on('disconnect', () => console.log('client disconnected'))
 
   // pass on battery level request to connectors
@@ -35,5 +32,8 @@ io.on('connection', function (socket) {
     connectors.map(c => c.requestBatteryLevel())
   })
 })
+
+// emit outboundMessages
+outboundMessages.subscribe(([type, payload]) => io.sockets.emit(type, payload))
 
 server.listen(argv.p || 4000)
