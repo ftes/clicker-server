@@ -11,7 +11,7 @@
             "program": "${workspaceRoot}/server/index.js",
             "cwd": "${workspaceRoot}",
             "args": [
-              "--tty=/dev/ttyUSB1",
+              "--tty=/dev/ttyUSB0",
               "--dummy=/tmp/dummy"
             ]
         },
