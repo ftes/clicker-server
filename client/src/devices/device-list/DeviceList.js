@@ -8,7 +8,7 @@ import AnsweredIndicator from '../../questions/AnsweredIndicatorC'
 import './DeviceList.css'
 
 const DeviceList = ({ devices, editCallback, deleteCallback,
-  showSettings }) => {
+  showSettings, pressed }) => {
   let row = []
   let rows = []
   for (let device of devices) {
@@ -34,6 +34,8 @@ const DeviceList = ({ devices, editCallback, deleteCallback,
               key={device.deviceKey}
               style={{
                 width: device.deviceType === 'newLine' ? '55px' : '100%',
+                backgroundColor: pressed[device.deviceKey]
+                  ? 'lightgrey' : 'white',
               }}
             >
               <div style={{ display: 'flex' }}>
@@ -51,7 +53,7 @@ const DeviceList = ({ devices, editCallback, deleteCallback,
                   tabIndex={isIgnored(device.deviceType) ? null : tabIndex++}
                 />
               </span>
-              <span style={{ fontSize: '2em', marginRight: '20px' }}>
+              <span style={{ fontSize: '1.3em', marginRight: '20px' }}>
                 <AnsweredIndicator deviceKey={device.deviceKey}/>
               </span>
               {showSettings &&
@@ -83,6 +85,7 @@ DeviceList.propTypes = {
   editCallback: PropTypes.func.isRequired,
   deleteCallback: PropTypes.func.isRequired,
   showSettings: PropTypes.bool.isRequired,
+  pressed: PropTypes.objectOf(PropTypes.bool).isRequired
 }
 
 export default DeviceList

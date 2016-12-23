@@ -5,14 +5,10 @@ import DeviceName from '../../device-name/DeviceNameC'
 import { isIgnored } from '../'
 
 const Device = ({ deviceKey, deviceType, deviceId,
-  pressed, batteryLevel, tabIndex, showSettings }) => {
+  batteryLevel, tabIndex, showSettings }) => {
   if (isIgnored(deviceType)) return null
   return (
-    <div
-      style={{
-        backgroundColor: pressed ? 'lightgrey' : 'white',
-      }}
-    >
+    <div>
       <div style={{ fontSize: '1.3em' }}>
         {showSettings &&
           <span style={{ display: 'table-cell' }}>
@@ -43,7 +39,6 @@ Device.propTypes = {
   deviceKey: PropTypes.string.isRequired,
   deviceType: PropTypes.string.isRequired,
   deviceId: PropTypes.string.isRequired,
-  pressed: PropTypes.bool,
   batteryLevel: PropTypes.number,
   tabIndex: PropTypes.number,
   showSettings: PropTypes.bool.isRequired,
