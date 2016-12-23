@@ -1,9 +1,11 @@
 const XBEE = 'xbee'
 const DUMMY = 'dummy'
+const WEBSITE = 'website'
 
 const deviceTypes = [
   XBEE,
   DUMMY,
+  WEBSITE,
 ]
 
 const convertBatteryLevel = {
@@ -16,6 +18,8 @@ const convertBatteryLevel = {
   },
 
   [DUMMY]: (raw) => raw,
+
+  [WEBSITE]: (raw) => raw,
 }
 
 function json(deviceType, deviceId, payload) {
@@ -28,6 +32,7 @@ function json(deviceType, deviceId, payload) {
 module.exports = {
   XBEE,
   DUMMY,
+  WEBSITE,
   deviceTypes,
   convertBatteryLevel,
   json,

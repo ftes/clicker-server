@@ -82,34 +82,35 @@ class DeviceList extends React.Component {
                 }}
               >
                 <div style={{ display: 'flex' }}>
-                <span
-                  style={{ flexGrow: 1 }} //expand
-                  title='Click to edit'
-                  onFocus={() => editCallback(device.deviceKey)}
-                  //make it focusable, but do not influence tab order
-                  tabIndex={device.deviceType !== 'empty' ? '-1': null}
-                >
-                  <Device
-                    {...device}
-                    // the input field must have the proper tabIndex,
-                    // because it will have the focus
-                    tabIndex={isIgnored(device.deviceType) ? null : tabIndex++}
-                  />
-                </span>
-                <span style={{ fontSize: '1.3em', marginRight: '20px' }}>
-                  <AnsweredIndicator deviceKey={device.deviceKey}/>
-                </span>
-                {showSettings &&
-                  <span>
-                    <Button
-                      bsSize='xsmall'
-                      onClick={() => deleteCallback(device.deviceKey)}
-                      title='Delete'
-                    >
-                      ✕
-                    </Button>
+                  <span
+                    style={{ flexGrow: 1 }} //expand
+                    title='Click to edit'
+                    onFocus={() => editCallback(device.deviceKey)}
+                    //make it focusable, but do not influence tab order
+                    tabIndex={device.deviceType !== 'empty' ? '-1': null}
+                  >
+                    <Device
+                      {...device}
+                      // the input field must have the proper tabIndex,
+                      // because it will have the focus
+                      tabIndex={isIgnored(device.deviceType)
+                        ? null : tabIndex++}
+                    />
                   </span>
-                }
+                  <span style={{ fontSize: '1.3em', marginRight: '20px' }}>
+                    <AnsweredIndicator deviceKey={device.deviceKey}/>
+                  </span>
+                  {showSettings &&
+                    <span>
+                      <Button
+                        bsSize='xsmall'
+                        onClick={() => deleteCallback(device.deviceKey)}
+                        title='Delete'
+                      >
+                        ✕
+                      </Button>
+                    </span>
+                  }
                 </div>
               </td>
             )}

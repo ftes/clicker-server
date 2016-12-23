@@ -12,7 +12,8 @@
             "cwd": "${workspaceRoot}",
             "args": [
               "--tty=/dev/ttyUSB0",
-              "--dummy=/tmp/dummy"
+              "--dummy=/tmp/dummy",
+              "--web=4001"
             ]
         },
         {

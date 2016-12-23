@@ -4,7 +4,7 @@ import FA from 'react-fontawesome'
 
 const EditText = ({ editKey, text, edit, onEdit, onSave, tabIndex, icon }) => {
   if (!edit) return (
-    <span
+    <div
       tabIndex={tabIndex || -1}
       onFocus={() => onEdit(editKey)}
     >
@@ -15,7 +15,7 @@ const EditText = ({ editKey, text, edit, onEdit, onSave, tabIndex, icon }) => {
           <FA name={icon} style={{ fontSize: '0.8em' }}/>
         </sup>
       }
-    </span>
+    </div>
   )
 
   return (

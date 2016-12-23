@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react'
 import FontAwesome from 'react-fontawesome'
-import { XBEE, DUMMY } from '../../../../common/devices'
+import { XBEE, DUMMY, WEBSITE } from '../../../../common/devices'
 
 function getIcon(deviceType) {
   switch(deviceType) {
   case XBEE: return 'microchip'
   case DUMMY: return 'terminal'
+  case WEBSITE: return 'mobile-phone'
   default: return 'question'
   }
 }
