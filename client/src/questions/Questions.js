@@ -18,7 +18,7 @@ const Questions = ({ lastQuestion, countdownActive }) => (
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'flex-end',
           fontSize: '6em',
           zIndex: zIndex.countdown,
         }}

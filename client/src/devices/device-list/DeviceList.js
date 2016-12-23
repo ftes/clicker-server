@@ -3,6 +3,7 @@ import { Table, Button } from 'react-bootstrap'
 import { isIgnored } from '../'
 import Device from '../device/DeviceC'
 import { tabIndex as startTabIndex } from '../../core/globals'
+import AnsweredIndicator from '../../questions/AnsweredIndicatorC'
 
 import './DeviceList.css'
 
@@ -35,11 +36,9 @@ const DeviceList = ({ devices, editCallback, deleteCallback,
                 width: device.deviceType === 'newLine' ? '55px' : '100%',
               }}
             >
+              <div style={{ display: 'flex' }}>
               <span
-                style={{
-                  display: showSettings ? 'table-cell' : null,
-                  width: '100%'
-                }}
+                style={{ flexGrow: 1 }} //expand
                 title='Click to edit'
                 onFocus={() => editCallback(device.deviceKey)}
                 //make it focusable, but do not influence tab order
@@ -52,8 +51,11 @@ const DeviceList = ({ devices, editCallback, deleteCallback,
                   tabIndex={isIgnored(device.deviceType) ? null : tabIndex++}
                 />
               </span>
+              <span style={{ fontSize: '2em', marginRight: '20px' }}>
+                <AnsweredIndicator deviceKey={device.deviceKey}/>
+              </span>
               {showSettings &&
-                <span style={{ display: 'table-cell' }}>
+                <span>
                   <Button
                     bsSize='xsmall'
                     onClick={() => deleteCallback(device.deviceKey)}
@@ -63,6 +65,7 @@ const DeviceList = ({ devices, editCallback, deleteCallback,
                   </Button>
                 </span>
               }
+              </div>
             </td>
           )}
           </tr>
