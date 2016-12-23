@@ -1,8 +1,7 @@
 import { connect } from 'react-redux'
 import Button from '../components/Button'
 import { toggle } from './'
-
-const local = (state) => state.showSettings
+import { getState as local } from './'
 
 const mapStateToProps = (state) => ({
   value: local(state),

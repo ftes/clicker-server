@@ -2,12 +2,11 @@ import { connect } from 'react-redux'
 import AskQuestion from './AskQuestion'
 import { start } from './question'
 import { getNextId } from './question-list'
-
-const local = (state) => state.questions
+import { getState as settings } from './settings'
 
 const mapStateToProps = (state) => ({
-  durationMs: local(state).settings.durationMs,
-  nextId: getNextId(local(state).list),
+  durationMs: settings(state).durationMs,
+  nextId: getNextId(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({

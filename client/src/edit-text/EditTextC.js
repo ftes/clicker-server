@@ -1,8 +1,7 @@
 import { connect } from 'react-redux'
 import EditText from './EditText'
 import { edit, save } from './'
-
-const local = (state) => state.editText
+import { getState as local } from './'
 
 function isEditing(state, ownProps) {
   return local(state).editKey === ownProps.editKey

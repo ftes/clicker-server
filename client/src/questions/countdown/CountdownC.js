@@ -1,8 +1,7 @@
 import { connect } from 'react-redux'
 import Countdown from './Countdown'
 import { clear } from './'
-
-const local = (state) => state.questions.countdown
+import { getState as local } from './'
 
 const mapStateToProps = (state) => ({
   end: local(state)

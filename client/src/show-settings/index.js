@@ -13,3 +13,7 @@ export default reducer
 export function toggle() {
   return { type: TOGGLE }
 }
+
+export function getState(state) {
+  return state.showSettings
+}

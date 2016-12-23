@@ -1,17 +1,15 @@
 import { connect } from 'react-redux'
 import AnsweredIndicator from './AnsweredIndicator'
-import { getLastQuestion } from './question-list'
-
-const local = (state) => state.questions
+import { getLastQuestion, getState as questionList } from './question-list'
 
 function hasAnswered(state, deviceKey) {
-  let lastQuestion = getLastQuestion(state.list)
+  let lastQuestion = getLastQuestion(questionList(state))
   if (! lastQuestion) return false
   return lastQuestion.answeredBy.indexOf(deviceKey) !== -1
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  answered: hasAnswered(local(state), ownProps.deviceKey),
+  answered: hasAnswered(state, ownProps.deviceKey),
 })
 
 const mapDispatchToProps = () => ({})

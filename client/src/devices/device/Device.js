@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import DeviceTypeIcon from './DeviceTypeIcon'
 import BatteryLevel from '../../battery-level/BatteryLevel'
 import DeviceName from '../../device-name/DeviceNameC'
-import { isIgnored } from '../'
+import { isIgnored } from '../device-list'
 
 const Device = ({ deviceKey, deviceType, deviceId,
   batteryLevel, tabIndex, showSettings }) => {

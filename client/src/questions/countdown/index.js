@@ -1,4 +1,5 @@
 import { START } from '../question'
+import { getState as getParentState } from '../'
 
 export const CLEAR = 'clocker/countdown/CLEAR'
 
@@ -23,4 +24,8 @@ export function isActive(end) {
 
 export function clear() {
   return { type: CLEAR }
+}
+
+export function getState(state) {
+  return getParentState(state).countdown
 }

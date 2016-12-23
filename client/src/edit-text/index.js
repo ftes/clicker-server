@@ -34,3 +34,7 @@ export function save(editKey, text, cancelled=false) {
 export function isForMe(action, keyPrefix) {
   return action.editKey.startsWith(keyPrefix) && ! action.cancelled
 }
+
+export function getState(state) {
+  return state.editText
+}

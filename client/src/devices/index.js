@@ -1,17 +1,17 @@
-import deviceListReducer from './device-list'
+import { combineReducers } from 'redux'
+import list from './device-list'
+import showdown, { START } from './showdown'
 
-export default deviceListReducer
+const combined = combineReducers({
+  list,
+  showdown,
+})
 
-const ignore = ['newLine', 'empty']
-
-export function isIgnored(deviceType) {
-  return ignore.indexOf(deviceType) !== -1
+export default function reduce(state = {}, action) {
+  if (action.type === START) action.devices = state.list
+  return combined(state, action)
 }
 
-export function getDevices(state) {
-  return Object.values(state).filter(d => !isIgnored(d.deviceType))
-}
-
-export function getDevice(state, deviceKey) {
-  return state.find(d => d.deviceKey === deviceKey)
+export function getState(state) {
+  return state.devices
 }

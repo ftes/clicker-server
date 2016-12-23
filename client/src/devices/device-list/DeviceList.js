@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Table, Button } from 'react-bootstrap'
-import { isIgnored } from '../'
+import { isIgnored } from './'
 import Device from '../device/DeviceC'
 import { tabIndex as startTabIndex } from '../../core/globals'
 import AnsweredIndicator from '../../questions/AnsweredIndicatorC'

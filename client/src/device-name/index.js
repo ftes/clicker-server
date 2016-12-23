@@ -18,3 +18,7 @@ export default function reducer(state = {}, action) {
   default: return state
   }
 }
+
+export function getState(state) {
+  return state.deviceNames
+}

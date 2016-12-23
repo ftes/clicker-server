@@ -10,11 +10,13 @@ const combined = combineReducers({
   countdown,
 })
 
-function reducer(state = {}, action) {
+export default function reducer(state = {}, action) {
   // filter out button press if question is not active
   if (action.type === BUTTON_EVENT && ! isActive(state.countdown)) return state
 
   return combined(state, action)
 }
 
-export default reducer
+export function getState(state) {
+  return state.questions
+}

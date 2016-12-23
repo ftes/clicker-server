@@ -2,7 +2,7 @@ import { SAVE, isForMe } from '../edit-text'
 
 export const editTextKey = 'className'
 
-const reducer = (state = 'class', action) => {
+export default function (state = 'class', action) {
   switch (action.type) {
   case SAVE:
     if (!isForMe(action, editTextKey)) return state
@@ -11,4 +11,6 @@ const reducer = (state = 'class', action) => {
   }
 }
 
-export default reducer
+export function getState(state) {
+  return state.className
+}

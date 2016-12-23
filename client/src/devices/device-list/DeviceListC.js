@@ -3,13 +3,14 @@ import DeviceList from './DeviceList'
 import { edit } from '../../edit-text'
 import { keyPrefix } from '../../device-name'
 import { deleteDevice } from './'
-
-const local = (state) => state.devices
+import { getState as local } from './'
+import { getState as showSettings } from '../../show-settings'
+import { getState as buttonPress } from '../../button-press'
 
 const mapStateToProps = (state) => ({
   devices: local(state),
-  showSettings: state.showSettings,
-  pressed: state.buttonPress,
+  showSettings: showSettings(state),
+  pressed: buttonPress(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,13 +1,11 @@
 import { connect } from 'react-redux'
 import Questions from './Questions'
-import { getLastQuestion } from './question-list'
-import { isActive } from './countdown'
-
-const local = (state) => state.questions
+import { getLastQuestion, getState as questionList } from './question-list'
+import { isActive, getState as countdown } from './countdown'
 
 const mapStateToProps = (state) => ({
-  countdownActive: isActive(local(state).countdown),
-  lastQuestion: getLastQuestion(local(state).list),
+  countdownActive: isActive(countdown(state)),
+  lastQuestion: getLastQuestion(questionList(state)),
 })
 
 const mapDispatchToProps = () => ({})

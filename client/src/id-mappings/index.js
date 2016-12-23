@@ -21,3 +21,7 @@ export default function(state = {}, action) {
 export function getMappedId(state, deviceKey) {
   return state[deviceKey]
 }
+
+export function getState(state) {
+  return state.idMappings
+}

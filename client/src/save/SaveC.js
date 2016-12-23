@@ -4,19 +4,17 @@ import { saveAs } from 'file-saver'
 import yaml from 'js-yaml'
 import console from '../util/console'
 
-const surpress = {
-  buttonPress: true,
-  editText: true,
-  batteryLevel: true,
-  showSettings: true,
-}
-
 const mapStateToProps = (state) => ({
   onClick: () => {
     let copy = { ...state }
-    for (let key of Object.keys(surpress)) {
-      delete copy[key]
-    }
+
+    // delete some entries
+    delete copy.buttonPress
+    delete copy.editText
+    delete copy.batteryLevel
+    delete copy.showSettings
+    delete copy.devices.showdown
+
     try {
       let content = yaml.safeDump(copy)
       let file = new File(

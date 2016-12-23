@@ -1,5 +1,6 @@
 import { BUTTON_EVENT } from '../../../../common/websocket'
 import questionReducer, { START } from '../question'
+import { getState as getParentState } from '../'
 
 export const DELETE = 'clicker/questions/DELETE'
 
@@ -32,16 +33,20 @@ export function deleteQuestion(id) {
 }
 
 export function getNextId(state) {
-  return state
+  return getState(state)
     .map(q => q.id)
     .reduce((max, i) => Math.max(max, i), 0)
     + 1
 }
 
 export function getQuestion(state, id) {
-  return state.find(q => q.id === id)
+  return getState(state).find(q => q.id === id)
 }
 
 export function getLastQuestion(state) {
   return state.slice(-1)[0]
+}
+
+export function getState(state) {
+  return getParentState(state).list
 }
