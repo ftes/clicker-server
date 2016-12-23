@@ -1,23 +1,34 @@
 import { connect } from 'react-redux'
 import Button from '../components/Button'
 import { saveAs } from 'file-saver'
+import yaml from 'js-yaml'
+import console from '../util/console'
 
-const overwrite = {
-  batteryLevel: {},
+const surpress = {
+  buttonPress: true,
+  editText: true,
+  batteryLevel: true,
+  showSettings: true,
 }
 
 const mapStateToProps = (state) => ({
   onClick: () => {
-    let overwritten = {
-      ...state,
-      ...overwrite,
+    let copy = { ...state }
+    for (let key of Object.keys(surpress)) {
+      delete copy[key]
     }
-    let file = new File(
-      [JSON.stringify(overwritten)],
-      state.className + '.json',
-      { type: 'application/json' }
-    )
-    saveAs(file)
+    try {
+      let content = yaml.safeDump(copy)
+      let file = new File(
+        [content],
+        state.className + '.yaml',
+        { type: 'application/yaml' }
+      )
+      saveAs(file)
+    } catch (error) {
+      alert('Error saving file.')
+      console.error(error)
+    }
   },
   label: 'Save',
   glyph: 'save',

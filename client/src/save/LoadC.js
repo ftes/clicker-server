@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import Button from '../components/Button'
 import { overwrite } from '../core/reducers'
 import console from '../util/console'
+import yaml from 'js-yaml'
 
 const mapStateToProps = () => ({})
 
@@ -19,7 +20,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           reader.onloadend = e => {
             if (e.target.readyState === FileReader.DONE) {
               try {
-                let state = JSON.parse(e.target.result)
+                let state = yaml.safeLoad(e.target.result)
                 dispatch(overwrite(state))
               } catch (error) {
                 alert('Error loading file.')
