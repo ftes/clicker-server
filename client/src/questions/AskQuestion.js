@@ -23,13 +23,16 @@ class AskQuestion extends React.Component {
           onChange={e => this.setState({ value: e.target.value })}
           placeholder={this.placeholder}
           value={this.state.value}
+          style={{
+            width: '110px'
+          }}
         />
         {' '}
         <Button
           type='submit'
           onClick={() => this.start()}
         >
-          Ask Question
+          Ask
         </Button>
       </FormGroup>
     )

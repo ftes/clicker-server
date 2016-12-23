@@ -6,7 +6,7 @@ const Question = ({ title, answeredBy }) => {
 
   return (
     <span>
-      <b>{title}: </b>
+      <b>{title} </b>
       {answeredBy.map(name =>
         <Label
           bsStyle='success'

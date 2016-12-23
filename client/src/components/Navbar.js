@@ -9,6 +9,7 @@ import Reset from '../save/ResetC'
 import { zIndex } from '../core/globals'
 import ShowSettings from '../show-settings/ShowSettingsC'
 import Showdown from '../questions/showdown/ShowdownC'
+import SaveQuestions from '../save/SaveQuestionsC'
 
 const MyNavbar = ({ showSettings }) => {
   let input
@@ -33,6 +34,7 @@ const MyNavbar = ({ showSettings }) => {
         </Nav>
         {showSettings &&
           <Nav pullRight>
+            <SaveQuestions Wrapper={NavItem}/>
             <Reset Wrapper={NavItem}/>
             <Button
               Wrapper={NavItem}
