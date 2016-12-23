@@ -24,7 +24,7 @@ function recursiveHalves(result, remaining, selectedDeviceKey) {
     half2 = remaining.map(row => row.slice(cutIndex))
   } else {
     half1 = remaining.slice(0, cutIndex)
-    half2 = remaining.slice(cutIndex + 1)
+    half2 = remaining.slice(cutIndex)
   }
   let selectedIn1 = half1.find(row =>
     row.find(key => key === selectedDeviceKey))

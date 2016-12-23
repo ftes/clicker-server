@@ -1,8 +1,8 @@
 import halves from './halves'
 import { getState as getParentState } from '../'
+import { START as NEW_QUESTION } from '../../questions/question'
 
 export const START = 'clicker/showdown/START'
-export const CLEAR = 'clicker/showdown/CLEAR'
 
 export const functions = {
   halves
@@ -20,7 +20,8 @@ export default function reducer(state = [], action) {
     }
     return state
   }
-  case CLEAR:
+  case NEW_QUESTION:
+    // clear old winner when new question arrives
     return []
   default: return state
   }
@@ -28,10 +29,6 @@ export default function reducer(state = [], action) {
 
 export function start(devices) {
   return { type: START, devices }
-}
-
-export function clear() {
-  return { type: CLEAR }
 }
 
 export function getState(state) {

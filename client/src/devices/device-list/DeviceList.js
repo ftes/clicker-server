@@ -33,12 +33,15 @@ function getBgColor(state, pressed, device) {
 class DeviceList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = { highlight: [] }
   }
 
   tick() {
     let showdown = this.props.showdown
-    if (showdown.length === 0) return
+    if (showdown.length === 0) {
+      this.setState({ highlight: [] })
+      return
+    }
 
     let time = new Date().getTime()
     let step
@@ -49,8 +52,7 @@ class DeviceList extends React.Component {
       this.setState({ highlight: step.devices })
     }
     let lastStep = showdown.slice(-1)[0]
-    if (step === lastStep) this.props.clearCallback()
-    else setTimeout(() => this.tick(), 100)
+    if (step !== lastStep) setTimeout(() => this.tick(), 100)
   }
 
   componentWillReceiveProps() {
