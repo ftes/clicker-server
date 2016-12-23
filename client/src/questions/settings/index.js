@@ -1,5 +1,7 @@
-export const SETTING = 'clicker/questions/SETTING'
+import { SAVE, isForMe } from '../../edit-text'
 import { getState as getParentState } from '../'
+
+export const editKeyPrefix = 'questions/settings/'
 
 export default function reducer(state = {
   durationMs: 5000,
@@ -7,17 +9,19 @@ export default function reducer(state = {
   showdownDurationMs: 5000,
 }, action) {
   switch (action.type) {
-  case SETTING:
+  case SAVE: {
+    if (!isForMe(action, editKeyPrefix)) return state
+    let value = parseInt(action.text, 10)
+    let key = action.editKey.slice(editKeyPrefix.length)
+    // empty value was set => use default
+    if (value === '') value = undefined
     return {
       ...state,
-      [action.key]: action.value
+      [key]: value
     }
+  }
   default: return state
   }
-}
-
-export function setting(key, value) {
-  return { type: SETTING, key, value }
 }
 
 export function getState(state) {

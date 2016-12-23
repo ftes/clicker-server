@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import FA from 'react-fontawesome'
-import { ListGroup, ListGroupItem } from 'react-bootstrap'
+import { ListGroup, ListGroupItem, Panel } from 'react-bootstrap'
 
 import './Hints.css'
 
@@ -8,8 +8,12 @@ const Hints = ({ showSettings }) => {
   if (! showSettings) return null
   
   return (
-    <div className='hints'>
-      <h3>Hints</h3>
+    <Panel
+      id='hints'
+      header={<h1>Hints</h1>}
+      collapsible={true}
+      defaultExpanded={true}
+    >
       <ListGroup>
         <ListGroupItem header='Add Devices'>
           Pressing the device button will add it to the list.
@@ -37,7 +41,7 @@ const Hints = ({ showSettings }) => {
           <FA name='gear'/>: Technical Device ID<br/>
         </ListGroupItem>
       </ListGroup>
-    </div>
+    </Panel>
   )
 }
 

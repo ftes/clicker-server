@@ -9,7 +9,11 @@ const Devices = ({ showSettings }) =>
   <div>
     <DeviceList/>
     {showSettings &&
-      <ButtonToolbar>
+      <ButtonToolbar
+        style={{
+          marginBottom: '20px',
+        }}
+      >
         <RequestBatteryLevel/>
         <AddNewLine/>
         <AddEmpty/>

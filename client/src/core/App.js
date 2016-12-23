@@ -42,8 +42,8 @@ class App extends React.Component {
         <NavbarC/>
         <div className='content'>
           <h3><ClassName/></h3>
-          <DevicesC/><hr/>
-          <Questions/><hr/>
+          <DevicesC/>
+          <Questions/>
           <HintsC/>
         </div>
       </div>

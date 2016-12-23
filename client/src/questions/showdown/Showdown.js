@@ -5,6 +5,7 @@ const Showdown = (props) => (
   <Button
     {...props}
     onClick={() => props.startCallback(props.devices)}
+    title='Randomly choose a person who knows the answer.'
   />
 )
 

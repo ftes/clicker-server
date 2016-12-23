@@ -2,10 +2,19 @@ import React, { PropTypes } from 'react'
 import QuestionList from './question-list/QuestionListC'
 import Countdown from './countdown/CountdownC'
 import { zIndex } from '../core/globals'
+import Settings from './settings/SettingsC'
+import { Panel } from 'react-bootstrap'
+
+import './Questions.css'
 
 const Questions = ({ lastQuestion, countdownActive }) => (
-  <div>
-    <h3>Questions</h3>
+  <Panel
+    header={<h1>Questions</h1>}
+    collapsible={true}
+    defaultExpanded={true}
+    id='questions'
+  >
+    <Settings/>
     {countdownActive &&
       <div
         style={{
@@ -30,7 +39,7 @@ const Questions = ({ lastQuestion, countdownActive }) => (
       </div>
     }
     <QuestionList/>
-  </div>
+  </Panel>
 )
 
 Questions.propTypes = {

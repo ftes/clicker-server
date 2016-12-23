@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap'
 const QuestionList = ({ questions, deleteCallback }) => (
   <div>
   {questions.map(question =>
-    <div key={question.id}>
+    <div key={question.id} className='question'>
       <Button
         bsSize='xsmall'
         onClick={() => deleteCallback(question.id)}

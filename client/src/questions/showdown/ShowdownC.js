@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   startCallback: (devices) => dispatch(start(devices)),
-  label: 'Showdown',
+  label: 'Pick',
   faIcon: 'play',
 })
 
