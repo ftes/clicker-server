@@ -25,21 +25,23 @@ export function buildRows(devices, showSettings=false) {
 
 function getBgColor(state, pressed, device) {
   if (state.highlight && state.highlight.indexOf(device.deviceKey) !== -1)
-    return 'orange'
+    return state.isLastStep ? 'orange' : 'yellow'
   if (pressed[device.deviceKey]) return 'lightgrey'
   return 'white'
 }
 
+const defaultState = { highlight: [] }
+
 class DeviceList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { highlight: [] }
+    this.state = defaultState
   }
 
   tick() {
     let showdown = this.props.showdown
     if (showdown.length === 0) {
-      this.setState({ highlight: [] })
+      this.setState(defaultState)
       return
     }
 
@@ -52,7 +54,9 @@ class DeviceList extends React.Component {
       this.setState({ highlight: step.devices })
     }
     let lastStep = showdown.slice(-1)[0]
-    if (step !== lastStep) setTimeout(() => this.tick(), 100)
+    let isLastStep = step === lastStep
+    this.setState({ isLastStep })
+    if (! isLastStep) setTimeout(() => this.tick(), 100)
   }
 
   componentWillReceiveProps() {

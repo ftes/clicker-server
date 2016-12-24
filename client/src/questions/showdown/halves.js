@@ -36,12 +36,12 @@ function recursiveHalves(result, remaining, selectedDeviceKey) {
   return recursiveHalves(result, selectedHalf, selectedDeviceKey)
 }
 
-export default function(durationMs, devices, selectedDeviceKey) {
+export default function(settings, devices, selectedDeviceKey) {
   let rows = buildRows(devices)
   rows = rows.map(row => row.map(device => device.deviceKey))
   let halvesInRows = recursiveHalves([rows], rows, selectedDeviceKey)
   let halves = halvesInRows.map(half => [].concat(...half))
-  let stepDuration = durationMs / halves.length
+  let stepDuration = settings.showdownDurationMs / halves.length
   let time = new Date().getTime()
   let result = halves.map(half =>
     ({ devices: half, time: time += stepDuration }))

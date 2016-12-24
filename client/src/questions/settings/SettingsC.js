@@ -4,8 +4,7 @@ import { getState as local } from './'
 import { getState as showSettings } from '../../show-settings'
 
 const mapStateToProps = (state) => ({
-  durationMs: local(state).durationMs,
-  showdownDurationMs: local(state).showdownDurationMs,
+  settings: local(state),
   showSettings: showSettings(state),
 })
 

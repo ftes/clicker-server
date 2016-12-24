@@ -1,40 +1,40 @@
 import React, { PropTypes } from 'react'
-import EditText from '../../edit-text/EditTextC'
-import { ListGroup, ListGroupItem } from 'react-bootstrap'
-import { editKeyPrefix } from './'
+import { ListGroup } from 'react-bootstrap'
+import Text from './Text'
+import Dropdown from './DropdownC'
+import SettingsItem from './SettingsItem'
+import { functions } from '../showdown'
 
-const Settings = ({ durationMs, showdownDurationMs, showSettings }) => (
+const Settings = ({ settings, showSettings }) => (
   showSettings &&
     <ListGroup>
-      <ListGroupItem style={{ display: 'flex' }}>
-        <span>
-          <b>Question duration (ms):</b> &nbsp;
-        </span>
-        <span style={{ flexGrow: 1 }}>
-        <EditText
-          editKey={`${editKeyPrefix}durationMs`}
-          defaultText={durationMs + ''}
+      <SettingsItem
+        title='Question duration (ms)'
+        child={<Text settingsKey='durationMs' settings={settings}/>}
+      />
+      <SettingsItem
+        title='Selection duration (ms)'
+        child={<Text settingsKey='showdownDurationMs' settings={settings}/>}
+      />
+      <SettingsItem
+        title='Selection animation'
+        child={<Dropdown
+          settingsKey='showdown'
+          settings={settings}
+          options={Object.keys(functions)}/>
+        }
+      />
+      {settings.showdown === 'random' &&
+        <SettingsItem
+          title='Number of random hops'
+          child={<Text settingsKey='randomN' settings={settings}/>}
         />
-        </span>
-      </ListGroupItem>
-
-      <ListGroupItem style={{ display: 'flex' }}>
-        <span>
-          <b>Selection duration (ms):</b> &nbsp;
-        </span>
-        <span style={{ flexGrow: 1 }}>
-        <EditText
-          editKey={`${editKeyPrefix}showdownDurationMs`}
-          defaultText={showdownDurationMs + ''}
-        />
-        </span>
-      </ListGroupItem>
+      }
     </ListGroup>
 )
 
 Settings.propTypes = {
-  durationMs: PropTypes.number.isRequired,
-  showdownDurationMs: PropTypes.number.isRequired,
+  settings: PropTypes.object.isRequired,
   showSettings: PropTypes.bool.isRequired,
 }
 

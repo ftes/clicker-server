@@ -1,11 +1,13 @@
 import halves from './halves'
+import random from './random'
 import { getState as getParentState } from '../'
 import { START as NEW_QUESTION } from '../../questions/question'
 
 export const START = 'clicker/showdown/START'
 
 export const functions = {
-  halves
+  halves,
+  random,
 }
 
 export default function reducer(state = [], action) {
@@ -16,7 +18,7 @@ export default function reducer(state = [], action) {
     if (lastQuestion && lastQuestion.answeredBy.length > 0) {
       let answeredBy = action.lastQuestion.answeredBy
       let selected = answeredBy[Math.floor(Math.random() * answeredBy.length)]
-      return func(action.settings.durationMs, action.devices, selected)
+      return func(action.settings, action.devices, selected, answeredBy)
     }
     return state
   }
