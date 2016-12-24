@@ -15,13 +15,13 @@ class Website {
     this.io.on('connection', function (socket) {
       socket.on('press', function ({ deviceId, pressed }) {
         console.log(`website press: ${deviceId} ${pressed}`)
-        let payload = devices.json(devices.WEBSITE, `${deviceId}`, { pressed })
+        let payload = devices.json(devices.WEBSITE, deviceId, { pressed })
         send(websocket.BUTTON_EVENT, payload)
       })
 
       socket.on('battery', function ({ deviceId, raw }) {
         console.log(`battery level: ${deviceId} ${(raw * 100).toFixed(2)}%`)
-        let payload = devices.json(devices.WEBSITE, `${deviceId}`, { raw })
+        let payload = devices.json(devices.WEBSITE, deviceId, { raw })
         send(websocket.BATTERY_LEVEL_RESPONSE, payload)
       })
     })

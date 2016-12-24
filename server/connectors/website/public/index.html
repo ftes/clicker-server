@@ -2,7 +2,9 @@
   <body>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      let deviceId = Math.floor(Math.random() * 1000)
+      let deviceId = localStorage.getItem('deviceId')
+        || `${Math.floor(Math.random() * 1000)}`
+      localStorage.setItem('deviceId', deviceId)
 
       let socket = io.connect()
 
