@@ -13,6 +13,7 @@ const Question = ({ title, answeredBy }) => {
           key={i++}
           style={{
             marginRight: '5px',
+            display: 'inline-block',
           }}
         >
           {name}
