@@ -1,6 +1,7 @@
 let websocket = require('../common/websocket')
-let server = require('http').Server()
-let io = require('socket.io')(server)
+let http = require('http')
+let express = require('express')
+let socketIO = require('socket.io')
 let rxjs = require('rxjs')
 let argv = require('yargs').argv
 let Xbee = require('./connectors/xbee')
@@ -20,7 +21,13 @@ if (tty) connectors.push(new Xbee(send, tty))
 if (dummyFile) connectors.push(new Dummy(send, dummyFile))
 if (web) connectors.push(new Website(send, parseInt(web, 10)))
 
+// compiled web interface
+let app = express()
+let server = http.Server(app)
+app.use(express.static(__dirname + '/public'))
+
 // open websocket and handle events
+let io = socketIO(server)
 io.on('connection', function (socket) {
   console.log('client connected')
 
