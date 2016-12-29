@@ -4,6 +4,7 @@ import { isIgnored } from './'
 import Device from '../device/DeviceC'
 import { tabIndex as startTabIndex } from '../../core/globals'
 import AnsweredIndicator from '../../questions/AnsweredIndicatorC'
+import AnsweredCount from '../../questions/AnsweredCountC'
 
 import './DeviceList.css'
 
@@ -101,9 +102,16 @@ class DeviceList extends React.Component {
                         ? null : tabIndex++}
                     />
                   </span>
-                  <span style={{ fontSize: '1.3em', marginRight: '20px' }}>
-                    <AnsweredIndicator deviceKey={device.deviceKey}/>
-                  </span>
+                  {!isIgnored(device.deviceType) &&
+                    <span>
+                      <span style={{ fontSize: '1.3em', marginRight: '20px' }}>
+                        <AnsweredIndicator deviceKey={device.deviceKey}/>
+                      </span>
+                      <span style={{ fontSize: '1.3em', marginRight: '20px' }}>
+                        <AnsweredCount deviceKey={device.deviceKey}/>
+                      </span>
+                    </span>
+                  }
                   {showSettings &&
                     <span>
                       <Button

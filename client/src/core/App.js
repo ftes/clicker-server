@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import { HotKeys } from 'react-hotkeys'
 
 import 'font-awesome/css/font-awesome.css'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -16,6 +17,10 @@ import './App.css'
 const NavbarC = ShowSettingsDependent(Navbar)
 const DevicesC = ShowSettingsDependent(Devices)
 const HintsC = ShowSettingsDependent(Hints)
+
+const keyMap = {
+  askQuestion: 'ctrl+enter',
+}
 
 class App extends React.Component {
   /**
@@ -37,8 +42,12 @@ class App extends React.Component {
   }
 
   render() {
+    const keyHandlers = {
+      askQuestion: () => this.props.askQuestion()
+    }
+
     return (
-      <div>
+      <HotKeys keyMap={keyMap} handlers={keyHandlers}>
         <NavbarC/>
         <div className='content'>
           <h3><ClassName/></h3>
@@ -46,7 +55,7 @@ class App extends React.Component {
           <Questions/>
           <HintsC/>
         </div>
-      </div>
+      </HotKeys>
     )
   }
 }
@@ -54,6 +63,7 @@ class App extends React.Component {
 App.propTypes = {
   setState: PropTypes.func.isRequired,
   getState: PropTypes.func.isRequired,
+  askQuestion: PropTypes.func.isRequired,
 }
 
 export default App

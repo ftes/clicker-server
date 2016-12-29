@@ -13,7 +13,7 @@ export const functions = {
 export default function reducer(state = [], action) {
   switch(action.type) {
   case START: {
-    let func = functions[action.settings.showdown]
+    let func = functions[action.showdown]
     let lastQuestion = action.lastQuestion
     if (lastQuestion && lastQuestion.answeredBy.length > 0) {
       let answeredBy = action.lastQuestion.answeredBy

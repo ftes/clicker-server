@@ -34,7 +34,7 @@ export function deleteDevice(deviceKey) {
   return { type: DELETE, deviceKey }
 }
 
-export function getNextId(state) {
+function getNextId(state) {
   return state
     .filter(d => isIgnored(d.deviceType))
     .map(d => parseInt(d.deviceId, 10))

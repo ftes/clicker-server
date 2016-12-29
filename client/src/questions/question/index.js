@@ -21,14 +21,14 @@ export default function reducer(state = {}, action) {
   }
   case START:
     return {
-      id: action.id,
-      title: action.title,
+      id: action.id, // set by parent reducer
+      title: action.title || `Question ${action.id}`, // set by parent reducer
       answeredBy: []
     }
   default: return state
   }
 }
 
-export function start(title, id, durationMs) {
-  return { type: START, title, id, durationMs }
+export function start() {
+  return { type: START }
 }

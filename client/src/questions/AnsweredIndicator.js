@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react'
 import FA from 'react-fontawesome'
 
-const AskQuestion = ({ answered }) => (
+const AnsweredIndicator = ({ answered }) => (
   answered ? <FA name='thumbs-o-up' title='Knows the answer.'/> : null
 )
 
 
-AskQuestion.propTypes = {
+AnsweredIndicator.propTypes = {
   answered: PropTypes.bool.isRequired,
   deviceKey: PropTypes.string.isRequired,
 }
 
-export default AskQuestion
+export default AnsweredIndicator

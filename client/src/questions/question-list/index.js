@@ -33,7 +33,11 @@ export function deleteQuestion(id) {
 }
 
 export function getNextId(state) {
-  return getState(state)
+  return getNextIdLocal(getState(state))
+}
+
+export function getNextIdLocal(state) {
+  return state
     .map(q => q.id)
     .reduce((max, i) => Math.max(max, i), 0)
     + 1

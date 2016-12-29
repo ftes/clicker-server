@@ -25,6 +25,9 @@ const Hints = ({ showSettings }) => {
           You can navigate between elements with the &nbsp;
           <FA name='exchange'/> Tab key.
         </ListGroupItem>
+        <ListGroupItem header='Hotkeys'>
+          <b>Ctrl + Enter:</b> Ask Question<br/>
+        </ListGroupItem>
         <ListGroupItem header='Edit Class Name'>
           You can edit the class name by clicking on it.
         </ListGroupItem>
