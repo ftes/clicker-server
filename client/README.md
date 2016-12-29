@@ -1,6 +1,10 @@
 # Xbee Clicker Client
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+## Running
+- dev: `REACT_APP_SERVER_PORT=4000 npm start`
+
+
 ## Sourcemaps
 - not yet supported by [create react base](https://github.com/facebookincubator/create-react-app/issues/139)
 - until then: in `node_modules/react-scripts/config/webpack.config.dev.js` change `devtools` to `'cheap-module-source-map'`

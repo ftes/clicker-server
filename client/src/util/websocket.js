@@ -1,7 +1,9 @@
 import io from 'socket.io-client'
-import { messageTypes, uri } from '../../../common/websocket'
+import { messageTypes } from '../../../common/websocket'
 import console from '../util/console'
 
+let serverPort = process.env.REACT_APP_SERVER_PORT
+let uri = serverPort ? `localhost:${serverPort}` : undefined
 const socket = io(uri)
 
 export const init = (store) => {
@@ -10,7 +12,7 @@ export const init = (store) => {
     .forEach(type => socket.on(type,
       payload => {
         console.info(`message ${type}`, payload)
-        store.dispatch({type, payload})
+        store.dispatch({ type, payload })
       }))
 }
 
