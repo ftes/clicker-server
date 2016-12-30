@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Table, Button } from 'react-bootstrap'
+import _ from 'lodash'
+
 import { isIgnored } from './'
 import Device from '../device/DeviceC'
 import { tabIndex as startTabIndex } from '../../core/globals'
@@ -7,22 +9,6 @@ import AnsweredIndicator from '../../questions/AnsweredIndicatorC'
 import AnsweredCount from '../../questions/AnsweredCountC'
 
 import './DeviceList.css'
-
-export function buildRows(devices, showSettings=false) {
-  let row = []
-  let rows = []
-  for (let device of devices) {
-    if (device.deviceType === 'newLine') {
-      if (showSettings) row.push(device)
-      rows.push(row)
-      row = []
-    } else {
-      row.push(device)
-    }
-  }
-  if (row.length > 0) rows.push(row)
-  return rows
-}
 
 function getBgColor(state, pressed, device) {
   if (state.highlight && state.highlight.indexOf(device.deviceKey) !== -1)
@@ -32,6 +18,10 @@ function getBgColor(state, pressed, device) {
 }
 
 const defaultState = { highlight: [] }
+
+export function buildRows(devices, rowWidth) {
+  return _.chunk(devices, rowWidth)
+}
 
 class DeviceList extends React.Component {
   constructor(props) {
@@ -69,7 +59,7 @@ class DeviceList extends React.Component {
     let { devices, editCallback, deleteCallback,
       showSettings, pressed } = this.props
 
-    let rows = buildRows(devices, showSettings)
+    let rows = buildRows(devices, this.props.settings.rowWidth)
     let rowIndex = 0
     let tabIndex = startTabIndex.devices
 
@@ -145,6 +135,7 @@ DeviceList.propTypes = {
   pressed: PropTypes.objectOf(PropTypes.bool).isRequired,
   showdown: PropTypes.array.isRequired,
   clearCallback: PropTypes.func.isRequired,
+  settings: PropTypes.object.isRequired,
 }
 
 export default DeviceList

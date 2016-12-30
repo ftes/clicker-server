@@ -36,8 +36,9 @@ function recursiveHalves(result, remaining, selectedDeviceKey) {
   return recursiveHalves(result, selectedHalf, selectedDeviceKey)
 }
 
-export default function(settings, devices, selectedDeviceKey) {
-  let rows = buildRows(devices)
+export default function(settings, devices, selectedDeviceKey, answeredBy,
+  devicesSettings) {
+  let rows = buildRows(devices, devicesSettings.rowWidth)
   rows = rows.map(row => row.map(device => device.deviceKey))
   let halvesInRows = recursiveHalves([rows], rows, selectedDeviceKey)
   let halves = halvesInRows.map(half => [].concat(...half))

@@ -7,15 +7,14 @@ import { getState as local } from './'
 import { getState as showSettings } from '../../show-settings'
 import { getState as buttonPress } from '../../button-press'
 import { clear, getState as showdown } from '../../questions/showdown'
+import { getState as settings } from '../settings'
 
 const mapStateToProps = (state) => ({
   devices: local(state),
   showSettings: showSettings(state),
   pressed: buttonPress(state),
-  showdown: function() {
-    let s = showdown(state)
-    return s
-  }(),
+  showdown: showdown(state),
+  settings: settings(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({

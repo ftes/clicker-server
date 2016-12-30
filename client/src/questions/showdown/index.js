@@ -18,7 +18,8 @@ export default function reducer(state = [], action) {
     if (lastQuestion && lastQuestion.answeredBy.length > 0) {
       let answeredBy = action.lastQuestion.answeredBy
       let selected = answeredBy[Math.floor(Math.random() * answeredBy.length)]
-      return func(action.settings, action.devices, selected, answeredBy)
+      return func(action.settings, action.devices, selected, answeredBy,
+        action.devicesSettings)
     }
     return state
   }
@@ -29,8 +30,8 @@ export default function reducer(state = [], action) {
   }
 }
 
-export function start(devices) {
-  return { type: START, devices }
+export function start(devices, devicesSettings) {
+  return { type: START, devices, devicesSettings }
 }
 
 export function getState(state) {
