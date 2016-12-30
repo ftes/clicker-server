@@ -7,6 +7,9 @@ function selectHalf(devices) {
 }
 
 function selectDifferentHalf(devices, previous=[]) {
+  // cannot be different if less than one answered
+  if (devices.length <= 1) return selectHalf(devices)
+  
   let equal = true
   let half
   while (equal) {
