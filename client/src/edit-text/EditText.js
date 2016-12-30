@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react'
 import { FormControl } from 'react-bootstrap'
 import FA from 'react-fontawesome'
 
-const EditText = ({ editKey, text, edit, onEdit, onSave, tabIndex, icon }) => {
+const EditText = ({ editKey, text, edit, onEdit, onSave, tabIndex, icon,
+  type }) => {
   if (!edit) return (
     <div
       tabIndex={tabIndex || -1}
@@ -22,7 +23,7 @@ const EditText = ({ editKey, text, edit, onEdit, onSave, tabIndex, icon }) => {
     <FormControl
       autoFocus
       tabIndex={tabIndex}
-      type='text'
+      type={type || 'text'}
       onChange={(event) => onEdit(editKey, event.target.value)}
       onBlur={(event) => onSave(editKey, event.target.value)}
       onKeyPress={(event) => event.key === 'Enter' &&
@@ -40,6 +41,7 @@ EditText.propTypes = {
   onSave: PropTypes.func.isRequired,
   tabIndex: PropTypes.number,
   icon: PropTypes.string,
+  type: PropTypes.string,
 }
 
 export default EditText
