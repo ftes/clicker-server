@@ -5,7 +5,8 @@ import { save } from './'
 const mapStateToProps = () => ({})
 
 const mapDispatchToProps = (dispatch) => ({
-  onChange: (key, value) => dispatch(save(key, value)),
+  onChange: (editKeyPrefix, key, value) =>
+    dispatch(save(editKeyPrefix, key, value)),
 })
 
 const DropdownC = connect(mapStateToProps, mapDispatchToProps)(Dropdown)
