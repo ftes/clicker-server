@@ -8,6 +8,9 @@ const EditText = ({ editKey, text, edit, onEdit, onSave, tabIndex, icon,
     <div
       tabIndex={tabIndex || -1}
       onFocus={() => onEdit(editKey)}
+      style={{
+        cursor: 'text',
+      }}
     >
       {text}
       &nbsp;

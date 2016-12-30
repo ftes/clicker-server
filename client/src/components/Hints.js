@@ -28,6 +28,9 @@ const Hints = ({ showSettings }) => {
         <ListGroupItem header='Hotkeys'>
           <b>Ctrl + Enter:</b> Ask Question<br/>
         </ListGroupItem>
+        <ListGroupItem header='Drag and Drop'>
+          Reorder devices with drag 'n drop.
+        </ListGroupItem>
         <ListGroupItem header='Edit Class Name'>
           You can edit the class name by clicking on it.
         </ListGroupItem>

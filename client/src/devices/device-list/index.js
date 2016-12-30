@@ -4,6 +4,7 @@ import deviceReducer, { ADD_EMPTY } from '../device'
 import { getState as getParentState } from '../'
 
 export const DELETE = 'clicker/devices/DELETE'
+export const MOVE = 'clicker/devices/MOVE'
 
 export default function reducer(state = [], action) {
   switch (action.type) {
@@ -14,6 +15,20 @@ export default function reducer(state = [], action) {
     return addDevice(state, action)
   case DELETE:
     return state.filter(d => d.deviceKey !== action.deviceKey)
+  case MOVE: {
+    const toMove = d => d.deviceKey === action.deviceKey
+    const notToMove = d => !toMove(d)
+    const toReplace = d => d.deviceKey === action.atDeviceKey
+    let wasBefore = state.findIndex(toMove) < state.findIndex(toReplace)
+    let device = state.find(toMove)
+    let withoutDevice = state.filter(notToMove)
+    let insertAt = withoutDevice.findIndex(toReplace) + (wasBefore ? 1 : 0)
+    return [
+      ...withoutDevice.slice(0, insertAt),
+      device,
+      ...withoutDevice.slice(insertAt)
+    ]
+  }
   default: return state
   }
 }
@@ -32,6 +47,10 @@ function addDevice(state, action) {
 
 export function deleteDevice(deviceKey) {
   return { type: DELETE, deviceKey }
+}
+
+export function moveDevice(deviceKey, atDeviceKey) {
+  return { type: MOVE, deviceKey, atDeviceKey }
 }
 
 function getNextId(state) {
