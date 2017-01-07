@@ -17,7 +17,8 @@
     "shelljs": "^0.7.5",
     "simple-git": "^1.65.0",
     "socket.io": "^1.7.2",
-    "yargs": "^6.5.0"
+    "yargs": "^6.5.0",
+    "websocket": "^1.0.24"
   },
   "devDependencies": {
     "eslint": "^3.12.2"
