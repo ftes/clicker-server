@@ -1,11 +1,10 @@
 import React, { PropTypes } from 'react'
 import DeviceTypeIcon from './DeviceTypeIcon'
-import BatteryLevel from '../../battery-level/BatteryLevel'
 import DeviceName from '../../device-name/DeviceNameC'
 import { isIgnored } from '../device-list'
 
 const Device = ({ deviceKey, deviceType, deviceId,
-  batteryLevel, tabIndex, showSettings }) => {
+  tabIndex, showSettings }) => {
   if (isIgnored(deviceType)) return null
   return (
     <div>
@@ -28,9 +27,6 @@ const Device = ({ deviceKey, deviceType, deviceId,
           />
         </span>
       </div>
-      {showSettings &&
-        <BatteryLevel batteryLevel={batteryLevel}/>
-      }
     </div>
   )
 }
@@ -39,7 +35,6 @@ Device.propTypes = {
   deviceKey: PropTypes.string.isRequired,
   deviceType: PropTypes.string.isRequired,
   deviceId: PropTypes.string.isRequired,
-  batteryLevel: PropTypes.number,
   tabIndex: PropTypes.number,
   showSettings: PropTypes.bool.isRequired,
 }

@@ -1,10 +1,8 @@
 import { connect } from 'react-redux'
 import Device from './Device'
-import { getState as batteryLevel } from '../../battery-level'
 import { getState as showSettings } from '../../show-settings'
 
-const mapStateToProps = (state, props) => ({
-  batteryLevel: batteryLevel(state)[props.deviceKey],
+const mapStateToProps = (state) => ({
   showSettings: showSettings(state),
 })
 
