@@ -64,6 +64,7 @@ io.on('connection', function (socket) {
       let success = !err
       let installReturn = shelljs.exec('npm install').code // synchronous
       if (installReturn !== 0) success = false
+      shelljs.touch('.reload')
       socket.emit(websocket.GIT_PULL_RESPONSE, { success })
     })
   })
