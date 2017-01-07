@@ -1,1 +1,1 @@
-# clicker-server
+# Clicker Server
