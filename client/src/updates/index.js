@@ -24,7 +24,7 @@ const reducer= (state = initialState, action) => {
     return {
       ...state,
       checkRequestPending: false,
-      behindCommits: 1 || action.payload.behindCommits
+      behindCommits: action.payload.behindCommits,
     }
   case UPDATE:
     emit(GIT_PULL)
