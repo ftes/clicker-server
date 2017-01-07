@@ -1,2 +1,2 @@
 # Clicker Server
-Server app
+Server app.
