@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js --web=4001"
+    "start": "node node_modules/nodemon/bin/nodemon.js index.js --web=4001"
   },
   "author": "Fredrik Teschke <f@ftes.de>",
   "license": "ISC",
   "dependencies": {
     "chokidar": "^1.6.1",
     "express": "^4.14.0",
+    "nodemon": "^1.11.0",
     "rxjs": "^5.0.1",
+    "shelljs": "^0.7.5",
+    "simple-git": "^1.65.0",
     "socket.io": "^1.7.2",
     "yargs": "^6.5.0"
   },

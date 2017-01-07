@@ -11,6 +11,7 @@ import ShowSettingsDependent from '../components/ShowSettingsDependentC'
 import ClassName from '../class-name/ClassNameC'
 import Hints from '../components/Hints'
 import console from '../util/console'
+import Updates from '../updates/UpdatesC'
 
 import './App.css'
 
@@ -37,7 +38,10 @@ class App extends React.Component {
     }
 
     window.addEventListener('beforeunload', () => {
-      localStorage.setItem('redux-state', JSON.stringify(this.props.getState()))
+      let copy = { ...this.props.getState() }
+      // delete state that should not be cached between browser sessions
+      delete copy.updates
+      localStorage.setItem('redux-state', JSON.stringify(copy))
     })
   }
 
@@ -50,6 +54,7 @@ class App extends React.Component {
       <HotKeys keyMap={keyMap} handlers={keyHandlers}>
         <NavbarC/>
         <div className='content'>
+          <Updates/>
           <h3><ClassName/></h3>
           <DevicesC/>
           <Questions/>
