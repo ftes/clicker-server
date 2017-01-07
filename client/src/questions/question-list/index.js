@@ -54,3 +54,13 @@ export function getLastQuestion(state) {
 export function getState(state) {
   return getParentState(state).list
 }
+
+export function getAnswered(state, deviceKey) {
+  return getState(state).map(q =>
+    q.answeredBy.indexOf(deviceKey) !== -1 ? 1 : 0)
+}
+
+export function getAnsweredCount(state, deviceKey) {
+  let answered = getAnswered(state, deviceKey)
+  return answered.reduce((sum, cur) => sum + cur, 0)
+}

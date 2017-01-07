@@ -8,6 +8,7 @@ import editText from '../edit-text'
 import questions from '../questions'
 import idMappings from '../id-mappings'
 import showSettings from '../show-settings'
+import offset from '../offset'
 
 export const OVERWRITE = 'clicker/core/OVERWRITE'
 export const RESET = 'clicker/core/RESET'
@@ -22,6 +23,7 @@ const reducers = combineReducers({
   questions,
   idMappings,
   showSettings,
+  offset,
 })
 
 const coreReducer = (state = {}, action) => {
