@@ -33,6 +33,9 @@ const reducer= (state = initialState, action) => {
       updateRequestPending: true,
     }
   case GIT_PULL_RESPONSE:
+    // refresh on successful update
+    if (action.payload.success) location.reload()
+
     return {
       ...state,
       updateRequestPending: false,
