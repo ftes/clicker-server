@@ -2,6 +2,13 @@ import { BUTTON_EVENT } from '../../../../common/websocket'
 import { key } from '../../util/device'
 
 export const START = 'clicker/questions/START'
+export const NEW_LESSON = 'clicker/questions/NEW_LESSON'
+
+function create(id, title, isLesson) {
+  let answeredBy = isLesson ? undefined : []
+  let date = new Date()
+  return { isLesson, id, title, answeredBy, date }
+}
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
@@ -20,15 +27,18 @@ export default function reducer(state = {}, action) {
     }
   }
   case START:
-    return {
-      id: action.id, // set by parent reducer
-      title: action.title || `Question ${action.id}`, // set by parent reducer
-      answeredBy: []
-    }
+    // id and title set by parent reducer
+    return create(action.id, action.title || `Question ${action.id}`, false)
+  case NEW_LESSON:
+    return create(action.id, action.title, true)
   default: return state
   }
 }
 
 export function start() {
   return { type: START }
+}
+
+export function newLesson(title) {
+  return { type: NEW_LESSON, title }
 }

@@ -26,9 +26,8 @@ export default function reducer(state = {}, action) {
   }
   if (action.type === START_QUESTION) {
     let durationMs = state.settings.durationMs // for showdown
-    let id = getNextIdLocal(state.list) // for question
     let title = state.ask // for question
-    Object.assign(action, { durationMs, id, title })
+    Object.assign(action, { durationMs, title })
   }
 
   return combined(state, action)

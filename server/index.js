@@ -13,18 +13,18 @@ let outboundMessages = new rxjs.Subject()
 let send = (type, payload) => outboundMessages.next([type, payload])
 
 // device connectors
-let tty = argv.tty
-let dummy = argv.dummy
-let web = argv.web
 let connectors = []
-if (tty){
-  let Xbee = require('./connectors/xbee')
-  connectors.push(new Xbee(send, tty))
-}
+// let tty = argv.tty
+// if (tty){
+//   let Xbee = require('./connectors/xbee')
+//   connectors.push(new Xbee(send, tty))
+// }
+let dummy = argv.dummy
 if (dummy) {
   let Dummy = require('./connectors/dummy')
   connectors.push(new Dummy(send, dummy))
 } 
+let web = argv.web
 if (web) {
   let Website = require('./connectors/website')
   connectors.push(new Website(send, parseInt(web, 10)))

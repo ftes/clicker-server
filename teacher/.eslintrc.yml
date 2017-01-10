@@ -1,0 +1,17 @@
+env:
+  browser: true
+extends:
+  - plugin:react/recommended
+parserOptions:
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
+    jsx: true
+  sourceType: module
+plugins:
+  - react
+rules:
+  jsx-quotes:
+    - error
+    - prefer-single
+  react/jsx-uses-react:
+    - error

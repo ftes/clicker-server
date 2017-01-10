@@ -1,15 +1,33 @@
 import { BUTTON_EVENT } from '../../../../common/websocket'
-import questionReducer, { START } from '../question'
+import questionReducer, { START, NEW_LESSON, create } from '../question'
 import { getState as getParentState } from '../'
 
 export const DELETE = 'clicker/questions/DELETE'
 
 export default function reducer(state = [], action) {
   switch (action.type) {
-  case START: {
+  case NEW_LESSON:
     return [
       ...state,
       questionReducer(undefined, action)
+    ]
+  case START: {
+    let newQuestion = questionReducer(undefined, action)
+    // compare dateStrings (omits hours, minutes, seconds)
+    let dateOfLastLesson = getDateOfLast(state, true).toDateString()
+    let dateOfNewQuestion = newQuestion.date.toDateString()
+    action.id = getNextIdLocal(state)
+
+    // add new lesson automatically if date has changed
+    if (dateOfLastLesson !== dateOfNewQuestion) {
+      state = [
+        ...state,
+        create(action.id++, dateOfNewQuestion, /*isLesson*/ true)
+      ]
+    }
+    return [
+      ...state,
+      newQuestion
     ]
   }
   case BUTTON_EVENT: {
@@ -63,4 +81,10 @@ export function getAnswered(state, deviceKey) {
 export function getAnsweredCount(state, deviceKey) {
   let answered = getAnswered(state, deviceKey)
   return answered.reduce((sum, cur) => sum + cur, 0)
+}
+
+function getDateOfLast(state, lesson=false) {
+  let list = state.filter(q => q.isLesson === lesson)
+  if (list.length === 0) return null
+  return list.slice(-1)[0]
 }
