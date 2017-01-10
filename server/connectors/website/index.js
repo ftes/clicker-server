@@ -1,4 +1,5 @@
 let express = require('express')
+let cors = require('cors')
 let http = require('http')
 let socketIO = require('socket.io')
 let websocket = require('../../../common/websocket')
@@ -9,6 +10,10 @@ class Website {
     let app = express()
     let server = http.Server(app)
     this.io = socketIO(server)
+    app.use(cors())
+    app.get('/settings', (req, res) => {
+      res.send({ pin: '1111', nButtons: 4, server: 'http://192.168.0.1:4001' })
+    })
     app.use(express.static(__dirname + '/public'))
     server.listen(port || 4001)
 
