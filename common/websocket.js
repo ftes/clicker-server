@@ -1,28 +1,80 @@
-const BATTERY_LEVEL_REQUEST = 'clicker/battery-level/REQUEST'
-const BATTERY_LEVEL_RESPONSE = 'clicker/battery-level/RESPONSE'
-const BUTTON_EVENT = 'clicker/button/EVENT'
-const GIT_UPDATES_REQUEST = 'clicker/git/UPDATES_REQUEST'
-const GIT_UPDATES_RESPONSE = 'clicker/git/UPDATES_RESPONSE'
-const GIT_PULL = 'clicker/git/PULL'
-const GIT_PULL_RESPONSE = 'clicker/git/PULL_RESPONSE'
+import autobahn from 'autobahn'
 
-const messageTypes = [
-  BATTERY_LEVEL_REQUEST,
-  BATTERY_LEVEL_RESPONSE,
-  BUTTON_EVENT,
-  GIT_UPDATES_REQUEST,
-  GIT_UPDATES_RESPONSE,
-  GIT_PULL,
-  GIT_PULL_RESPONSE,
-]
+import console from './console'
 
-module.exports = {
-  BATTERY_LEVEL_REQUEST,
-  BATTERY_LEVEL_RESPONSE,
-  BUTTON_EVENT,
-  GIT_UPDATES_REQUEST,
-  GIT_UPDATES_RESPONSE,
-  GIT_PULL,
-  GIT_PULL_RESPONSE,
-  messageTypes,
+export const PREFIX = 'clicker/websocket-message/'
+const SET = 'clicker/websocket/SET'
+
+function getUri() {
+  //eslint-disable-next-line no-undef
+  const port = process.env.REACT_APP_SERVER_PORT
+  let uri = 'ws://'
+
+  if (port) {
+    uri += document.location.hostname + ':' + port
+  } else {
+    uri += document.location.host
+  }
+
+  return uri + '/ws'
+}
+
+export function connect(state, dispatch) {
+  // close old connection
+  if (state.connection) state.connection.close()
+
+  const connection = new autobahn.Connection({
+    url: getUri(),
+    realm: 'default',
+  })
+
+  let sessionResolve, sessionReject
+  const sessionPromise = new Promise((resolve, reject) => {
+    sessionResolve = resolve
+    sessionReject = reject
+  })
+
+  connection.onopen = function(session) {
+    console.log('Autobahn connected')
+    sessionResolve(session)
+
+    session.subscribe('',
+      (payload) => {
+        let type = PREFIX + 'xyz'
+        dispatch({ type, payload })
+      }, { match: 'wildcard' })
+  }
+
+  connection.onclose = function() {
+    console.log('Autobahn disconnected')
+    sessionReject()
+  }
+
+  connection.open()
+
+  const publish = (type, payload) => {
+    sessionPromise.then(session => session.publish(type, payload))
+  }
+
+  dispatch({type: SET, publish, connection })
+}
+
+const initialState = {
+  publish: null,
+  connection: null,
+}
+export function reducer(state=initialState, action) {
+  switch (action.type) {
+  case SET:
+    return {
+      ...state,
+      publish: action.publish,
+      connection: action.connection,
+    }
+  default: return state
+  }
+}
+
+export function getState(state) {
+  return state.websocket
 }

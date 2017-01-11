@@ -1,0 +1,5 @@
+{
+  "PRESS": "press",
+  "BATTERY_REQUEST": "battery?",
+  "BATTERY_RESPONSE": "battery"
+}
