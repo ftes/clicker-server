@@ -1,0 +1,19 @@
+{
+    "pid": 23891, 
+    "options": {
+        "reactor": null, 
+        "cdc": false, 
+        "loglevel": "info", 
+        "logtofile": false, 
+        "logformat": "standard", 
+        "command": "start", 
+        "logdir": null, 
+        "config": "config.json", 
+        "colour": "auto", 
+        "cbdir": "/home/fredrik/dev/clicker-server/server-python/template/.crossbar"
+    }, 
+    "argv": [
+        "/home/fredrik/dev/clicker-server/server-python/env/bin/crossbar", 
+        "start"
+    ]
+}

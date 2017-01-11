@@ -1,0 +1,71 @@
+{
+    "version": 2,
+    "workers": [
+        {
+            "type": "router",
+            "realms": [
+                {
+                    "name": "default",
+                    "roles": [
+                        {
+                            "name": "anonymous",
+                            "permissions": [
+                                {
+                                    "uri": "*",
+                                    "allow": {
+                                        "publish": true,
+                                        "subscribe": true
+                                    },
+                                    "cache": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "transports": [
+                {
+                    "type": "web",
+                    "endpoint": {
+                        "type": "tcp",
+                        "port": 8080
+                    },
+                    "paths": {
+                        "/": {
+                            "type": "resource",
+                            "classname": "static.StaticCorsResource",
+                            "extra": "../web"
+                        },
+                        "ws": {
+                            "type": "websocket"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "type": "container",
+            "options": {
+                "pythonpath": [
+                    ".."
+                ]
+            },
+            "components": [
+                {
+                    "type": "class",
+                    "classname": "hello.AppSession",
+                    "realm": "default",
+                    "transport": {
+                        "type": "websocket",
+                        "endpoint": {
+                            "type": "tcp",
+                            "host": "127.0.0.1",
+                            "port": 8080
+                        },
+                        "url": "ws://127.0.0.1:8080/ws"
+                    }
+                }
+            ]
+        }
+    ]
+}
