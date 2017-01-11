@@ -10,8 +10,7 @@ import Navbar from '../components/Navbar'
 import ShowSettingsDependent from '../components/ShowSettingsDependentC'
 import ClassName from '../class-name/ClassNameC'
 import Hints from '../components/Hints'
-import console from '../util/console'
-import Updates from '../updates/UpdatesC'
+import console from '../common/console'
 
 import './App.css'
 
@@ -25,6 +24,7 @@ const keyMap = {
 
 class App extends React.Component {
   /**
+   * Connect to websocket.
    * Read from local storage on start.
    * Write to local storage on end.
    */
@@ -38,11 +38,13 @@ class App extends React.Component {
     }
 
     window.addEventListener('beforeunload', () => {
-      let copy = { ...this.props.getState() }
+      let copy = { ...this.props.state }
       // delete state that should not be cached between browser sessions
-      delete copy.updates
+      delete copy.websocket
       localStorage.setItem('redux-state', JSON.stringify(copy))
     })
+    
+    this.props.connectWebsocket(this.props.state.websocket)
   }
 
   render() {
@@ -54,7 +56,6 @@ class App extends React.Component {
       <HotKeys keyMap={keyMap} handlers={keyHandlers}>
         <NavbarC/>
         <div className='content'>
-          <Updates/>
           <h3><ClassName/></h3>
           <DevicesC/>
           <Questions/>
@@ -67,8 +68,9 @@ class App extends React.Component {
 
 App.propTypes = {
   setState: PropTypes.func.isRequired,
-  getState: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired,
   askQuestion: PropTypes.func.isRequired,
+  connectWebsocket: PropTypes.func.isRequired,
 }
 
 export default App

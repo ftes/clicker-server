@@ -1,5 +1,5 @@
-import { BUTTON_EVENT } from '../../../../common/websocket'
-import { key } from '../../util/device'
+import { BUTTON_EVENT } from '../../common/websocket'
+import { key } from '../../common/device'
 
 export const START = 'clicker/questions/START'
 export const NEW_LESSON = 'clicker/questions/NEW_LESSON'

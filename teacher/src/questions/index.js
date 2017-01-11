@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { BUTTON_EVENT } from '../../../common/websocket'
-import list, { getLastQuestion, getNextIdLocal } from './question-list'
+import { BUTTON_EVENT } from '../common/websocket'
+import list, { getLastQuestion } from './question-list'
 import settings from './settings'
 import countdown, { isActive } from './countdown'
 import showdown, { START as START_SHOWDOWN } from './showdown'

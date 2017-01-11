@@ -1,9 +1,9 @@
-import { BUTTON_EVENT } from '../../../common/websocket'
-import { key } from '../util/device'
+import { key } from '../common/device'
+import { PREFIX } from '../common/websocket'
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
-  case BUTTON_EVENT: {
+  case PREFIX + '/press': {
     let data = action.payload
     data.pressed = data.pressed || undefined
     return {

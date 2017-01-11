@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import Button from '../components/Button'
 import { saveAs } from 'file-saver'
 import yaml from 'js-yaml'
-import console from '../util/console'
+import console from '../common/console'
 
 const mapStateToProps = (state) => ({
   onClick: () => {
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => ({
     delete copy.showSettings
     delete copy.devices.showdown
     delete copy.questions.countdown
-    delete copy.updates
+    delete copy.websocket
 
     try {
       let content = yaml.safeDump(copy)

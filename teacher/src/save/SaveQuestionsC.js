@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Button from '../components/Button'
 import { saveAs } from 'file-saver'
-import console from '../util/console'
+import console from '../common/console'
 import { getName } from '../device-name/DeviceNameC'
 import { getState as questionList, getAnsweredCount, getAnswered }
   from '../questions/question-list'

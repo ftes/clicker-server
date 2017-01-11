@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Button from '../components/Button'
 import { overwrite } from '../core/reducers'
-import console from '../util/console'
+import console from '../common/console'
 import yaml from 'js-yaml'
 
 const mapStateToProps = () => ({})

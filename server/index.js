@@ -1,16 +1,23 @@
-let websocket = require('../common/websocket')
-let http = require('http')
-let express = require('express')
-let socketIO = require('socket.io')
-let rxjs = require('rxjs')
-let argv = require('yargs').argv
-let path = require('path')
-let git = require('simple-git')(path.join(__dirname, '..'))
-let shelljs = require('shelljs')
+const http = require('http')
+const express = require('express')
+const socketIO = require('socket.io')
+const rxjs = require('rxjs')
+const argv = require('yargs').argv
+const cors = require('cors')
+const { BATTERY_REQUEST } = require('../common/message-types')
 
 /** expects events of format [type, payload] */
 let outboundMessages = new rxjs.Subject()
 let send = (type, payload) => outboundMessages.next([type, payload])
+
+// compiled web interface
+let app = express()
+app.use(cors())
+let server = http.Server(app)
+app.use(express.static(__dirname + '/public'))
+
+// open websocket and handle events
+let io = socketIO(server)
 
 // device connectors
 let connectors = []
@@ -24,49 +31,16 @@ if (dummy) {
   let Dummy = require('./connectors/dummy')
   connectors.push(new Dummy(send, dummy))
 } 
-let web = argv.web
-if (web) {
-  let Website = require('./connectors/website')
-  connectors.push(new Website(send, parseInt(web, 10)))
-}
 
-// compiled web interface
-let app = express()
-let server = http.Server(app)
-app.use(express.static(__dirname + '/public'))
-
-// open websocket and handle events
-let io = socketIO(server)
 io.on('connection', function (socket) {
   console.log('client connected')
 
   socket.on('disconnect', () => console.log('client disconnected'))
 
   // pass on battery level request to connectors
-  socket.on(websocket.BATTERY_LEVEL_REQUEST, () => {
+  socket.on(BATTERY_REQUEST, () => {
     console.log('request battery level')
     connectors.map(c => c.requestBatteryLevel())
-  })
-
-  // updates
-  socket.on(websocket.GIT_UPDATES_REQUEST, () => {
-    console.log('updates request')
-    git.fetch(() =>
-      git.status((err, result) => {
-        let behindCommits = result.behind
-        socket.emit(websocket.GIT_UPDATES_RESPONSE, { behindCommits })
-      })
-    )
-  })
-
-  socket.on(websocket.GIT_PULL, () => {
-    git.pull((err) => {
-      let success = !err
-      let installReturn = shelljs.exec('npm install').code // synchronous
-      if (installReturn !== 0) success = false
-      shelljs.touch('.reload')
-      socket.emit(websocket.GIT_PULL_RESPONSE, { success })
-    })
   })
 })
 

@@ -1,4 +1,4 @@
-import { BUTTON_EVENT } from '../../../../common/websocket'
+import { BUTTON_EVENT } from '../../common/websocket'
 import questionReducer, { START, NEW_LESSON, create } from '../question'
 import { getState as getParentState } from '../'
 

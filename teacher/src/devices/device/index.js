@@ -1,6 +1,6 @@
-import { key as getKey } from '../../util/device'
+import { key as getKey } from '../../common/device'
 import { BUTTON_EVENT }
-  from '../../../../common/websocket'
+  from '../../common/websocket'
 
 export const ADD_EMPTY = 'clicker-xbee/devices/ADD_EMPTY'
 

@@ -1,2 +1,1 @@
-import messageTypes from './message-types.json'
-export default messageTypes
+module.exports = require('./message-types.json')

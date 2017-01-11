@@ -1,19 +1,6 @@
-import io from 'socket.io-client'
-import { messageTypes } from '../../../common/websocket'
-import console from '../util/console'
+import { bindWebsocket, getUri } from '../common/websocket'
+import { PRESS, BATTERY_RESPONSE } from '../common/message-types'
 
-let serverPort = process.env.REACT_APP_SERVER_PORT
-let uri = serverPort ? `localhost:${serverPort}` : undefined
-const socket = io(uri)
-
-export const init = (store) => {
-  // add listeners to socket messages so we can re-dispatch them as actions
-  messageTypes
-    .forEach(type => socket.on(type,
-      payload => {
-        console.info(`message ${type}`, payload)
-        store.dispatch({ type, payload })
-      }))
+export function connectWebsocket(dispatch) {
+  bindWebsocket(dispatch, getUri(), [PRESS, BATTERY_RESPONSE])
 }
-
-export const emit = (type, payload) => socket.emit(type, payload)

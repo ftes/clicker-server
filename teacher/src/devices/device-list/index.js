@@ -1,5 +1,5 @@
 import { BUTTON_EVENT }
-  from '../../../../common/websocket'
+  from '../../common/websocket'
 import deviceReducer, { ADD_EMPTY } from '../device'
 import { getState as getParentState } from '../'
 

@@ -1,18 +1,17 @@
-import { BATTERY_LEVEL_REQUEST, BATTERY_LEVEL_RESPONSE }
-  from '../../../common/websocket'
-import { convertBatteryLevel } from '../../../common/devices'
-import { emit } from '../util/websocket'
-import { key } from '../util/device'
+import { key } from '../common/device'
+import { PREFIX, publish } from '../common/websocket'
+
+export const REQUEST = 'clicker/battery-level/REQUEST'
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
-  case BATTERY_LEVEL_REQUEST:
+  case REQUEST:
     return {} // remove cached battery levels
-  case BATTERY_LEVEL_RESPONSE: {
+  case PREFIX + 'battery': {
     let data = action.payload
     return {
       ...state,
-      [key(data)]: convertBatteryLevel[data.deviceType](data.raw)
+      [key(data)]: data.batteryLevel
     }
   }
   default: return state
@@ -20,8 +19,7 @@ export default function reducer(state = {}, action) {
 }
 
 export function requestBatteryLevel() {
-  emit(BATTERY_LEVEL_REQUEST)
-  return { type: BATTERY_LEVEL_REQUEST }
+  publish('battery?')
 }
 
 export function getState(state) {

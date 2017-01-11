@@ -1,14 +1,20 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import createLogger from 'redux-logger'
+
+
 import App from './core/AppC'
 import reducer from './core/reducers'
-import { init as websocketInit } from './util/websocket'
+
+const middleware = [
+  createLogger()
+]
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__
-  && window.__REDUX_DEVTOOLS_EXTENSION__())
-websocketInit(store)
+  && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(...middleware))
 
 render(
   <Provider store={store}>
