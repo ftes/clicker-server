@@ -1,3 +1,3 @@
-export function key(deviceType, deviceId) {
+export function key({ deviceType, deviceId }) {
   return `${deviceType}/${deviceId}`
 }

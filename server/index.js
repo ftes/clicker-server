@@ -4,7 +4,8 @@ const socketIO = require('socket.io')
 const rxjs = require('rxjs')
 const argv = require('yargs').argv
 const cors = require('cors')
-const { BATTERY_REQUEST } = require('../common/message-types')
+const { BATTERY_REQUEST, BATTERY_RESPONSE, PRESS } =
+  require('../common/message-types')
 
 /** expects events of format [type, payload] */
 let outboundMessages = new rxjs.Subject()
@@ -42,6 +43,14 @@ io.on('connection', function (socket) {
     console.log('request battery level')
     connectors.map(c => c.requestBatteryLevel())
   })
+
+  const broadcast = type =>
+    socket.on(type, payload => {
+      console.log(`button pressed: ${payload.deviceType}/${payload.deviceId}`)
+      outboundMessages.next([type, payload])
+    })
+  broadcast(PRESS)
+  broadcast(BATTERY_RESPONSE)
 })
 
 // emit outboundMessages

@@ -1,9 +1,10 @@
 import { key } from '../common/device'
 import { PREFIX } from '../common/websocket'
+import { PRESS } from '../common/message-types'
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
-  case PREFIX + '/press': {
+  case PREFIX + PRESS: {
     let data = action.payload
     data.pressed = data.pressed || undefined
     return {

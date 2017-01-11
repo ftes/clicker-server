@@ -18,10 +18,10 @@ export function bindWebsocket(dispatch, uri, types) {
 
   socket = io(uri)
 
-  types.forEach(type => {
-    type = PREFIX + type
-    socket.on(type, (payload) => dispatch({ type, payload }))
-  })
+  types.forEach(type =>
+    socket.on(type, (payload) =>
+      dispatch({ type: PREFIX + type, payload }))
+  )
   socket.on('connect', () => console.log('Websocket connected'))
   socket.on('disconnect', () => console.log('Websocket disconnected'))
 }

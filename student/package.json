@@ -25,14 +25,15 @@
     "socket.io-client": "^1.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run cp-common && react-scripts start",
+    "build": "npm run cp-common && react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "npm run cp-common && react-scripts test --env=jsdom",
+    "cp-common": "shx cp -r ../common src/",
     "start-cordova": "npm run build-cordova-prepare && cordova run",
-    "build": "react-scripts build",
     "build-cordova": "npm run build-cordova-prepare && cordova build",
     "build-cordova-release": "npm run build-cordova-prepare && cordova build --release",
     "build-cordova-prepare": "npm run build && shx rm -rf www/* && shx cp -r build/* www/ && cordova-icon",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
     "postinstall": "cordova platform add android && cordova prepare"
   }
 }

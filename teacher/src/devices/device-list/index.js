@@ -1,5 +1,5 @@
-import { BUTTON_EVENT }
-  from '../../common/websocket'
+import { PRESS } from '../../common/message-types'
+import { PREFIX } from '../../common/websocket'
 import deviceReducer, { ADD_EMPTY } from '../device'
 import { getState as getParentState } from '../'
 
@@ -11,7 +11,7 @@ export default function reducer(state = [], action) {
   case ADD_EMPTY:
     action.deviceId = getNextId(state)
     return addDevice(state, action)
-  case BUTTON_EVENT:
+  case PREFIX + PRESS:
     return addDevice(state, action)
   case DELETE:
     return state.filter(d => d.deviceKey !== action.deviceKey)

@@ -1,4 +1,5 @@
-import { BUTTON_EVENT } from '../../common/websocket'
+import { PRESS } from '../../common/message-types'
+import { PREFIX } from '../../common/websocket'
 import { key } from '../../common/device'
 
 export const START = 'clicker/questions/START'
@@ -12,7 +13,7 @@ function create(id, title, isLesson) {
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
-  case BUTTON_EVENT: {
+  case PREFIX + PRESS: {
     let data = action.payload
     if (! data.pressed) return state
     let deviceKey = key(data)

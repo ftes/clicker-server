@@ -1,4 +1,5 @@
-import { BUTTON_EVENT } from '../../common/websocket'
+import { PRESS } from '../../common/message-types'
+import { PREFIX } from '../../common/websocket'
 import questionReducer, { START, NEW_LESSON, create } from '../question'
 import { getState as getParentState } from '../'
 
@@ -30,7 +31,7 @@ export default function reducer(state = [], action) {
       newQuestion
     ]
   }
-  case BUTTON_EVENT: {
+  case PREFIX + PRESS: {
     let last = getLastQuestion(state)
     if (! last) return state
     let newLast = questionReducer(last, action)

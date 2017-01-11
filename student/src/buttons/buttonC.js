@@ -8,7 +8,9 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  onPress: (number, pressed) => dispatch(press(number, pressed)),
+  onPress: (number, pressed) => {
+    dispatch(press(number, pressed))
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Button)

@@ -3,14 +3,16 @@ import _ from 'lodash'
 
 import settings from '../settings'
 import buttons from '../buttons'
-import websocket from '../websocket'
+import { PRESS as PRESS_INTERNAL } from '../buttons'
+import { publish } from '../common/websocket'
+import { PRESS } from '../common/message-types'
+import { get as getSetting } from '../settings'
 
 export const SET = 'clicker/core/SET'
 
 const reducers = combineReducers({
   settings,
   buttons,
-  websocket,
 })
 
 const overwriteOnLoad = {
@@ -19,12 +21,19 @@ const overwriteOnLoad = {
   }
 }
 
-export function load(state) {
+function load(state) {
   return _.merge({}, state, overwriteOnLoad)
 }
 
 const coreReducer = (state = {}, action) => {
-  if (action.type === SET) state = action.state
+  if (action.type === SET && action.state) state = load(action.state)
+  if (action.type === PRESS_INTERNAL) {
+    const deviceId = getSetting(state.settings, 'deviceId')
+      + '.' + action.number
+    const pressed = action.pressed
+    const deviceType = 'tablet'
+    publish(PRESS, { deviceType, deviceId, pressed })
+  }
   return reducers(state, action)
 }
 

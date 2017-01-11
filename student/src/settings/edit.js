@@ -5,15 +5,17 @@ import { FormGroup, ControlLabel, FormControl,
 import { get } from './'
 
 const FieldGroup = ({ settings, set, itemKey, label, help, type,
-  reconnect }) => (
+  connectWebsocket }) => (
   <FormGroup>
     <ControlLabel>{label || itemKey}</ControlLabel>
     <FormControl
       type={type}
       value={get(settings, itemKey)}
       onChange={(e) => {
-        set(itemKey, e.target.value)
-        if (itemKey === 'server') reconnect()
+        let custom = e.target.value
+        set(itemKey, custom)
+        if (itemKey === 'server')
+          connectWebsocket(custom || settings.default['server'])
       }}
     />
     <HelpBlock>{help}</HelpBlock>
@@ -27,7 +29,7 @@ FieldGroup.propTypes = {
   label: PropTypes.string,
   help: PropTypes.string,
   type: PropTypes.string,
-  reconnect: PropTypes.func.isRequired,
+  connectWebsocket: PropTypes.func.isRequired,
 }
 
 const component = (props) => (
@@ -49,7 +51,7 @@ const component = (props) => (
       <Button
         onClick={() => {
           props.reset()
-          props.reconnect()
+          props.connectWebsocket(props.settings.default.server)
         }}
         className='pull-right'
       >
@@ -60,9 +62,10 @@ const component = (props) => (
 )
 
 component.propTypes = {
+  settings: PropTypes.object.isRequired,
   reset: PropTypes.func.isRequired,
   toggleShow: PropTypes.func.isRequired,
-  reconnect: PropTypes.func.isRequired,
+  connectWebsocket: PropTypes.func.isRequired,
 }
 
 export default component

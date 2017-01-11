@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
-import { BUTTON_EVENT } from '../common/websocket'
+import { PRESS } from '../common/message-types'
+import { PREFIX } from '../common/websocket'
 import list, { getLastQuestion } from './question-list'
 import settings from './settings'
 import countdown, { isActive } from './countdown'
@@ -17,7 +18,7 @@ const combined = combineReducers({
 
 export default function reducer(state = {}, action) {
   // filter out button press if question is not active
-  if (action.type === BUTTON_EVENT && ! isActive(state.countdown)) return state
+  if (action.type === PREFIX + PRESS && ! isActive(state.countdown)) return state
 
   if (action.type === START_SHOWDOWN) {
     let settings = state.settings // for showdown

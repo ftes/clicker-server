@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-import { reconnect } from '../websocket'
+import { connectWebsocket } from '../util/websocket'
 
 export const RESET = 'clicker/core/RESET'
 export const SET = 'clicker/settings/SET'
@@ -106,15 +106,15 @@ function receiveDefaultSettings(settings) {
   return { type: RECEIVE_DEFAULT_SETTINGS, settings }
 }
 
-export function fetchDefaultSettings() {
+export function fetchDefaultSettings(state) {
   return dispatch => {
     dispatch(requestDefaultSettings())
     //eslint-disable-next-line no-undef
-    return fetch(process.env.REACT_APP_DEFAULT_SETTINGS_URL, { mode: 'cors' })
+    return fetch(process.env.REACT_APP_SETTINGS, { mode: 'cors' })
       .then(response => response.json())
       .then(json => {
         dispatch(receiveDefaultSettings(json))
-        dispatch(reconnect())
+        connectWebsocket(dispatch, getState(state).custom.server || json.server)
       })
   }
 }
