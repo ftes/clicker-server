@@ -7,7 +7,7 @@ import { PRESS as PRESS_INTERNAL } from '../buttons'
 import { publish } from '../websocket'
 import { PRESS } from '../common/message-types'
 import batteryLevel from '../battery-level'
-import { OVERWRITE } from '../save'
+import { OVERWRITE } from '../common/save'
 
 const reducers = combineReducers({
   settings,
