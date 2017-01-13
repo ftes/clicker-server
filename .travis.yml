@@ -7,4 +7,3 @@ env:
     - TEST_DIR=server
 before_script:
     - cd $TEST_DIR && npm install
-script: cd $TEST_DIR && npm test
