@@ -12,9 +12,12 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "cordova-icon": "^0.9.1",
+    "enzyme": "^2.7.0",
+    "eslint-plugin-jasmine": "^2.2.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.1",

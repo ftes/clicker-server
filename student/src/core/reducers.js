@@ -7,12 +7,13 @@ import { PRESS as PRESS_INTERNAL } from '../buttons'
 import { publish } from '../common/websocket'
 import { PRESS } from '../common/message-types'
 import { get as getSetting } from '../settings'
-
-export const SET = 'clicker/core/SET'
+import batteryLevel from '../battery-level'
+import { OVERWRITE } from '../save'
 
 const reducers = combineReducers({
   settings,
   buttons,
+  batteryLevel,
 })
 
 const overwriteOnLoad = {
@@ -26,7 +27,7 @@ function load(state) {
 }
 
 const coreReducer = (state = {}, action) => {
-  if (action.type === SET && action.state) state = load(action.state)
+  if (action.type === OVERWRITE && action.state) state = load(action.state)
   if (action.type === PRESS_INTERNAL) {
     const deviceId = getSetting(state.settings, 'deviceId')
       + '.' + action.number
@@ -38,7 +39,3 @@ const coreReducer = (state = {}, action) => {
 }
 
 export default coreReducer
-
-export function setState(state) {
-  return { type: SET, state }
-}

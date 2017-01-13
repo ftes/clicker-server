@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-import { connectWebsocket } from '../util/websocket'
+import { bind as bindWebsocket } from '../websocket'
 
 export const RESET = 'clicker/core/RESET'
 export const SET = 'clicker/settings/SET'
@@ -14,7 +14,7 @@ export const RECEIVE_DEFAULT_SETTINGS =
 export const initialState = {
   default: {
     pin: '0000',
-    server: 'http://localhost:4001',
+    server: 'http://localhost:4000',
     deviceId: 'random' + Math.floor(Math.random() * 100),
     nButtons: 4,
   },
@@ -98,23 +98,23 @@ export function unlock(pin) {
   return { type: UNLOCK, pin }
 }
 
-function requestDefaultSettings() {
+function requestDefault() {
   return { type: REQUEST_DEFAULT_SETTINGS }
 }
 
-function receiveDefaultSettings(settings) {
+function receiveDefault(settings) {
   return { type: RECEIVE_DEFAULT_SETTINGS, settings }
 }
 
-export function fetchDefaultSettings(state) {
+export function fetchDefault(customServer) {
   return dispatch => {
-    dispatch(requestDefaultSettings())
+    dispatch(requestDefault())
     //eslint-disable-next-line no-undef
     return fetch(process.env.REACT_APP_SETTINGS, { mode: 'cors' })
       .then(response => response.json())
       .then(json => {
-        dispatch(receiveDefaultSettings(json))
-        connectWebsocket(dispatch, getState(state).custom.server || json.server)
+        dispatch(receiveDefault(json))
+        bindWebsocket(dispatch, customServer || json.server)
       })
   }
 }
