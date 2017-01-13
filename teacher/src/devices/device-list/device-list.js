@@ -14,7 +14,6 @@ import { getState as settings } from '../settings'
 import { hasAnswered } from '../../questions/question'
 import { getLastQuestion, getState as questionList }
   from '../../questions/question-list'
-import { edit, editKey } from '../../edit-text'
 
 import './device-list.css'
 
@@ -86,13 +85,11 @@ export class DeviceList extends React.Component {
                   overflow: 'hidden',
                   padding: '0px',
                 }}
-                onFocus={() => edit(device.deviceKey)}
               >
                 <DraggableDeviceItem
                   device={device}
                   tabIndex={tabIndex}
                 />
-                <div>hello</div>
               </td>
             )}
             </tr>
@@ -112,7 +109,6 @@ DeviceList.propTypes = {
   showdown: PropTypes.array.isRequired,
   settings: PropTypes.object.isRequired,
   question: PropTypes.object,
-  edit: PropTypes.func.isRequired,
 }
 
 export const DeviceListDragDrop = DragDropContext(Html5Backend)(DeviceList)
@@ -126,8 +122,6 @@ const mapStateToProps = (state) => ({
   question: getLastQuestion(questionList(state)),
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  edit: (key) => dispatch(edit(editKey(key))),
-})
+const mapDispatchToProps = () => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeviceListDragDrop)
