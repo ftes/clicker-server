@@ -22,3 +22,7 @@ export default function reducer(state = {}, action) {
 export function getState(state) {
   return state.deviceNames
 }
+
+export function editKey(deviceKey) {
+  return keyPrefix + deviceKey
+}

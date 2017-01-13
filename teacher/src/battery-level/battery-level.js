@@ -18,23 +18,27 @@ let style = {
   fontSize: '0.8em'
 }
 
-export const BatteryLevel = ({ batteryLevel }) => (
+export const BatteryLevel = ({ batteryLevel, showPercent }) => (
   <span
     style={{
       ...style,
       color: batteryLevel < 0.125 || batteryLevel === undefined ?
         'red' : 'black',
+      textAlign: 'center',
     }}>
     <FontAwesome
       name={convertToText(batteryLevel)}
     />
     &nbsp;
-    {batteryLevel !== undefined ? (batteryLevel * 100).toFixed(0) : '?'}%
+    {showPercent &&
+      (batteryLevel !== undefined ? (batteryLevel * 100).toFixed(0) : '?') + '%'
+    }
   </span>
 )
 
 BatteryLevel.propTypes = {
   batteryLevel: PropTypes.number,
+  showPercent: PropTypes.bool,
 }
 
 // CONTAINER
@@ -46,6 +50,6 @@ const mapDispatchToProps = () => ({})
 
 const BatteryLevelC = connect(mapStateToProps, mapDispatchToProps)(BatteryLevel)
 BatteryLevelC.propTypes = {
-  deviceKey: PropTypes.string.isRequired
+  deviceKey: PropTypes.string.isRequired,
 }
 export default BatteryLevelC

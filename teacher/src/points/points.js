@@ -4,13 +4,14 @@ import { connect } from 'react-redux'
 import { getPoints } from './'
 
 // Component
-export const Points = ({ points }) => (
-  <span>{points}</span>
+export const Points = ({ points, style }) => (
+  <span style={style}>{points}</span>
 )
 
 Points.propTypes = {
   points: PropTypes.number.isRequired, // provided by container
   deviceKey: PropTypes.string.isRequired,
+  style: PropTypes.object,
 }
 
 // Container

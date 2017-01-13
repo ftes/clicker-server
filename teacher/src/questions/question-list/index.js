@@ -1,6 +1,6 @@
 import { PRESS } from '../../common/message-types'
 import { PREFIX } from '../../common/websocket'
-import questionReducer, { START, NEW_LESSON, create, hasAnswered }
+import questionReducer, { START, NEW_LESSON, hasAnswered }
   from '../question'
 import { getState as getParentState } from '../'
 
@@ -14,11 +14,11 @@ export default function reducer(state = [], action) {
       questionReducer(undefined, action)
     ]
   case START: {
+    action.id = getNextIdLocal(state)
     let newQuestion = questionReducer(undefined, action)
     // compare dateStrings (omits hours, minutes, seconds)
     // let dateOfLastLesson = getDateOfLast(state, true).toDateString()
     // let dateOfNewQuestion = newQuestion.date.toDateString()
-    action.id = getNextIdLocal(state)
 
     // add new lesson automatically if date has changed
     // if (dateOfLastLesson !== dateOfNewQuestion) {
@@ -91,8 +91,8 @@ export function getAnsweredCount(state, deviceKey) {
   return getAnswered(state, deviceKey).length
 }
 
-function getDateOfLast(state, lesson=false) {
-  let list = state.filter(q => q.isLesson === lesson)
-  if (list.length === 0) return null
-  return list.slice(-1)[0]
-}
+// function getDateOfLast(state, lesson=false) {
+//   let list = state.filter(q => q.isLesson === lesson)
+//   if (list.length === 0) return null
+//   return list.slice(-1)[0]
+// }

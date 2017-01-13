@@ -1,29 +1,18 @@
 import React, { PropTypes } from 'react'
-import { Button } from 'react-bootstrap'
-import { connect } from 'react-redux'
 
-import { increase } from './'
+import OffsetButton from './offset-button'
 
-// Component
-export const Offset = ({ increase, deviceKey, ...props }) => (
-  <span>
-      <Button onClick={() => increase(deviceKey, 1)} {...props}>+</Button>
-      {' '}
-      <Button onClick={() => increase(deviceKey, -1)} {...props}>-</Button>
-  </span>
+export const component = ({ children, deviceKey, ...props }) => (
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <OffsetButton label='-' deviceKey={deviceKey}  by={-1} {...props}/>
+    {children}
+    <OffsetButton label='+' deviceKey={deviceKey}  by={1} {...props}/>
+  </div>
 )
 
-Offset.propTypes = {
-  increase: PropTypes.func.isRequired,
+component.propTypes = {
+  children: PropTypes.any,
   deviceKey: PropTypes.string.isRequired,
 }
 
-// Container
-const mapStateToProps = () => ({
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  increase: (deviceKey, value) => dispatch(increase(deviceKey, value))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Offset)
+export default component

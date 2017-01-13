@@ -7,10 +7,11 @@ import { getState as deviceList } from '../../devices/device-list'
 import { getState as devicesSettings } from '../../devices/settings'
 
 // Component
-export const Showdown = (props) => (
+export const Showdown = ({ startCallback, devices,
+  devicesSettings, ...props }) => (
   <Button
     {...props}
-    onClick={() => props.startCallback(props.devices, props.devicesSettings)}
+    onClick={() => startCallback(devices, devicesSettings)}
     title='Randomly choose a person who knows the answer.'
   />
 )

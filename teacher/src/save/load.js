@@ -8,9 +8,9 @@ const mapStateToProps = () => ({})
 
 let added = false
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch, { getInput }) => ({
   onClick: () => {
-    let input = ownProps.getInput()
+    let input = getInput()
     if (!added) {
       added = true
       input.addEventListener('change', e => {

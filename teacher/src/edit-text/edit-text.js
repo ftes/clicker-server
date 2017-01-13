@@ -7,12 +7,13 @@ import { edit, save, getState as local } from './'
 
 // Component
 export const EditText = ({ editKey, text, edit, onEdit, onSave, tabIndex, icon,
-  type }) => {
+  type, style }) => {
   if (!edit) return (
     <div
       tabIndex={tabIndex || -1}
       onFocus={() => onEdit(editKey)}
       style={{
+        ...style,
         cursor: 'text',
       }}
     >
@@ -49,6 +50,7 @@ EditText.propTypes = {
   tabIndex: PropTypes.number,
   icon: PropTypes.string,
   type: PropTypes.string,
+  style: PropTypes.object,
 }
 
 // Container

@@ -1,20 +1,17 @@
 import { connect } from 'react-redux'
 import EditText from '../edit-text/edit-text'
-import { keyPrefix } from './'
+import { editKey } from './'
 import { getDevice } from '../devices/device-list'
 import { getState as local } from './'
 
-function getCustomized(state, ownProps, icon=false) {
-  if (icon && ! state.showSettings) return null
-  
-  // return most customized value, in descending order
-  let customName = local(state)[ownProps.deviceKey]
-  let mappedId = state.idMappings[ownProps.deviceKey]
-  let deviceId = ownProps.deviceId
+function getCustomized(state, ownProps) {  
+  const customized = [
+    local(state)[ownProps.deviceKey],
+    state.idMappings[ownProps.deviceKey],
+    ownProps.deviceId
+  ]
 
-  if (customName) return icon ? 'user-o' : customName
-  if (mappedId) return icon ? 'edit' : mappedId
-  return icon ? 'gear' : deviceId
+  return customized.find(c => c !== undefined)
 }
 
 export function getName(state, deviceKey) {
@@ -23,7 +20,7 @@ export function getName(state, deviceKey) {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  editKey: keyPrefix + ownProps.deviceKey,
+  editKey: editKey(ownProps.deviceKey),
   defaultText: getCustomized(state, ownProps),
   icon: getCustomized(state, ownProps, true),
 })
