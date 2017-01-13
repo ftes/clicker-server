@@ -4,56 +4,63 @@ const socketIO = require('socket.io')
 const rxjs = require('rxjs')
 const argv = require('yargs').argv
 const cors = require('cors')
-const { BATTERY_REQUEST, BATTERY_RESPONSE, PRESS } =
+const Dummy = require('./connectors/dummy')
+const Websocket = require('./connectors/websocket')
+const { BATTERY_REQUEST, TEACHER } =
   require('../common/message-types')
 
-/** expects events of format [type, payload] */
-let outboundMessages = new rxjs.Subject()
-let send = (type, payload) => outboundMessages.next([type, payload])
+class Server {
+  constructor() {
+    // expects events of format [type, payload]
+    this.teacherDevices = new rxjs.Subject()
+    const server = this.setupServer()
+    const io = this.setupWebsocket(server)
+    this.setupConnectors(io)
+    server.listen(process.env.PORT || 4000)
+  }
 
-// compiled web interface
-let app = express()
-app.use(cors())
-let server = http.Server(app)
-app.use(express.static(__dirname + '/public'))
+  setupServer() {
+    const app = express()
+    app.use(cors())
+    const server = http.Server(app)
+    // compiled web interfaces
+    app.use(express.static(__dirname + '/public'))
+    return server
+  }
 
-// open websocket and handle events
-let io = socketIO(server)
+  setupWebsocket(server) {
+    const io = socketIO(server)
 
-// device connectors
-let connectors = []
-// let tty = argv.tty
-// if (tty){
-//   let Xbee = require('./connectors/xbee')
-//   connectors.push(new Xbee(send, tty))
-// }
-let dummy = argv.dummy
-if (dummy) {
-  let Dummy = require('./connectors/dummy')
-  connectors.push(new Dummy(send, dummy))
-} 
+    io.on('connection', (socket) => {
+      // pass on battery level request to connectors
+      socket.on(BATTERY_REQUEST, () => {
+        console.log('request battery level')
+        this.connectors.map(c => c.requestBatteryLevel())
+      })
 
-io.on('connection', function (socket) {
-  console.log('client connected')
-
-  socket.on('disconnect', () => console.log('client disconnected'))
-
-  // pass on battery level request to connectors
-  socket.on(BATTERY_REQUEST, () => {
-    console.log('request battery level')
-    connectors.map(c => c.requestBatteryLevel())
-  })
-
-  const broadcast = type =>
-    socket.on(type, payload => {
-      console.log(`button pressed: ${payload.deviceType}/${payload.deviceId}`)
-      outboundMessages.next([type, payload])
+      // subscribe teacher devices to teacher message queue
+      socket.on(TEACHER, () => {
+        console.log('teacher connected')
+        this.teacherDevices.subscribe(([type, payload]) =>
+          socket.emit(type, payload))
+      })
     })
-  broadcast(PRESS)
-  broadcast(BATTERY_RESPONSE)
-})
+    return io
+  }
 
-// emit outboundMessages
-outboundMessages.subscribe(([type, payload]) => io.sockets.emit(type, payload))
+  setupConnectors(io) {
+    const connectors = []
+    //skip xbee connector
+    const sendToTeacher = (...args) => this.sendToTeacher(...args)
+    connectors.push(new Dummy(sendToTeacher, argv.dummy || '/tmp/dummy'))
+    connectors.push(new Websocket(sendToTeacher, io))
+    this.connectors = connectors
+  }
 
-server.listen(argv.p || 4000)
+  sendToTeacher(type, payload) {
+    this.teacherDevices.next([type, payload])
+  }
+}
+
+// run
+new Server()

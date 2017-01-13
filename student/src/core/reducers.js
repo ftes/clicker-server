@@ -4,9 +4,8 @@ import _ from 'lodash'
 import settings from '../settings'
 import buttons from '../buttons'
 import { PRESS as PRESS_INTERNAL } from '../buttons'
-import { publish } from '../common/websocket'
+import { publish } from '../websocket'
 import { PRESS } from '../common/message-types'
-import { get as getSetting } from '../settings'
 import batteryLevel from '../battery-level'
 import { OVERWRITE } from '../save'
 
@@ -29,11 +28,8 @@ function load(state) {
 const coreReducer = (state = {}, action) => {
   if (action.type === OVERWRITE && action.state) state = load(action.state)
   if (action.type === PRESS_INTERNAL) {
-    const deviceId = getSetting(state.settings, 'deviceId')
-      + '.' + action.number
     const pressed = action.pressed
-    const deviceType = 'tablet'
-    publish(PRESS, { deviceType, deviceId, pressed })
+    publish(PRESS, { pressed }, state, action.number)
   }
   return reducers(state, action)
 }

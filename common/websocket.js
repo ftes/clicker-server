@@ -12,7 +12,7 @@ export function getUri() {
 
 let socket
 
-export function bindWebsocket(dispatch, uri, types) {
+export function bindWebsocket(dispatch, uri, types, clientType) {
   // close old connection
   if (socket) socket.close()
 
@@ -22,7 +22,10 @@ export function bindWebsocket(dispatch, uri, types) {
     socket.on(type, (payload) =>
       dispatch({ type: PREFIX + type, payload }))
   )
-  socket.on('connect', () => console.log('Websocket connected'))
+  socket.on('connect', () => {
+    console.log('Websocket connected')
+    socket.emit(clientType)
+  })
   socket.on('disconnect', () => console.log('Websocket disconnected'))
 }
 

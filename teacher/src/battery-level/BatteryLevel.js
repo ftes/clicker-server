@@ -1,6 +1,10 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 import FontAwesome from 'react-fontawesome'
 
+import { getState as local } from './'
+
+// COMPONENT
 function convertToText(level) {
   if (level === undefined) return 'question'
   if (level < 0.125) return 'battery-empty'
@@ -14,11 +18,12 @@ let style = {
   fontSize: '0.8em'
 }
 
-const BatteryLevel = ({ batteryLevel }) => (
+export const BatteryLevel = ({ batteryLevel }) => (
   <span
     style={{
       ...style,
-      color: batteryLevel < 0.125 || batteryLevel === undefined ? 'red' : 'black',
+      color: batteryLevel < 0.125 || batteryLevel === undefined ?
+        'red' : 'black',
     }}>
     <FontAwesome
       name={convertToText(batteryLevel)}
@@ -32,4 +37,15 @@ BatteryLevel.propTypes = {
   batteryLevel: PropTypes.number,
 }
 
-export default BatteryLevel
+// CONTAINER
+const mapStateToProps = (state, ownProps) => ({
+  batteryLevel: local(state)[ownProps.deviceKey]
+})
+
+const mapDispatchToProps = () => ({})
+
+const BatteryLevelC = connect(mapStateToProps, mapDispatchToProps)(BatteryLevel)
+BatteryLevelC.propTypes = {
+  deviceKey: PropTypes.string.isRequired
+}
+export default BatteryLevelC

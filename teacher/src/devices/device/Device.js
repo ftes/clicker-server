@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import DeviceTypeIcon from './DeviceTypeIcon'
 import DeviceName from '../../device-name/DeviceNameC'
 import { isIgnored } from '../device-list'
+import BatteryLevel from '../../battery-level/BatteryLevel'
 
 const Device = ({ deviceKey, deviceType, deviceId,
   tabIndex, showSettings }) => {
@@ -26,6 +27,9 @@ const Device = ({ deviceKey, deviceType, deviceId,
             tabIndex={tabIndex}
           />
         </span>
+      {showSettings &&
+        <BatteryLevel deviceKey={deviceKey}/>  
+      }
       </div>
     </div>
   )

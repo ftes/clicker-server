@@ -1,5 +1,9 @@
+import _ from 'lodash'
+
 import { BATTERY_REQUEST, BATTERY_RESPONSE } from '../common/message-types'
-import { PREFIX, publish } from '../common/websocket'
+import { PREFIX } from '../common/websocket'
+import { publish } from '../websocket'
+import { get as getSetting, getState as settings } from '../settings'
 
 export const SET = 'clicker/battery-level/SET'
 
@@ -8,9 +12,12 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
   case SET:
     return action.level
-  case PREFIX + BATTERY_REQUEST:
-    publish(BATTERY_RESPONSE, { level: state })
+  case PREFIX + BATTERY_REQUEST: {
+    _.range(0, getSetting(settings(action.getState()), 'nButtons')).forEach(i =>
+      publish(BATTERY_RESPONSE, { level: state }, action.getState(), i+1)
+    )
     return state
+  }
   default: return state
   }
 }

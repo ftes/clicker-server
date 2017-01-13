@@ -4,6 +4,11 @@ import { set } from './'
 
 // COMPONENT
 export class BatteryLevel extends Component {
+  constructor(props) {
+    super(props)
+    this.onBatteryStatus = this.onBatteryStatus.bind(this)
+  }
+
   componentWillMount() {
     window.addEventListener('batterystatus', this.onBatteryStatus)
   }
