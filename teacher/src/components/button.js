@@ -2,10 +2,13 @@ import React, { PropTypes } from 'react'
 import { Button as BsButton, Glyphicon } from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 
-const Button = ({ label, glyph, faIcon, Wrapper, style, onClick, bsSize }) => {
+// fix react warning about unsed var
+// don't know how to delete prop in connect()
+//eslint-disable-next-line no-unused-vars, react/prop-types
+const Button = ({ label, glyph, faIcon, Wrapper, deviceKey, ...props }) => {
   Wrapper = Wrapper || BsButton
   return (
-    <Wrapper style={style} onClick={onClick} bsSize={bsSize}>
+    <Wrapper {...props}>
       {glyph && <Glyphicon glyph={glyph}/>}
       {faIcon && <FontAwesome name={faIcon}/>}
       {(glyph || faIcon) && <span>&nbsp;</span>}

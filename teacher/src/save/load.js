@@ -1,8 +1,19 @@
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Button from '../components/button'
 import { overwrite } from '../core/reducers'
 import console from '../common/console'
 import yaml from 'js-yaml'
+
+// getInput must not be passed to Button 
+//eslint-disable-next-line no-unused-vars
+export const Load = ({ getInput, ...props }) => (
+  <Button {...props}/>
+)
+
+Load.propTypes = {
+  getInput: PropTypes.func.isRequired,
+}
 
 const mapStateToProps = () => ({})
 
@@ -38,4 +49,4 @@ const mapDispatchToProps = (dispatch, { getInput }) => ({
   glyph: 'open',
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Button)
+export default connect(mapStateToProps, mapDispatchToProps)(Load)
