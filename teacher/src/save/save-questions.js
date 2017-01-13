@@ -4,7 +4,7 @@ import Button from '../components/button'
 import { saveAs } from 'file-saver'
 import console from '../common/console'
 import { getName } from '../device-name/device-name'
-import { getState as questionList, getAnsweredCount, getAnswered }
+import { getState as questionList, getAnsweredCount, getAnsweredVector }
   from '../questions/question-list'
 import { getDevices } from '../devices/device-list'
 import { getOffset } from '../offset'
@@ -18,7 +18,7 @@ const mapStateToProps = (state) => ({
     for (let deviceKey of deviceKeys) {
       let name = getName(state, deviceKey)
       let offset = getOffset(state, deviceKey)
-      let answered = getAnswered(state, deviceKey)
+      let answered = getAnsweredVector(state, deviceKey)
       let answeredC = getAnsweredCount(state, deviceKey)
       let points = answeredC + offset
       rows.push(`${name},${points},${answeredC},${offset},${answered.join(',')}`)

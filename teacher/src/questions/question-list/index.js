@@ -1,6 +1,7 @@
 import { PRESS } from '../../common/message-types'
 import { PREFIX } from '../../common/websocket'
-import questionReducer, { START, NEW_LESSON, create } from '../question'
+import questionReducer, { START, NEW_LESSON, create, hasAnswered }
+  from '../question'
 import { getState as getParentState } from '../'
 
 export const DELETE = 'clicker/questions/DELETE'
@@ -15,17 +16,17 @@ export default function reducer(state = [], action) {
   case START: {
     let newQuestion = questionReducer(undefined, action)
     // compare dateStrings (omits hours, minutes, seconds)
-    let dateOfLastLesson = getDateOfLast(state, true).toDateString()
-    let dateOfNewQuestion = newQuestion.date.toDateString()
+    // let dateOfLastLesson = getDateOfLast(state, true).toDateString()
+    // let dateOfNewQuestion = newQuestion.date.toDateString()
     action.id = getNextIdLocal(state)
 
     // add new lesson automatically if date has changed
-    if (dateOfLastLesson !== dateOfNewQuestion) {
-      state = [
-        ...state,
-        create(action.id++, dateOfNewQuestion, /*isLesson*/ true)
-      ]
-    }
+    // if (dateOfLastLesson !== dateOfNewQuestion) {
+    //   state = [
+    //     ...state,
+    //     create(action.id++, dateOfNewQuestion, /*isLesson*/ true)
+    //   ]
+    // }
     return [
       ...state,
       newQuestion
@@ -74,14 +75,20 @@ export function getState(state) {
   return getParentState(state).list
 }
 
+/**
+ * Returns an array, one element per question.
+ * 0 for non-answered, 1 for answered questions.
+ */
+export function getAnsweredVector(state, deviceKey) {
+  return getState(state).map(q => hasAnswered(q, deviceKey) ? 1 : 0)
+}
+
 export function getAnswered(state, deviceKey) {
-  return getState(state).map(q =>
-    q.answeredBy.indexOf(deviceKey) !== -1 ? 1 : 0)
+  return getState(state).filter(q => hasAnswered(q, deviceKey))
 }
 
 export function getAnsweredCount(state, deviceKey) {
-  let answered = getAnswered(state, deviceKey)
-  return answered.reduce((sum, cur) => sum + cur, 0)
+  return getAnswered(state, deviceKey).length
 }
 
 function getDateOfLast(state, lesson=false) {

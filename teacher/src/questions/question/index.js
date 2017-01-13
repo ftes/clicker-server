@@ -43,3 +43,7 @@ export function start() {
 export function newLesson(title) {
   return { type: NEW_LESSON, title }
 }
+
+export function hasAnswered(question, deviceKey) {
+  return question.answeredBy.indexOf(deviceKey) !== -1
+}

@@ -11,6 +11,9 @@ import { getState as local } from './'
 import { getState as buttonPress } from '../../button-press'
 import { getState as showdown } from '../../questions/showdown'
 import { getState as settings } from '../settings'
+import { hasAnswered } from '../../questions/question'
+import { getLastQuestion, getState as questionList }
+  from '../../questions/question-list'
 
 import './device-list.css'
 
@@ -21,10 +24,11 @@ export function buildRows(devices, rowWidth) {
   return _.chunk(devices, rowWidth)
 }
 
-function getBgColor(state, pressed, device) {
-  if (state.highlight && state.highlight.indexOf(device.deviceKey) !== -1)
+function getBgColor(state, pressed, deviceKey, question) {
+  if (state.highlight && state.highlight.indexOf(deviceKey) !== -1)
     return state.isLastStep ? 'orange' : 'yellow'
-  if (pressed[device.deviceKey]) return 'lightgrey'
+  if (pressed[deviceKey]) return 'lightgrey'
+  if (question && hasAnswered(question, deviceKey)) return 'lightgreen'
   return 'white'
 }
 
@@ -61,7 +65,7 @@ export class DeviceList extends React.Component {
   }
   
   render() {
-    let { devices, pressed } = this.props
+    let { devices, pressed, question } = this.props
 
     let rows = buildRows(devices, this.props.settings.rowWidth)
     let rowIndex = 0
@@ -76,7 +80,8 @@ export class DeviceList extends React.Component {
               <td
                 key={device.deviceKey}
                 style={{
-                  backgroundColor: getBgColor(this.state, pressed, device),
+                  backgroundColor:
+                    getBgColor(this.state, pressed, device.deviceKey, question),
                   overflow: 'hidden',
                   padding: '0px',
                 }}
@@ -103,6 +108,7 @@ DeviceList.propTypes = {
   pressed: PropTypes.objectOf(PropTypes.bool).isRequired,
   showdown: PropTypes.array.isRequired,
   settings: PropTypes.object.isRequired,
+  question: PropTypes.object,
 }
 
 export const DeviceListDragDrop = DragDropContext(Html5Backend)(DeviceList)
@@ -113,6 +119,7 @@ const mapStateToProps = (state) => ({
   pressed: buttonPress(state),
   showdown: showdown(state),
   settings: settings(state),
+  question: getLastQuestion(questionList(state)),
 })
 
 const mapDispatchToProps = () => ({})

@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
-import AnsweredIndicator from '../../questions/answered-indicator'
 import Points from '../../points/points'
 import { isIgnored, deleteDevice } from './'
 import Device from '../device/device'
@@ -33,9 +32,6 @@ export const DeviceItem = ({ device, tabIndex, showSettings,
     </span>
     {!isIgnored(device.deviceType) &&
       <span>
-        <span className='deviceInfo'>
-          <AnsweredIndicator deviceKey={device.deviceKey}/>
-        </span>
         <span className='deviceInfo'>
           <Offset deviceKey={device.deviceKey} bsSize='xsmall'/>
         </span>
