@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "homepage": "/teacher",
+  "license": "MIT",
   "devDependencies": {
     "enzyme": "^2.4.1",
     "eslint": "^3.12.2",

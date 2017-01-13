@@ -8,7 +8,7 @@
     "start": "nodemon index.js"
   },
   "author": "Fredrik Teschke <f@ftes.de>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "chokidar": "^1.6.1",
     "cors": "^2.8.1",
