@@ -1,5 +1,5 @@
 import { SAVE, isForMe } from '../edit-text'
-import { keyPrefix } from './EditMappingC'
+import { keyPrefix } from './edit-mapping'
 
 export default function(state = {}, action) {
   switch (action.type) {

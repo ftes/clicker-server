@@ -1,8 +1,8 @@
 import { isForMe, SAVE } from '../edit-text'
 
-export { default as Dropdown } from './DropdownC'
-export { default as Text } from './Text'
-export { default as SettingsItem } from './SettingsItem'
+export { default as Dropdown } from './dropdown'
+export { default as Text } from './text'
+export { default as SettingsItem } from './settings-item'
 
 export const int = (val) => parseInt(val, 10)
 

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import createLogger from 'redux-logger'
 
 
-import App from './core/AppC'
+import App from './components/app'
 import reducer from './core/reducers'
 
 const middleware = [

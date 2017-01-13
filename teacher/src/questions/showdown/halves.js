@@ -1,4 +1,4 @@
-import { buildRows } from '../../devices/device-list/DeviceList'
+import { buildRows } from '../../devices/device-list/device-list'
 
 function getWidth(rows) {
   return rows[0].length
