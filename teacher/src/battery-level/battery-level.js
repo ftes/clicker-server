@@ -18,23 +18,28 @@ let style = {
   fontSize: '0.8em'
 }
 
-export const BatteryLevel = ({ batteryLevel, showPercent }) => (
-  <span
-    style={{
-      ...style,
-      color: batteryLevel < 0.125 || batteryLevel === undefined ?
-        'red' : 'black',
-      textAlign: 'center',
-    }}>
-    <FontAwesome
-      name={convertToText(batteryLevel)}
-    />
-    &nbsp;
-    {showPercent &&
-      (batteryLevel !== undefined ? (batteryLevel * 100).toFixed(0) : '?') + '%'
-    }
-  </span>
-)
+export const BatteryLevel = ({ batteryLevel, showPercent }) => {
+  let percent = '?'
+  if (batteryLevel !== undefined) percent = (batteryLevel * 100).toFixed(0) + '%'
+  return (
+    <span
+      style={{
+        ...style,
+        color: batteryLevel < 0.125 || batteryLevel === undefined ?
+          'red' : 'black',
+        textAlign: 'center',
+
+      }}
+      title={percent}
+    >
+      <FontAwesome
+        name={convertToText(batteryLevel)}
+      />
+      &nbsp;
+      {showPercent && percent}
+    </span>
+  )
+}
 
 BatteryLevel.propTypes = {
   batteryLevel: PropTypes.number,
