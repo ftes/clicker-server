@@ -15,6 +15,7 @@ const defaultState = {
   showdown: 'halves',
   showdownDurationMs: 5000,
   randomN: 5,
+  showWhoAnswered: false,
 }
 
 export default function reducer(state = defaultState, action) {

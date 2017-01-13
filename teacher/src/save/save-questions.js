@@ -12,7 +12,7 @@ import { getOffset } from '../offset'
 const mapStateToProps = (state) => ({
   onClick: () => {
     let questions = questionList(state)
-    let deviceKeys = getDevices(state).map(d => d.deviceKey)
+    let deviceKeys = getDevices(state, /*onlyShown*/ true).map(d => d.deviceKey)
     let rows = ['Name,Points (total + offset),Total Answered,Offset,'
       + questions.map(q => q.title).join(',')]
     for (let deviceKey of deviceKeys) {

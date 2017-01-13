@@ -1583,13 +1583,13 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@2.2.0, debug@^2.1.0, debug@^2.1.1, debug@^2.2.0, debug@~2.2.0:
+debug@2.2.0, debug@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
     ms "0.7.1"
 
-debug@2.3.3:
+debug@2.3.3, debug@^2.1.0, debug@^2.1.1, debug@^2.2.0:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.3.3.tgz#40c453e67e6e13c901ddec317af8986cda9eff8c"
   dependencies:
@@ -4626,6 +4626,10 @@ react-addons-test-utils@^15.3.0:
   dependencies:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
+
+react-bootstrap-toggle@^1.2.19:
+  version "1.2.19"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-toggle/-/react-bootstrap-toggle-1.2.19.tgz#babfc4df819088274feaa3ea1b5d6b3c4ed79b28"
 
 react-bootstrap@^0.30.7:
   version "0.30.7"

@@ -14,6 +14,7 @@ import { getState as settings } from '../settings'
 import { hasAnswered } from '../../questions/question'
 import { getLastQuestion, getState as questionList }
   from '../../questions/question-list'
+import { isShown } from './'
 
 import './device-list.css'
 
@@ -24,10 +25,12 @@ export function buildRows(devices, rowWidth) {
   return _.chunk(devices, rowWidth)
 }
 
-function getBgColor(state, pressed, deviceKey, question) {
-  if (state.highlight && state.highlight.indexOf(deviceKey) !== -1)
-    return state.isLastStep ? 'orange' : 'yellow'
-  if (pressed[deviceKey]) return 'lightgrey'
+function getBgColor(componentState, pressed, device, question, settings, state) {
+  const deviceKey = device.deviceKey
+  if (!isShown(device, state)) return 'white'
+  if (componentState.highlight && componentState.highlight.indexOf(deviceKey) !== -1)
+    return componentState.isLastStep ? 'orange' : 'yellow'
+  if (settings.showButtonPress && pressed[deviceKey]) return 'lightgrey'
   if (question && hasAnswered(question, deviceKey)) return 'lightgreen'
   return 'white'
 }
@@ -65,7 +68,7 @@ export class DeviceList extends React.Component {
   }
   
   render() {
-    let { devices, pressed, question } = this.props
+    let { devices, pressed, question, settings, state } = this.props
 
     let rows = buildRows(devices, this.props.settings.rowWidth)
     let rowIndex = 0
@@ -81,7 +84,8 @@ export class DeviceList extends React.Component {
                 key={device.deviceKey}
                 style={{
                   backgroundColor:
-                    getBgColor(this.state, pressed, device.deviceKey, question),
+                    getBgColor(this.state, pressed, device,
+                      question, settings, state),
                   overflow: 'hidden',
                   padding: '0px',
                 }}
@@ -109,6 +113,7 @@ DeviceList.propTypes = {
   showdown: PropTypes.array.isRequired,
   settings: PropTypes.object.isRequired,
   question: PropTypes.object,
+  state: PropTypes.object.isRequired,
 }
 
 export const DeviceListDragDrop = DragDropContext(Html5Backend)(DeviceList)
@@ -120,6 +125,7 @@ const mapStateToProps = (state) => ({
   showdown: showdown(state),
   settings: settings(state),
   question: getLastQuestion(questionList(state)),
+  state: state,
 })
 
 const mapDispatchToProps = () => ({})

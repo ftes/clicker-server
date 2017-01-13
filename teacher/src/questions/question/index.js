@@ -1,6 +1,8 @@
 import { PRESS } from '../../common/message-types'
 import { PREFIX } from '../../common/websocket'
 import { key } from '../../common/device'
+import { isShown } from '../../devices/device-list'
+import { getDevice } from '../../devices/device-list'
 
 export const START = 'clicker/questions/START'
 export const NEW_LESSON = 'clicker/questions/NEW_LESSON'
@@ -46,4 +48,8 @@ export function newLesson(title) {
 
 export function hasAnswered(question, deviceKey) {
   return question.answeredBy.indexOf(deviceKey) !== -1
+}
+
+export function onlyShown(answeredBy, state) {
+  return answeredBy.filter(deviceKey => isShown(getDevice(state , deviceKey), state))
 }

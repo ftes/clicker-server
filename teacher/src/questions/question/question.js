@@ -3,15 +3,18 @@ import { Label } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import { getName } from '../../device-name/device-name'
+import { onlyShown } from './'
+import { getState as settings } from '../settings'
 
 // Component
-export const Question = ({ title, answeredBy }) => {
+export const Question = ({ title, answeredBy, settings }) => {
   let i = 0
 
   return (
     <span>
-      <b>{title} </b>
-      {answeredBy.map(name =>
+      <b>{title} ({answeredBy.length}) </b>
+      {settings.showWhoAnswered &&
+        answeredBy.map(name =>
         <Label
           bsStyle='success'
           key={i++}
@@ -29,12 +32,15 @@ export const Question = ({ title, answeredBy }) => {
 
 Question.propTypes = {
   title: PropTypes.string.isRequired,
-  answeredBy: PropTypes.arrayOf(PropTypes.string).isRequired
+  answeredBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  settings: PropTypes.object.isRequired,
 }
 
 // Container
 const mapStateToProps = (state, ownProps) => ({
-  answeredBy: ownProps.answeredBy.map(deviceKey => getName(state, deviceKey)),
+  answeredBy: onlyShown(ownProps.answeredBy, state)
+    .map(deviceKey => getName(state, deviceKey)),
+  settings: settings(state),
 })
 
 const mapDispatchToProps = () => ({})

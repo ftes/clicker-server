@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { ListGroup } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
-import { Text, Dropdown, SettingsItem } from '../../abstract-settings'
+import { Text, Dropdown, SettingsItem, Radio } from '../../abstract-settings'
 import { functions } from '../showdown'
 import { editKeyPrefix, getState as local } from './'
 import { getState as showSettings } from '../../show-settings'
@@ -37,6 +37,13 @@ export const Settings = ({ settings, showSettings }) => (
             settings={settings} editKeyPrefix={editKeyPrefix}/>}
         />
       }
+      <SettingsItem
+        title='Show who answered'
+        child={<Radio settingsKey='showWhoAnswered'
+          settings={settings}
+          editKeyPrefix={editKeyPrefix}/>
+        }
+      />
     </ListGroup>
 )
 

@@ -6,10 +6,16 @@ export const editKeyPrefix = 'devices/settings/'
 
 const parsers = {
   rowWidth: int,
+  fontSizeNames: int,
+  fontSizePoints: int,
 }
 
 const defaultState = {
   rowWidth: 8,
+  fontSizeNames: 16,
+  fontSizePoints: 20,
+  hideNonCustomNames: false,
+  showButtonPress: false,
 }
 
 export default function reducer(state = defaultState, action) {

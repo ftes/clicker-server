@@ -3,6 +3,7 @@ import { isForMe, SAVE } from '../edit-text'
 export { default as Dropdown } from './dropdown'
 export { default as Text } from './text'
 export { default as SettingsItem } from './settings-item'
+export { default as Radio } from './radio'
 
 export const int = (val) => parseInt(val, 10)
 

@@ -2,6 +2,8 @@ import { PRESS } from '../../common/message-types'
 import { PREFIX } from '../../common/websocket'
 import deviceReducer, { ADD_EMPTY } from '../device'
 import { getState as getParentState } from '../'
+import { getState as settings } from '../settings'
+import { getState as deviceNames } from '../../device-name'
 
 export const DELETE = 'clicker/devices/DELETE'
 export const MOVE = 'clicker/devices/MOVE'
@@ -67,12 +69,22 @@ export function getState(state) {
 
 const ignore = ['empty']
 
-export function isIgnored(deviceType) {
+function isIgnored(deviceType) {
   return ignore.indexOf(deviceType) !== -1
 }
 
-export function getDevices(state) {
-  return getState(state).filter(d => !isIgnored(d.deviceType))
+export function isShown(device, state) {
+  if (isIgnored(device.deviceType)) return false
+  const names =  deviceNames(state)
+  const hasCustomName = device.deviceKey in names
+  if (settings(state).hideNonCustomNames && !hasCustomName) return false
+  return true
+}
+
+export function getDevices(state, onlyShown=false) {
+  let result = getState(state).filter(d => !isIgnored(d.deviceType))
+  if (onlyShown) result = result.filter(device => isShown(device, state))
+  return result
 }
 
 export function getDevice(state, deviceKey) {
