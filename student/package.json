@@ -1,24 +1,24 @@
 {
-  "name": "clicker-student",
+  "name": "clickr-student",
   "version": "0.1.0",
   "private": true,
   "homepage": "./",
-  "license": "MIT",
   "devDependencies": {
     "cordova": "^6.4.0",
     "eslint": "^3.12.2",
     "eslint-plugin-react": "^6.8.0",
-    "react-scripts": "0.8.5"
-  },
-  "dependencies": {
-    "bootstrap": "^3.3.7",
+    "react-scripts": "0.8.5",
     "cordova-icon": "^0.9.1",
     "enzyme": "^2.7.0",
     "eslint-plugin-jasmine": "^2.2.0",
+    "react-addons-test-utils": "^15.4.2",
+    "shx": "^0.2.2"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "react": "^15.4.2",
-    "react-addons-test-utils": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.1",
@@ -26,11 +26,10 @@
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.1.0",
     "rxjs": "^5.0.3",
-    "shx": "^0.2.2",
     "socket.io-client": "^1.7.2"
   },
   "scripts": {
-    "start": "npm run cp-common && react-scripts start",
+    "start": "npm run cp-common && PORT=3001 react-scripts start",
     "build": "npm run cp-common && react-scripts build",
     "eject": "react-scripts eject",
     "test": "npm run cp-common && react-scripts test --env=jsdom",
