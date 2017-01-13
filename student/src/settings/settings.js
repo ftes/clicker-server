@@ -5,9 +5,25 @@ import Edit from './editC'
 import Unlock from './unlockC'
 import { getState as local } from './'
 
+import './settings.css'
+
 // COMPONENT
 const Settings = ({ unlocked }) => (
-  unlocked ? <Edit/> : <Unlock/>
+  <div className='settings' style={{
+    width: '100%',
+    height: '100%',
+    // transform: 'translateY(50%)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  }}>
+    {unlocked &&
+      <Edit/>
+    }
+    {!unlocked &&
+      <Unlock/>
+    }
+  </div>
 )
 
 Settings.propTypes = {

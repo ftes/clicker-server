@@ -53,6 +53,9 @@ class Button extends React.Component {
         onTouchEnd={(e) => this.onPress(e,false)}
         onMouseDown={(e) => this.onPress(e,true)}
         onMouseUp={(e) => this.onPress(e,false)}
+        // do not pass onClick to parent
+        // app listens for 5-click, which should be outside the buttons
+        onClick={e => e.stopPropagation()}
       >
         {number}
       </div>

@@ -26,7 +26,7 @@ class Unlock extends React.Component {
         </FormGroup>
         <ButtonToolbar>
           <Button onClick={() => this.unlock()}>Unlock</Button>
-          <Button onClick={toggleShow}>Close</Button>
+          <Button className='pull-right' onClick={toggleShow}>Close</Button>
         </ButtonToolbar>
       </div>
     )
