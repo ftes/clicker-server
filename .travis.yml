@@ -1,9 +1,16 @@
 language: node_js
 node_js:
-    - "node"
+  - node
+cache:
+  yarn: true
+  directories:
+    - node_modules
 env:
-    - TEST_DIR=teacher
-    - TEST_DIR=student
-    - TEST_DIR=server
+  - TEST_DIR=teacher
+  - TEST_DIR=student
+  - TEST_DIR=server
 before_script:
-    - cd $TEST_DIR && npm install
+  - cd $TEST_DIR && yarn install
+script:
+  - yarn test
+  - yarn run build -- --coverage
