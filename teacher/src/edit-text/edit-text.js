@@ -22,8 +22,8 @@ class EditText extends React.Component {
   }
 
   render() {
-    const { editKey, text, edit, onEdit, tabIndex, icon,
-      type, style } = this.props
+    const { text, edit, tabIndex, icon, type, style,
+      onEdit, editKey } = this.props
   
     if (!edit) return (
       <div
@@ -51,6 +51,7 @@ class EditText extends React.Component {
         type={type || 'text'}
         onChange={e => this.edit(e)}
         onBlur={e => this.save(e)}
+        onFocus={e => e.nativeEvent.target.select()}
         onKeyPress={e => e.key === 'Enter' && this.save(e)}
         value={text}
       />
