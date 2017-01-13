@@ -3,42 +3,59 @@ import { connect } from 'react-redux'
 import { FormControl } from 'react-bootstrap'
 import FA from 'react-fontawesome'
 
-import { edit, save, getState as local } from './'
+import { edit, save, close, getState as local } from './'
 
 // Component
-export const EditText = ({ editKey, text, edit, onEdit, onSave, tabIndex, icon,
-  type, style }) => {
-  if (!edit) return (
-    <div
-      tabIndex={tabIndex || -1}
-      onFocus={() => onEdit(editKey)}
-      style={{
-        ...style,
-        cursor: 'text',
-      }}
-    >
-      {text}
-      &nbsp;
-      { icon &&
-        <sup>
-          <FA name={icon} style={{ fontSize: '0.8em' }}/>
-        </sup>
-      }
-    </div>
-  )
+class EditText extends React.Component {
+  save(event) {
+    const { editKey, onSave, onClose } = this.props
+    const value = event.target.value
+    onSave(editKey, value)
+    onClose(editKey)
+  }
 
-  return (
-    <FormControl
-      autoFocus
-      tabIndex={tabIndex}
-      type={type || 'text'}
-      onChange={(event) => onEdit(editKey, event.target.value)}
-      onBlur={(event) => onSave(editKey, event.target.value)}
-      onKeyPress={(event) => event.key === 'Enter' &&
-        onSave(editKey, event.target.value)}
-      value={text}
-    />
-  )
+  edit(event) {
+    const { editKey, saveImmediately, onEdit, onSave } = this.props
+    const value = event.target.value
+    onEdit(editKey, value)
+    if (saveImmediately) onSave(editKey, value)
+  }
+
+  render() {
+    const { editKey, text, edit, onEdit, tabIndex, icon,
+      type, style } = this.props
+  
+    if (!edit) return (
+      <div
+        tabIndex={tabIndex || -1}
+        onFocus={() => onEdit(editKey)}
+        style={{
+          ...style,
+          cursor: 'text',
+        }}
+      >
+        {text}
+        &nbsp;
+        { icon &&
+          <sup>
+            <FA name={icon} style={{ fontSize: '0.8em' }}/>
+          </sup>
+        }
+      </div>
+    )
+
+    return (
+      <FormControl
+        autoFocus
+        tabIndex={tabIndex}
+        type={type || 'text'}
+        onChange={e => this.edit(e)}
+        onBlur={e => this.save(e)}
+        onKeyPress={e => e.key === 'Enter' && this.save(e)}
+        value={text}
+      />
+    )
+  }
 }
 
 EditText.propTypes = {
@@ -47,10 +64,12 @@ EditText.propTypes = {
   edit: PropTypes.bool.isRequired,
   onEdit: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
   tabIndex: PropTypes.number,
   icon: PropTypes.string,
   type: PropTypes.string,
   style: PropTypes.object,
+  saveImmediately: PropTypes.bool,
 }
 
 // Container
@@ -73,7 +92,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onEdit: (editKey, text) => dispatch(edit(editKey, text)),
-  onSave: (editKey, text, cancelled) => dispatch(save(editKey, text, cancelled))
+  onSave: (editKey, text, cancelled) => dispatch(save(editKey, text, cancelled)),
+  onClose: (editKey) => dispatch(close(editKey)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditText)

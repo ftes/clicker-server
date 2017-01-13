@@ -1,5 +1,6 @@
 export const EDIT = 'clicker-xbee/edit-text/EDIT'
 export const SAVE = 'clicker-xbee/edit-text/SAVE'
+export const CLOSE = 'clicker-xbee/edit-text/CLOSE'
 
 /**
  * Two hierarchy levels in one reducer, because on SAVE the
@@ -7,7 +8,7 @@ export const SAVE = 'clicker-xbee/edit-text/SAVE'
  */
 export default function reducer(state = {}, action) {
   switch (action.type) {
-  case SAVE:
+  case CLOSE:
     return {
       ...state,
       editKey: undefined,
@@ -29,6 +30,10 @@ export function edit(editKey, text) {
 
 export function save(editKey, text, cancelled=false) {
   return { type: SAVE, editKey, text, cancelled }
+}
+
+export function close(editKey) {
+  return { type: CLOSE }
 }
 
 export function isForMe(action, keyPrefix) {

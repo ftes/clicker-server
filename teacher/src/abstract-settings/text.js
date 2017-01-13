@@ -6,6 +6,7 @@ const Text = ({ settingsKey, settings, editKeyPrefix, type }) => (
     editKey={`${editKeyPrefix}${settingsKey}`}
     defaultText={`${settings[settingsKey]}`}
     type={type}
+    saveImmediately={true}
   />
 )
 
