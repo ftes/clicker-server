@@ -9,6 +9,7 @@ import LocalStorage from '../save/local-storage'
 import WebSocket from '../websocket/websocket'
 import LoadSettings from '../settings/load-settings'
 import FiveClick from '../settings/five-click'
+import Insomnia from './insomnia'
 
 export const App = ({ showSettings }) => (
   <FiveClick>
@@ -28,6 +29,7 @@ export const App = ({ showSettings }) => (
     <BatteryLevel/>
     <LocalStorage/>
     <WebSocket/>
+    <Insomnia/>
   </FiveClick>
 )
 
