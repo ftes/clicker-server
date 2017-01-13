@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+    - "node"
+env:
+    - TEST_DIR=teacher
+    - TEST_DIR=student
+    - TEST_DIR=server
+before_script:
+    - cd $TEST_DIR && npm install
+script: cd $TEST_DIR && npm test
