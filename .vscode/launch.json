@@ -9,11 +9,7 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceRoot}/server/index.js",
-            "cwd": "${workspaceRoot}",
-            "args": [
-              "--dummy=/tmp/dummy",
-              "--web=4001"
-            ]
+            "cwd": "${workspaceRoot}"
         },
         {
             "type": "node",
