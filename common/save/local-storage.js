@@ -1,6 +1,6 @@
 import { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { overwrite } from './'
+import { overwrite, parseDates } from './'
 
 // COMPONENT
 export class LocalStorage extends Component {
@@ -13,6 +13,7 @@ export class LocalStorage extends Component {
   readStateFromLocalStorage() {
     try {
       let state = JSON.parse(this.props.readLocalStorage())
+      parseDates(state)
       if (state) this.props.overwrite(state)
     } catch (error) {
       window.alert('Could not read state from browser storage.')

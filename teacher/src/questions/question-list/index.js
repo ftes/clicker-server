@@ -16,17 +16,6 @@ export default function reducer(state = [], action) {
   case START: {
     action.id = getNextIdLocal(state)
     let newQuestion = questionReducer(undefined, action)
-    // compare dateStrings (omits hours, minutes, seconds)
-    // let dateOfLastLesson = getDateOfLast(state, true).toDateString()
-    // let dateOfNewQuestion = newQuestion.date.toDateString()
-
-    // add new lesson automatically if date has changed
-    // if (dateOfLastLesson !== dateOfNewQuestion) {
-    //   state = [
-    //     ...state,
-    //     create(action.id++, dateOfNewQuestion, /*isLesson*/ true)
-    //   ]
-    // }
     return [
       ...state,
       newQuestion
@@ -90,9 +79,3 @@ export function getAnswered(state, deviceKey) {
 export function getAnsweredCount(state, deviceKey) {
   return getAnswered(state, deviceKey).length
 }
-
-// function getDateOfLast(state, lesson=false) {
-//   let list = state.filter(q => q.isLesson === lesson)
-//   if (list.length === 0) return null
-//   return list.slice(-1)[0]
-// }

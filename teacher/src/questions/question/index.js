@@ -5,12 +5,11 @@ import { isShown } from '../../devices/device-list'
 import { getDevice } from '../../devices/device-list'
 
 export const START = 'clicker/questions/START'
-export const NEW_LESSON = 'clicker/questions/NEW_LESSON'
 
-function create(id, title, isLesson) {
-  let answeredBy = isLesson ? undefined : []
+function create(id, title) {
+  let answeredBy = []
   let date = new Date()
-  return { isLesson, id, title, answeredBy, date }
+  return { id, title, answeredBy, date }
 }
 
 export default function reducer(state = {}, action) {
@@ -32,18 +31,12 @@ export default function reducer(state = {}, action) {
   case START:
     // id and title set by parent reducer
     return create(action.id, action.title || `Question ${action.id}`, false)
-  case NEW_LESSON:
-    return create(action.id, action.title, true)
   default: return state
   }
 }
 
 export function start() {
   return { type: START }
-}
-
-export function newLesson(title) {
-  return { type: NEW_LESSON, title }
 }
 
 export function hasAnswered(question, deviceKey) {

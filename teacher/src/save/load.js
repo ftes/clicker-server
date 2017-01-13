@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Button from '../components/button'
 import { overwrite } from '../core/reducers'
 import console from '../common/console'
+import { parseDates } from '../common/save'
 import yaml from 'js-yaml'
 
 // getInput must not be passed to Button 
@@ -32,6 +33,7 @@ const mapDispatchToProps = (dispatch, { getInput }) => ({
             if (e.target.readyState === FileReader.DONE) {
               try {
                 let state = yaml.safeLoad(e.target.result)
+                parseDates(state)
                 dispatch(overwrite(state))
               } catch (error) {
                 alert('Error loading file.')

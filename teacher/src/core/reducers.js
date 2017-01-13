@@ -9,6 +9,7 @@ import questions from '../questions'
 import idMappings from '../id-mappings'
 import showSettings from '../show-settings'
 import offset from '../offset'
+import lessons from '../lessons'
 import { OVERWRITE } from '../common/save'
 
 export const RESET = 'clicker/core/RESET'
@@ -24,6 +25,7 @@ const reducers = combineReducers({
   idMappings,
   showSettings,
   offset,
+  lessons,
 })
 
 const coreReducer = (state = {}, action) => {
