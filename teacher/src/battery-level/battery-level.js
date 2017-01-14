@@ -36,7 +36,7 @@ export const BatteryLevel = ({ batteryLevel, showPercent }) => {
         name={convertToText(batteryLevel)}
       />
       &nbsp;
-      {showPercent && percent}
+      <span id='text'>{showPercent && percent}</span>
     </span>
   )
 }

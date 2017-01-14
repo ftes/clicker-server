@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "homepage": "/teacher",
   "devDependencies": {
+    "coveralls": "^2.11.15",
     "enzyme": "^2.4.1",
     "eslint": "^3.12.2",
     "eslint-config-google": "^0.7.1",
+    "eslint-plugin-jasmine": "^2.2.0",
     "eslint-plugin-react": "^6.8.0",
     "react-addons-test-utils": "^15.3.0",
     "react-scripts": "^0.6.0",
@@ -35,6 +37,7 @@
     "build": "npm run cp-common && react-scripts build",
     "eject": "react-scripts eject",
     "test": "npm run cp-common && react-scripts test --env=jsdom",
-    "cp-common": "shx cp -r ../common src/"
+    "cp-common": "shx cp -r ../common src/",
+    "submit-coverage": "shx cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   }
 }

@@ -6,7 +6,8 @@
     "test": "echo \"No test specified\" && exit 0",
     "start": "nodemon index.js",
     "build": "npm run build-teacher && shx rm -rf public/teacher/* && shx cp -r ../teacher/build/* public/teacher",
-    "build-teacher": "cd ../teacher && yarn install && npm run build"
+    "build-teacher": "cd ../teacher && yarn install && npm run build",
+    "submit-coverage": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "chokidar": "^1.6.1",
