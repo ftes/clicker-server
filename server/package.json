@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
     "start": "nodemon index.js",
-    "build": "shx rm -rf public/teacher/* && shx cp -r ../teacher/build/* public/teacher"
+    "build": "npm run build-teacher && shx rm -rf public/teacher/* && shx cp -r ../teacher/build/* public/teacher",
+    "build-teacher": "cd ../teacher && npm run build"
   },
   "dependencies": {
     "chokidar": "^1.6.1",
