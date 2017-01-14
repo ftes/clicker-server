@@ -18,7 +18,5 @@
     "url": "https://github.com/ftes/clickr/issues"
   },
   "homepage": "https://github.com/ftes/clickr#readme",
-  "devDependencies": {
-    "shx": "^0.2.2"
-  }
+  "devDependencies": {}
 }

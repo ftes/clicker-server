@@ -1,0 +1,9 @@
+[submodule "server"]
+	path = server
+	url = git://github.com/ftes/clickr-server.git
+[submodule "student"]
+	path = student
+	url = git://github.com/ftes/clickr-student.git
+[submodule "teacher"]
+	path = teacher
+	url = git://github.com/ftes/clickr-teacher.git
