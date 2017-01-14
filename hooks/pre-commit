@@ -1,0 +1,3 @@
+#!/bin/sh
+npm run docs
+git add docs/diagrams/*.png
