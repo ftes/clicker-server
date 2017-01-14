@@ -1,0 +1,16 @@
+graph LR
+  xbee
+  tablet
+  file
+  xbee_connector
+  websocket_connector
+  dummy_connector
+  server
+
+  xbee -- I/O port 1 high a2dc10 --> xbee_connector
+  tablet -- PRESS 1.3 --> websocket_connector
+  file -- 1 --> dummy_connector
+
+  xbee_connector -- PRESS xbee/a2dc10 --> server
+  websocket_connector -- PRESS tablet/1.3 --> server
+  dummy_connector -- PRESS file/1 --> server

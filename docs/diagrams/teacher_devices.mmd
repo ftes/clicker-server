@@ -1,0 +1,17 @@
+graph LR
+  student
+  server
+  teacher_main
+  whiteboard
+  teacher_remote
+
+  student -- PRESS --> server
+  server -- PRESS --> teacher_main
+  server -- PRESS --> whiteboard
+
+  teacher_main -- seating plan --> server
+  server -- seating plan --> whiteboard
+
+  teacher_remote --ask question --> server
+  server --ask question --> whiteboard
+  server --ask question --> teacher_main

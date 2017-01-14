@@ -1,0 +1,9 @@
+graph LR
+  student
+  server
+  teacher
+
+  student -- student_msg --> server
+  server -- student_msg --> teacher
+  teacher -- teacher_msg --> server
+  server -- teacher_msg --> student

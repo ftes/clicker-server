@@ -1,3 +1,4 @@
 #!/bin/sh
+rm docs/diagrams/*.png
 npm run docs
-git add docs/diagrams/*.png
+git add 'docs/diagrams/*.png'
