@@ -6,7 +6,7 @@
     "start": "npm run start-teacher | npm run start-student | npm run start-server",
     "start-server": "cd server && npm start",
     "start-teacher": "cd teacher && npm start",
-    "start-student": "cd student && npm start"
+    "start-student": "cd student && npm run start-web"
   },
   "repository": {
     "type": "git",
