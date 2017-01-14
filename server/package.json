@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build": "shx rm -rf public/teacher/* && shx cp -r ../teacher/build/* public/teacher"
   },
   "dependencies": {
     "chokidar": "^1.6.1",
@@ -16,6 +17,7 @@
     "yargs": "^6.5.0"
   },
   "devDependencies": {
-    "eslint": "^3.12.2"
+    "eslint": "^3.12.2",
+    "shx": "^0.2.2"
   }
 }

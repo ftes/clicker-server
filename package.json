@@ -2,16 +2,11 @@
   "name": "clickr",
   "version": "0.1.0",
   "description": "Audience Response System for Schools",
-  "main": "server/index.js",
   "scripts": {
     "start": "npm run start-teacher | npm run start-student | npm run start-server",
     "start-server": "cd server && npm start",
-    "start-teacher": "cd teacher && REACT_APP_SERVER_PORT=4000 npm start",
-    "start-student": "cd student && PORT=3001 npm start",
-    "build": "npm run build-student && npm run build-teacher && npm run build-server",
-    "build-teacher": "cd teacher && npm run build",
-    "build-student": "cd student && npm run build-cordova",
-    "build-server": "shx rm -rf server/public/teacher/* && shx cp -r teacher/build/* server/public/teacher"
+    "start-teacher": "cd teacher && npm start",
+    "start-student": "cd student && npm run start-web"
   },
   "repository": {
     "type": "git",
