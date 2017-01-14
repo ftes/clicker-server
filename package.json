@@ -6,7 +6,9 @@
     "start": "npm run start-teacher | npm run start-student | npm run start-server",
     "start-server": "cd server && npm start",
     "start-teacher": "cd teacher && npm start",
-    "start-student": "cd student && npm run start-web"
+    "start-student": "cd student && npm run start-web",
+    "docs": "npm run diagrams",
+    "diagrams": "cd docs/diagrams && mermaid *.mmd"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,7 @@
     "url": "https://github.com/ftes/clickr/issues"
   },
   "homepage": "https://github.com/ftes/clickr#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "mermaid": "^6.0.0"
+  }
 }
