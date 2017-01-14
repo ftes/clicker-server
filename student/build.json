@@ -2,9 +2,9 @@
      "android": {
          "release": {
              "keystore": "~/.keystore",
-             "storePassword": "tiwId2kmKSPWasap$",
+             "storePassword": "PASSWORD",
              "alias": "android",
-             "password" : "tiwId2kmKSPWasap$",
+             "password" : "PASSWORD",
              "keystoreType": ""
          }
      }
