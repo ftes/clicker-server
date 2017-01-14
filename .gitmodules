@@ -7,3 +7,6 @@
 [submodule "teacher"]
 	path = teacher
 	url = https://github.com/ftes/clickr-teacher.git
+[submodule "whiteboard"]
+	path = whiteboard
+	url = https://github.com/ftes/clickr-whiteboard.git
