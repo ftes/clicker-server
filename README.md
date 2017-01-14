@@ -7,3 +7,20 @@
 # Clickr
 An audience Response Systen for schools.
 Clickr aims to be cheap to deploy and easy to set up.
+
+## Architecture
+Clickr consists of:
+- one [server](https://github.com/ftes/clickr-server)
+- multiple clients
+  - [teacher](https://github.com/ftes/clickr-teacher) web app
+  - [student](https://github.com/ftes/clickr-student) hybrid web app (cordova)
+  - to come: _whiteboard_ and _teacher remote_ clients
+
+### Basic Architecture
+![basic architecture](docs/diagrams/architecture_basic.mmd.png)
+
+### Student Devices
+![basic architecture](docs/diagrams/student_devices.mmd.png)
+
+### Teacher Devices
+![basic architecture](docs/diagrams/teacher_devices.mmd.png)
