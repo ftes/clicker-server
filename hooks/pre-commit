@@ -1,4 +1,11 @@
 #!/bin/sh
 rm docs/diagrams/*.png
 npm run docs
-git add 'docs/diagrams/*.png'
+
+STATUS=`git status "docs/diagrams/*.png" --porcelain`
+if [ -n "$STATUS" ]; then
+	echo "Add generated diagrams first"
+	exit 1
+fi
+
+exit 0
