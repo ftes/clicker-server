@@ -1,6 +1,6 @@
 {
   "name": "clickr",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "Audience Response System for Schools",
   "scripts": {
     "start": "npm run start-teacher | npm run start-student | npm run start-whiteboard | npm run start-server",
