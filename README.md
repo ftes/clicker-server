@@ -17,7 +17,7 @@ Clickr consists of:
     - [teacher](https://github.com/ftes/clickr-teacher) web app
     - [whiteboard](https://github.com/ftes/clickr-whiteboard) web app
   - [student](https://github.com/ftes/clickr-student) hybrid web app (cordova)
-  - to come: _whiteboard_ and _teacher remote_ clients
+  - to come: _teacher remote_ client
 
 ### Basic Architecture
 ![basic architecture](docs/diagrams/architecture_basic.mmd.png)
