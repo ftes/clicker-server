@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/ftes/clickr#readme",
   "devDependencies": {
-    "mermaid": "^6.0.0",
-    "shared-git-hooks": "^1.2.1"
+    "mermaid": "^6.0.0"
   }
 }
