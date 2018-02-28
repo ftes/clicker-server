@@ -1,0 +1,22 @@
+env:
+  browser: true
+  jasmine: true
+extends:
+  - plugin:react/recommended
+  - plugin:jasmine/recommended
+parserOptions:
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
+    jsx: true
+  sourceType: module
+plugins:
+  - react
+  - jasmine
+globals:
+  process: true
+rules:
+  jsx-quotes:
+    - error
+    - prefer-single
+  react/jsx-uses-react:
+    - error

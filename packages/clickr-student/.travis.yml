@@ -1,0 +1,40 @@
+language: android
+node_js:
+- '6'
+android:
+  components:
+  - tools
+  - platform-tools
+  - build-tools-23.0.1
+  - android-24
+cache:
+  yarn: true
+  directories:
+  - node_modules
+  - platforms
+  - plugins
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+jdk:
+- oraclejdk8
+before_script:
+- curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+- source ~/.bashrc
+- nvm install node
+- nvm use node
+- sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
+- echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+- sudo apt-get update -qq
+- sudo apt-get install -y -qq yarn
+- yarn install
+script:
+- yarn test -- --coverage
+- yarn run submit-coverage
+- yarn run build
+deploy:
+  provider: releases
+  api_key:
+    secure: YM/k8G5vzs1xKdv4ilZxPjSbkD47wNeQ3/lWHMDItryR0+OfPK9bjPiQ1HmETCyB3zqsNmnL8ubglWdzeQHKPRnyXMpr4gMtkSp93Ceq43/cRz12Z6EoCLq/dv47zr3YPY1gr3cuIYLnT4LDAffDOIPo/2pRlyHcbZWSzgTd9LoHKRe++iEUoZXRWxw4MIhX6bgnnpOprOkdk17llQawVWms1HPzjRC5ozdnjUfqjXyRn4kzd1WxwGhM5o7b3/kLwvGqJGGzsMuA+CfxToK8PvLBaeBN12AJFUGQcvZ0Wgz8B1Y4kzBTEZ/inNmX8HAqE69kglAX+TIqdm1lTWPWVy7bMtIIvlM4MtB1QsxRwUz6xaGKrIktSttA/vUwf6/R7PP6597bZAj77djojTYUWMiJJMcFm4Kze+0T4816HHy6W2YPUnPgPxWswEdKn7/asUYoEtEJEfyaLggQ6XEO5V/FN8TTfMJvAjhcjGYEY4LN6+g/nyZuHQ84CO3ysNcQyn8ylOiO/JaSe+qw3RBi+ZLKYrgJXndfRRdpjBsTo++IAGZLaeQW1VIJFNaClCQ9hnsI4YzMTYW3wxOYK27Xrz0o9W8ugt3KQrAGKfC0LJlnrWik+06fOmHnTOoIvCNV7vGKyTOMOl+Bz09mz0Wk+IVmqC/XQJUAoenswIxqLV8=
+  file: "$TRAVIS_BUILD_DIR/platforms/android/build/outputs/apk/android-debug.apk"
+  on:
+    tags: true

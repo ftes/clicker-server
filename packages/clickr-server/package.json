@@ -1,0 +1,27 @@
+{
+  "name": "clickr-server",
+  "version": "0.1.7",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0",
+    "start": "nodemon index.js dummy=/tmp/dummy",
+    "build": "npm run add-clients",
+    "submit-coverage": "echo \"No test specified\" && exit 0",
+    "add-clients": "npm run add-client-teacher && npm run add-client-whiteboard",
+    "add-client-teacher": "./add-client.sh v0.1.9 teacher",
+    "add-client-whiteboard": "./add-client.sh v0.1.7 whiteboard"
+  },
+  "dependencies": {
+    "chokidar": "^1.6.1",
+    "clickr-common": "^3.0.0",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "nodemon": "^1.11.0",
+    "socket.io": "^1.7.2",
+    "yargs": "^6.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "shx": "^0.2.2"
+  }
+}

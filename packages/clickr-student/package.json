@@ -1,0 +1,46 @@
+{
+  "name": "clickr-student",
+  "version": "0.1.6",
+  "private": true,
+  "homepage": "./",
+  "devDependencies": {
+    "cordova": "^6.4.0",
+    "cordova-icon": "^0.9.1",
+    "coveralls": "^2.11.15",
+    "enzyme": "^2.7.0",
+    "eslint": "^3.12.2",
+    "eslint-plugin-jasmine": "^2.2.0",
+    "eslint-plugin-react": "^6.8.0",
+    "react-addons-test-utils": "^15.4.2",
+    "react-scripts": "0.8.5",
+    "shx": "^0.2.2"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "clickr-common": "^3.0.0",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.4",
+    "react": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.4.2",
+    "react-fontawesome": "^1.5.0",
+    "react-redux": "^5.0.1",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "redux-thunk": "^2.1.0",
+    "rxjs": "^5.0.3",
+    "socket.io-client": "^1.7.2"
+  },
+  "scripts": {
+    "start-web": "PORT=3001 react-scripts start",
+    "build-web": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "react-scripts test --env=jsdom",
+    "start": "npm run build-cordova-prepare && cordova run",
+    "build": "npm run build-cordova-prepare && cordova build",
+    "build-cordova-release": "npm run build-cordova-prepare && cordova build --release",
+    "build-cordova-prepare": "npm run build-web && shx rm -rf www/* && shx cp -r build/* www/ && cordova-icon",
+    "postinstall": "cordova platform add android && cordova prepare || true",
+    "submit-coverage": "shx cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  }
+}

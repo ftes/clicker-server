@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+- node
+cache:
+  yarn: true
+  directories:
+  - node_modules
+before_script:
+- yarn install
+script:
+- yarn test -- --coverage
+- yarn run submit-coverage
+- yarn run build
+deploy:
+  provider: releases
+  api_key:
+    secure: IjFoPIxyrw4KN+H3E/l0W5wzH/jLUbk7pa8zGT8JO6fwp9XsyX7cV1tdeh33B3NIU2PGR6lWvYLPEtex3XryjifGVTKk+9Q1a8P373ByKPF/pPNEwx+1Lp2DVLQ3ViLME9fl/63ZRVnu44labNWXFYa7P/g7mRQoMx375VG0QaaFHp4OWbjAVKS4qesurR8KNRnZ2p2MYiNEyMv2MXOtOs5irKJM8UA0ylzkyCMMxRfirVSXZwZcrrt19/p+FuA6g7QCSrvB4kxXApBi31Aold8/l3hRUhI9thnAw3eU0HtyOm+EbvdHVfK1eeaVBIVVYyVuvOFyqG0Ur3rnGOequAzi827BLch5QujYZtVVFS75YExGArAwOZwhuyPCd7/Y/1wsgzTMoWAIFJfZ0HISV9flqPSVBC+EReH8XhFVBVKc2sMYg47roqEL11wp5JFe49J8OC4jb6HZgBFJ2BU4wIRP74hX5y6lFBkLn5/6X0O2aKdthu8DvVfdXjQMtd84aVzDb5NONMpm+Lu0CRUeNAeClLcCszzYsadgzrm3dYoysdIys0U+6odUWTKYvD0QDwM2ED9F1539rlsavg0oClz6bTEtDsS+AYEjy8Gfpk8+E/t5LmZ+STRGl5DV9bld8NzXniZukZ1vhCV2WLKsxscPvLB5hduzb5rlEH7MUSs=
+  file: "$TRAVIS_BUILD_DIR/teacher.zip"
+  on:
+    tags: true

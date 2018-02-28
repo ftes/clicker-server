@@ -1,0 +1,39 @@
+{
+  "name": "whiteboard",
+  "version": "0.1.6",
+  "homepage": "/whiteboard",
+  "devDependencies": {
+    "coveralls": "^2.11.15",
+    "enzyme": "^2.7.0",
+    "eslint-plugin-jasmine": "^2.2.0",
+    "eslint-plugin-react": "^6.8.0",
+    "react-addons-test-utils": "^15.4.2",
+    "react-scripts": "0.8.5",
+    "shx": "^0.2.2"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "clickr-common": "^3.0.0",
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.4",
+    "react": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
+    "react-bootstrap-toggle": "^1.2.19",
+    "react-dnd": "^2.1.4",
+    "react-dnd-html5-backend": "^2.1.2",
+    "react-dom": "^15.4.2",
+    "react-fontawesome": "^1.5.0",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "socket.io-client": "^1.7.2"
+  },
+  "scripts": {
+    "start": "REACT_APP_SERVER_PORT=4000 PORT=3002 react-scripts start",
+    "build": "react-scripts build && npm run build-zip",
+    "build-zip": "cd build && zip -r ../whiteboard.zip ./",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "submit-coverage": "shx cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  }
+}
