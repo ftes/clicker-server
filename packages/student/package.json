@@ -41,5 +41,6 @@
     "build-cordova-release": "npm run build-cordova-prepare && cordova build --release",
     "build-cordova-prepare": "npm run build && shx rm -rf www/* && shx cp -r build/* www/ && cordova-icon",
     "postinstall": "cordova platform add android && cordova prepare || true"
-  }
+  },
+  "version": "2.0.2"
 }

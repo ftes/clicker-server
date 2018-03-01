@@ -34,5 +34,6 @@
     "start": "neutrino start",
     "lint": "neutrino lint",
     "test": "neutrino test"
-  }
+  },
+  "version": "2.0.2"
 }
