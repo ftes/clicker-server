@@ -1,0 +1,40 @@
+{
+  "name": "@clickr/student",
+  "version": "0.1.6",
+  "private": true,
+  "devDependencies": {
+    "@neutrinojs/jest": "^8.1.2",
+    "@neutrinojs/react": "^8.1.2",
+    "cordova": "^6.4.0",
+    "cordova-icon": "^0.9.1",
+    "neutrino": "^8.1.2",
+    "shx": "^0.2.2"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "@clickr/common": "^3.0.0",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.4",
+    "react": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.4.2",
+    "react-fontawesome": "^1.5.0",
+    "react-redux": "^5.0.1",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "redux-thunk": "^2.1.0",
+    "rxjs": "^5.0.3",
+    "socket.io-client": "^1.7.2"
+  },
+  "scripts": {
+    "build": "neutrino build",
+    "start": "neutrino start",
+    "lint": "neutrino lint",
+    "test": "neutrino test",
+    "start-cordova": "npm run build-cordova-prepare && cordova run",
+    "build-cordova": "npm run build-cordova-prepare && cordova build",
+    "build-cordova-release": "npm run build-cordova-prepare && cordova build --release",
+    "build-cordova-prepare": "npm run build-web && shx rm -rf www/* && shx cp -r build/* www/ && cordova-icon",
+    "postinstall": "cordova platform add android && cordova prepare || true"
+  }
+}
