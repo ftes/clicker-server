@@ -3,6 +3,7 @@
   "files": [
     "build"
   ],
+  "license": "MIT",
   "devDependencies": {
     "@neutrinojs/jest": "^8.1.2",
     "@neutrinojs/react": "^8.1.2",
