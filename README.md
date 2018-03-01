@@ -4,6 +4,13 @@ Clickr aims to be cheap to deploy and easy to set up.
 
 **This is a prototype. The build is untested since migrating to a mono-repo!**
 
+## Packages
+- server: [![@clickr/server badge](https://img.shields.io/npm/v/@clickr/server.svg)](https://www.npmjs.com/package/@clickr/server)
+- teacher: [![@clickr/teacher badge](https://img.shields.io/npm/v/@clickr/teacher.svg)](https://www.npmjs.com/package/@clickr/teacher)
+- student: [![@clickr/student badge](https://img.shields.io/npm/v/@clickr/student.svg)](https://www.npmjs.com/package/@clickr/student)
+- whiteboard: [![@clickr/whiteboard badge](https://img.shields.io/npm/v/@clickr/whiteboard.svg)](https://www.npmjs.com/package/@clickr/whiteboard)
+- common: [![@clickr/common badge](https://img.shields.io/npm/v/@clickr/common.svg)](https://www.npmjs.com/package/@clickr/common)
+
 ## Setup
 Install [lerna](https://lernajs.io/) and then:
 1. `lerna bootstrap`
