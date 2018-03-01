@@ -1,13 +1,17 @@
 {
   "name": "@clickr/student",
   "version": "0.1.6",
-  "private": true,
+  "files": [ "build" ],
   "devDependencies": {
     "@neutrinojs/jest": "^8.1.2",
     "@neutrinojs/react": "^8.1.2",
     "cordova": "^6.4.0",
     "cordova-icon": "^0.9.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-15": "^1.0.5",
     "neutrino": "^8.1.2",
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "15",
     "shx": "^0.2.2"
   },
   "dependencies": {
@@ -27,14 +31,14 @@
     "socket.io-client": "^1.7.2"
   },
   "scripts": {
-    "build": "neutrino build",
+    "build": "CLICKR_SERVER_CONFIG_URL=http://192.168.0.1/settings.json neutrino build",
     "start": "neutrino start",
     "lint": "neutrino lint",
     "test": "neutrino test",
     "start-cordova": "npm run build-cordova-prepare && cordova run",
     "build-cordova": "npm run build-cordova-prepare && cordova build",
     "build-cordova-release": "npm run build-cordova-prepare && cordova build --release",
-    "build-cordova-prepare": "npm run build-web && shx rm -rf www/* && shx cp -r build/* www/ && cordova-icon",
+    "build-cordova-prepare": "npm run build && shx rm -rf www/* && shx cp -r build/* www/ && cordova-icon",
     "postinstall": "cordova platform add android && cordova prepare || true"
   }
 }

@@ -4,9 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
-    "start": "nodemon index.js dummy=/tmp/dummy",
+    "start": "PORT=4000 nodemon index.js dummy=/tmp/dummy",
     "build": "npm run add-clients",
-    "submit-coverage": "echo \"No test specified\" && exit 0",
     "add-clients": "npm run add-client-teacher && npm run add-client-whiteboard",
     "add-client-teacher": "./add-client.sh v0.1.9 teacher",
     "add-client-whiteboard": "./add-client.sh v0.1.7 whiteboard"
