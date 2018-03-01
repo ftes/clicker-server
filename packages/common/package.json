@@ -27,5 +27,17 @@
     "react-redux": "^5.0.2",
     "redux": "^3.6.0"
   },
-  "version": "2.0.3"
+  "version": "2.0.5",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ftes/clickr.git"
+  },
+  "author": "Fredrik Teschke",
+  "bugs": {
+    "url": "https://github.com/ftes/clickr/issues"
+  },
+  "homepage": "https://github.com/ftes/clickr#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
