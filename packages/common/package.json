@@ -27,5 +27,5 @@
     "react-redux": "^5.0.2",
     "redux": "^3.6.0"
   },
-  "version": "2.0.2"
+  "version": "2.0.3"
 }
