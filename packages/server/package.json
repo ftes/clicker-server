@@ -1,6 +1,7 @@
 {
   "name": "@clickr/server",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
     "start": "PORT=4000 nodemon index.js dummy=/tmp/dummy",
@@ -22,5 +23,5 @@
     "eslint": "^3.12.2",
     "shx": "^0.2.2"
   },
-  "version": "2.0.3"
+  "version": "2.0.4"
 }
