@@ -1,7 +1,9 @@
 {
   "name": "@clickr/student",
-  "version": "0.1.6",
-  "files": [ "build" ],
+  "version": "2.0.1",
+  "files": [
+    "build"
+  ],
   "devDependencies": {
     "@neutrinojs/jest": "^8.1.2",
     "@neutrinojs/react": "^8.1.2",
@@ -15,8 +17,8 @@
     "shx": "^0.2.2"
   },
   "dependencies": {
+    "@clickr/common": "^2.0.1",
     "bootstrap": "^3.3.7",
-    "@clickr/common": "^3.0.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "react": "^15.4.2",

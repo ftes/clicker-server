@@ -1,6 +1,6 @@
 {
   "name": "@clickr/server",
-  "version": "0.1.7",
+  "version": "2.0.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
@@ -11,8 +11,8 @@
     "add-client-whiteboard": "./add-client.sh v0.1.7 whiteboard"
   },
   "dependencies": {
+    "@clickr/common": "^2.0.1",
     "chokidar": "^1.6.1",
-    "@clickr/common": "^3.0.0",
     "cors": "^2.8.1",
     "express": "^4.14.0",
     "nodemon": "^1.11.0",
