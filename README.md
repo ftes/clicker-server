@@ -1,22 +1,34 @@
-| Component | Build | Coverage |
-|-----------|-------|----------|
-| Server | [![Build Status](https://travis-ci.org/ftes/clickr-server.svg?branch=master)](https://travis-ci.org/ftes/clickr-server) | [![Coverage Status](https://coveralls.io/repos/github/ftes/clickr-server/badge.svg?branch=master)](https://coveralls.io/github/ftes/clickr-server?branch=master) |
-| Student Android App | [![Build Status](https://travis-ci.org/ftes/clickr-student.svg?branch=master)](https://travis-ci.org/ftes/clickr-student) | [![Coverage Status](https://coveralls.io/repos/github/ftes/clickr-student/badge.svg?branch=master)](https://coveralls.io/github/ftes/clickr-student?branch=master) |
-| Teacher Desktop App | [![Build Status](https://travis-ci.org/ftes/clickr-teacher.svg?branch=master)](https://travis-ci.org/ftes/clickr-teacher) | [![Coverage Status](https://coveralls.io/repos/github/ftes/clickr-teacher/badge.svg?branch=master)](https://coveralls.io/github/ftes/clickr-teacher?branch=master) |
-| Teacher Whiteboard App | [![Build Status](https://travis-ci.org/ftes/clickr-whiteboard.svg?branch=master)](https://travis-ci.org/ftes/clickr-whiteboard) | [![Coverage Status](https://coveralls.io/repos/github/ftes/clickr-whiteboard/badge.svg?branch=master)](https://coveralls.io/github/ftes/clickr-whiteboard?branch=master) |
-
 # Clickr
 An audience Response Systen for schools.
 Clickr aims to be cheap to deploy and easy to set up.
 
+**This is a prototype. The build is untested since migrating to a mono-repo!**
+
+## Setup
+Install [lerna](https://lernajs.io/) and then:
+1. `lerna bootstrap`
+2. `lerna run start`
+3. Open clients: http://localhost:4001, http://localhost:4002, http://localhost:4003
+
+## Todo
+- [ ] test cordova build for student app
+- [ ] use npm packages in server: require teacher and whiteboard and serve them instead of handling custom zip files (`add-client.sh`)
+- [ ] connect student app to local server in dev mode (pass different server)
+- [ ] connect client sockets to port 4000 in dev mode
+- [ ] fix errors in teacher: `ReferenceError: DELETE is not defined`
+- [ ] fix error in common: `export 'NEW_LESSON' was not found in '../question`
+- [ ] pass object with default value for env var `CLICKR_SERVER_CONFIG_URL` in student to neutrino
+- [ ] bump react version (`propTypes`, `createClass`)
+- [ ] add unit tests for common
+
 ## Architecture
 Clickr consists of:
-- one [server](https://github.com/ftes/clickr-server)
+- one [server](./packages/server)
 - multiple clients
   - teacher clients
-    - [teacher](https://github.com/ftes/clickr-teacher) web app
-    - [whiteboard](https://github.com/ftes/clickr-whiteboard) web app
-  - [student](https://github.com/ftes/clickr-student) hybrid web app (cordova)
+    - [teacher](./packages/teacher) web app
+    - [whiteboard](./packages/whiteboard) web app
+  - [student](./packages/student) hybrid web app (cordova)
   - to come: _teacher remote_ client
 
 ### Basic Architecture
