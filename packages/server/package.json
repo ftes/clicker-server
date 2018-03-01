@@ -11,7 +11,7 @@
     "add-client-whiteboard": "./add-client.sh v0.1.7 whiteboard"
   },
   "dependencies": {
-    "@clickr/common": "^2.0.3",
+    "@clickr/common": "^2.0.6",
     "chokidar": "^1.6.1",
     "cors": "^2.8.1",
     "express": "^4.14.0",
@@ -23,5 +23,18 @@
     "eslint": "^3.12.2",
     "shx": "^0.2.2"
   },
-  "version": "2.0.4"
+  "version": "2.0.6",
+  "description": "Clickr server",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ftes/clickr.git"
+  },
+  "author": "Fredrik Teschke",
+  "bugs": {
+    "url": "https://github.com/ftes/clickr/issues"
+  },
+  "homepage": "https://github.com/ftes/clickr#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -14,7 +14,7 @@
     "react-test-renderer": "15"
   },
   "dependencies": {
-    "@clickr/common": "^2.0.3",
+    "@clickr/common": "^2.0.6",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
@@ -36,5 +36,18 @@
     "lint": "neutrino lint",
     "test": "neutrino test"
   },
-  "version": "2.0.3"
+  "version": "2.0.6",
+  "description": "Clickr whiteboard client",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ftes/clickr.git"
+  },
+  "author": "Fredrik Teschke",
+  "bugs": {
+    "url": "https://github.com/ftes/clickr/issues"
+  },
+  "homepage": "https://github.com/ftes/clickr#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
