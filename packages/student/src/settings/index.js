@@ -108,14 +108,17 @@ function receiveDefault(settings) {
 
 export function fetchDefault(customServer) {
   return dispatch => {
-    dispatch(requestDefault())
-    //eslint-disable-next-line no-undef
-    return fetch(process.env.REACT_APP_SETTINGS, { mode: 'cors' })
-      .then(response => response.json())
-      .then(json => {
-        dispatch(receiveDefault(json))
-        bindWebsocket(dispatch, customServer || json.server)
-      })
+    if (process.env.CLICKR_SERVER_CONFIG_URL) {
+      dispatch(requestDefault())
+      return fetch(process.env.CLICKR_SERVER_CONFIG_URL, { mode: 'cors' })
+        .then(response => response.json())
+        .then(json => {
+          dispatch(receiveDefault(json))
+          bindWebsocket(dispatch, customServer || json.server)
+        })
+    } else {
+      bindWebsocket(dispatch, customServer)
+    }
   }
 }
 
