@@ -1,13 +1,9 @@
 {
-  "name": "clickr",
-  "version": "0.1.5",
-  "description": "Audience Response System for Schools",
+  "description": "Clickr: An Audience Response System for Schools",
+  "license": "MIT",
   "scripts": {
-    "start": "npm run start-teacher | npm run start-student | npm run start-whiteboard | npm run start-server",
-    "start-server": "cd server && npm start",
-    "start-teacher": "cd teacher && npm start",
-    "start-student": "cd student && npm run start-web",
-    "start-whiteboard": "cd whiteboard && npm start",
+    "start": "lerna run start",
+    "test": "lerna run test",
     "docs": "npm run diagrams",
     "diagrams": "cd docs/diagrams && mermaid *.mmd"
   },
@@ -16,7 +12,6 @@
     "url": "git+https://github.com/ftes/clickr.git"
   },
   "author": "Fredrik Teschke",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ftes/clickr/issues"
   },
