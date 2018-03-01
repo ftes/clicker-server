@@ -1,23 +1,9 @@
-[![Build Status](https://travis-ci.org/ftes/clickr-student.svg?branch=master)](https://travis-ci.org/ftes/clickr-student)
-[![Coverage Status](https://coveralls.io/repos/github/ftes/clickr-student/badge.svg?branch=master)](https://coveralls.io/github/ftes/clickr-student?branch=master)
-
-# Student Client
-Hybrid web app: Web app built with React, converted to native app with Cordova.
-
 ## Prerequisites
-- yarn (npm)
 - imagemagick (to generate icon)
 
-## Installation
-`yarn install`
-
-## Build
-- react only: `yarn run build`
-- cordova: `yarn run build-cordova`
-
-## Run
-- react only: `yarn start`
-- cordova: `yarn run start-cordova`
+## Cordova
+- `yarn start-cordova`
+- `yarn build-cordova`
 
 ## Release
 - edit `build.json`: add `password` and `storePassword`
