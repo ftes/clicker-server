@@ -2,6 +2,8 @@ import { key } from '../util/device'
 import { PREFIX, publish } from '../websocket'
 import { BATTERY_REQUEST, BATTERY_RESPONSE } from '../websocket/message-types'
 
+export { default as BatteryLevel } from './battery-level'
+export { default as RequestBatteryLevel } from './request-battery-level'
 
 export const REQUEST = 'clicker/battery-level/REQUEST'
 

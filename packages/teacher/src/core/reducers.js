@@ -14,8 +14,7 @@ import sync, { syncLogicBefore, syncLogicAfter } from '@clickr/common/lib/sync'
 import showSettings from '@clickr/common/lib/show-settings'
 import editText from '@clickr/common/lib/edit-text'
 import timeOffset from '@clickr/common/lib/time-offset'
-import websocket, { PREFIX } from '@clickr/common/lib/websocket'
-import { PRESS } from '@clickr/common/lib/websocket/message-types'
+import websocket, { PREFIX, PRESS } from '@clickr/common/lib/websocket'
 
 const reducers = combineReducers({
   editText,

@@ -8,6 +8,13 @@ import showdown, { START as START_SHOWDOWN } from './showdown'
 import { START as START_QUESTION } from './question'
 import ask from './ask-question'
 
+export { default as Questions } from './questions'
+export { startQuestion } from './question'
+export { AskQuestion } from './ask-question'
+export { Showdown } from './showdown'
+export { clear as clearCountdown } from './countdown'
+export { getState as getQuestionListState, getAnsweredCount, getAnsweredVector } from './question-list'
+
 const combined = combineReducers({
   settings,
   list,

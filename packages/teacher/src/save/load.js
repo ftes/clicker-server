@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react'
 import yaml from 'js-yaml'
 import { connect } from 'react-redux'
 
-import Button from '@clickr/common/lib/components/button'
+import { Button } from '@clickr/common/lib/components'
 import { load } from '@clickr/common/lib/save'
-import console from '@clickr/common/lib/util/console'
+import { console } from '@clickr/common/lib/util'
 
 // getInput must not be passed to Button 
 //eslint-disable-next-line no-unused-vars

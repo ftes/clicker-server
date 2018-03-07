@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import Button from '@clickr/common/lib/components/button'
+import { Button } from '@clickr/common/lib/components'
 import { reset } from '@clickr/common/lib/save'
 
 const mapStateToProps = () => ({})

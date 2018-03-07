@@ -1,5 +1,7 @@
 import { SAVE, isForMe } from '../edit-text'
 
+export { default as ClassName } from './class-name'
+
 export const editTextKey = 'className'
 
 export default function (state = 'class', action) {

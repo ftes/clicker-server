@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { PropTypes } from 'react'
 
-import Button from '@clickr/common/lib/components/button'
+import { Button } from '@clickr/common/lib/components'
 import { set } from '@clickr/common/lib/sync'
 
 const mapStateToProps = (state, ownProps) => ({

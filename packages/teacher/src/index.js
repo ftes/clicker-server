@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import createLogger from 'redux-logger'
 
-import getStateMiddleware from '@clickr/common/lib/util/get-state-middleware'
+import { getStateMiddleware } from '@clickr/common/lib/util'
 import App from './components/app'
 import reducer from './core/reducers'
 

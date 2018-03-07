@@ -1,6 +1,8 @@
 import { parseDates , preserve } from '../util/js-object'
 import _ from 'lodash'
 
+export { default as LocalStorage } from './local-storage'
+
 export const LOAD = 'clicker/save/LOAD'
 export const RESET = 'clicker/save/RESET'
 

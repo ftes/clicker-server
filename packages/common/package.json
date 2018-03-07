@@ -6,15 +6,22 @@
   ],
   "license": "MIT",
   "scripts": {
-    "prepublish": "node_modules/.bin/babel src --out-dir lib --copy-files",
-    "test": "echo \"No test specified\" && exit 0"
+    "build": "neutrino build",
+    "lint": "neutrino lint",
+    "test": "neutrino test"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@neutrinojs/jest": "^8.1.2",
+    "@neutrinojs/library": "^8.1.2",
+    "@neutrinojs/style-loader": "^8.1.2",
+    "babel-plugin-jsx-pragmatic": "^1.0.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1"
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "neutrino": "^8.1.2",
+    "react-test-renderer": "^15.6.2",
+    "socket.io-client": "^2.0.4"
   },
   "dependencies": {
     "react": "^15.4.2",
@@ -25,7 +32,8 @@
     "react-dom": "^15.4.2",
     "react-fontawesome": "^1.5.0",
     "react-redux": "^5.0.2",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "source-map-support": "^0.5.3"
   },
   "version": "2.0.7",
   "repository": {

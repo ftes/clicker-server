@@ -1,5 +1,7 @@
 import { SAVE, isForMe } from '../edit-text'
 
+export { default as DeviceName, getName } from './device-name'
+
 export const keyPrefix = 'deviceName/'
 
 export default function reducer(state = {}, action) {

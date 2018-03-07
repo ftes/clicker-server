@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { request } from './'
-import Button from '../components/button'
+import { Button } from '../components'
 
 const mapStateToProps = () => ({})
 

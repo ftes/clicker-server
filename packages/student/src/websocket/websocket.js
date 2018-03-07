@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import Websocket from '@clickr/common/lib/websocket/websocket'
+import { Websocket } from '@clickr/common/lib/websocket'
 
 import { bind } from './'
 import { getState as settings, get as getSetting } from '../settings'

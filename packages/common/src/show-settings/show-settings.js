@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Button from '../components/button'
+import { Button } from '../components'
 import { toggle } from './'
 import { getState as local } from './'
 

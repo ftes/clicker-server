@@ -4,10 +4,9 @@ import reducer from './reducers'
 import { reset } from '@clickr/common/lib/save'
 import { initialState as showSettingsInit } from '@clickr/common/lib/show-settings'
 import { press } from '@clickr/common/lib/button-press'
-import { start as startQuestion } from '@clickr/common/lib/questions/question'
-import getStateMiddleware from '@clickr/common/lib/util/get-state-middleware'
-import { storeForSyncTest } from '@clickr/common/lib/sync/test-util'
-import { clear } from '@clickr/common/lib/questions/countdown/index'
+import { startQuestion as startQuestion, clearCountdown } from '@clickr/common/lib/questions'
+import { getStateMiddleware } from '@clickr/common/lib/util'
+import { storeForSyncTest } from '@clickr/common/lib/sync'
 
 describe('reducer', () => {
   const getStore = (state = {}) =>

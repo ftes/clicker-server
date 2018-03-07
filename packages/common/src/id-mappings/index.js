@@ -1,6 +1,8 @@
 import { SAVE, isForMe } from '../edit-text'
 import { keyPrefix } from './edit-mapping'
 
+export { default as IdMappingsModal } from './id-mappings-modal'
+
 export default function(state = {}, action) {
   switch (action.type) {
   case SAVE: {

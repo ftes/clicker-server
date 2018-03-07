@@ -2,9 +2,9 @@ import { connect } from 'react-redux'
 import { saveAs } from 'file-saver'
 import yaml from 'js-yaml'
 
-import Button from '@clickr/common/lib/components/button'
-import console from '@clickr/common/lib/util/console'
-import { del } from '@clickr/common/lib/util/js-object'
+import { Button } from '@clickr/common/lib/components'
+import { console } from '@clickr/common/lib/util'
+import { del } from '@clickr/common/lib/util'
 
 import { deleteOnFileSave } from '../core/reducers'
 

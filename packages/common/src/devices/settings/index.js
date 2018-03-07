@@ -2,6 +2,8 @@ import { SAVE } from '../../edit-text'
 import { getState as getParentState } from '../'
 import { int, reduce } from '../../abstract-settings'
 
+export { default as Settings } from './settings'
+
 export const editKeyPrefix = 'devices/settings/'
 
 const parsers = {

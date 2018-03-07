@@ -4,6 +4,8 @@ import { getState as getParentState } from '../'
 import { START as NEW_QUESTION, onlyShown } from '../../questions/question'
 import { toServer } from '../../time-offset'
 
+export { Showdown } from './showdown'
+
 export const START = 'clicker/showdown/START'
 
 export const functions = {

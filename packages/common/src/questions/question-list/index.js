@@ -1,5 +1,4 @@
-import { PRESS } from '../../websocket/message-types'
-import { PREFIX } from '../../websocket'
+import { PRESS, PREFIX } from '../../websocket'
 import questionReducer, { START, NEW_LESSON, hasAnswered }
   from '../question'
 import { getState as getParentState } from '../'
@@ -9,17 +8,17 @@ export const DELETE = 'clicker/questions/DELETE'
 export default function reducer(state = [], action) {
   switch (action.type) {
   // TODO NEW_LESSON isn't defined
-  case NEW_LESSON:
-    return [
-      ...state,
-      questionReducer(undefined, action)
-    ]
+  // case NEW_LESSON:
+  //   return [
+  //     ...state,
+  //     questionReducer(undefined, action)
+  //   ]
   case START: {
     action.id = getNextIdLocal(state)
     let newQuestion = questionReducer(undefined, action)
     return [
       ...state,
-      newQuestion
+      questionReducer(undefined, action)
     ]
   }
   case PREFIX + PRESS: {

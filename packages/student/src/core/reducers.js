@@ -4,7 +4,7 @@ import settings from '../settings'
 import buttons from '../buttons'
 import { PRESS as PRESS_INTERNAL } from '../buttons'
 import { publish } from '../websocket'
-import { PRESS } from '@clickr/common/lib/websocket/message-types'
+import { PRESS } from '@clickr/common/lib/websocket'
 import batteryLevel from '../battery-level'
 import saveReducer from '@clickr/common/lib/save'
 

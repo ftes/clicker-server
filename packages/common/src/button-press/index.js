@@ -2,6 +2,8 @@ import { key } from '../util/device'
 import { PREFIX } from '../websocket'
 import { PRESS } from '../websocket/message-types'
 
+export { default as ButtonPress } from './button-press'
+
 export default function reducer(state = {}, action) {
   switch (action.type) {
   case PREFIX + PRESS: {

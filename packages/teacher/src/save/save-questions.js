@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
 import { saveAs } from 'file-saver'
 
-import Button from '@clickr/common/lib/components/button'
-import console from '@clickr/common/lib/util/console'
-import { getName } from '@clickr/common/lib/device-name/device-name'
-import { getState as questionList, getAnsweredCount, getAnsweredVector }
-  from '@clickr/common/lib/questions/question-list'
-import { getDevices } from '@clickr/common/lib/devices/device-list'
+import { Button } from '@clickr/common/lib/components'
+import { console } from '@clickr/common/lib/util'
+import { getName } from '@clickr/common/lib/device-name'
+import { getQuestionListState as questionList, getAnsweredCount, getAnsweredVector }
+  from '@clickr/common/lib/questions'
+import { getDevices } from '@clickr/common/lib/devices'
 import { getOffset } from '@clickr/common/lib/offset'
 
 const mapStateToProps = (state) => ({

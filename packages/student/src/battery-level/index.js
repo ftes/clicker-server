@@ -1,8 +1,6 @@
 import _ from 'lodash'
 
-import { BATTERY_REQUEST, BATTERY_RESPONSE }
-  from '@clickr/common/lib/websocket/message-types'
-import { PREFIX } from '@clickr/common/lib/websocket'
+import { BATTERY_REQUEST, BATTERY_RESPONSE, PREFIX } from '@clickr/common/lib/websocket'
 import { publish } from '../websocket'
 import { get as getSetting, getState as settings } from '../settings'
 

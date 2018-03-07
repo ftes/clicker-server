@@ -7,6 +7,8 @@ import { getState as websocket, PREFIX, CONNECT } from '../websocket'
 import { RESET } from '../save'
 import console from '../util/console'
 
+export { storeForSyncTest } from './test-util'
+
 export const SET = 'clicker/sync/SET'
 
 let receivedStateAfterEnablingSync = false

@@ -1,7 +1,7 @@
 import { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import Button from '../components/button'
+import { Button } from '../components'
 import { increase } from './'
 
 // Container

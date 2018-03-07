@@ -1,8 +1,0 @@
-{
-  "plugins": [
-    ["transform-react-jsx", { "useBuiltIns": true }],
-    ["transform-object-rest-spread"],
-    ["transform-class-properties"],
-    ["transform-es2015-modules-commonjs"]
-  ]
-}

@@ -1,7 +1,5 @@
-import { bindWebsocket, publish as parentPublish } from '@clickr/common/lib/websocket'
-import { BATTERY_REQUEST } from '@clickr/common/lib/websocket/message-types'
+import { bindWebsocket, publish as parentPublish, BATTERY_REQUEST, STUDENT } from '@clickr/common/lib/websocket'
 import { get as getSetting, getState as settings } from '../settings'
-import { STUDENT } from '@clickr/common/lib/websocket/namespaces'
 
 export function bind(dispatch, uri) {
   bindWebsocket(dispatch, uri, [BATTERY_REQUEST], STUDENT)

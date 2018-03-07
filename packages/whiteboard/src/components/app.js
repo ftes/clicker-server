@@ -2,12 +2,12 @@ import React from 'react'
 import 'font-awesome/css/font-awesome.css'
 import 'bootstrap/dist/css/bootstrap.css'
 
-import Devices from '@clickr/common/lib/devices/devices'
-import Questions from '@clickr/common/lib/questions/questions'
-import ClassName from '@clickr/common/lib/class-name/class-name'
-import Setting from '@clickr/common/lib/components/setting'
+import { Devices } from '@clickr/common/lib/devices'
+import { Questions } from '@clickr/common/lib/questions'
+import { ClassName } from '@clickr/common/lib/class-name'
+import { Setting } from '@clickr/common/lib/components'
 
-import Websocket from '@clickr/common/lib/websocket/teacher/websocket'
+import { TeacherWebsocket as  Websocket } from '@clickr/common/lib/websocket'
 import { zIndex, tabIndex } from '../core/globals'
 
 import './app.css'

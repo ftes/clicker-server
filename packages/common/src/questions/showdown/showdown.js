@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import Button from '../../components/button'
+import { Button } from '../../components'
 import { start } from './'
 import { getState as deviceList } from '../../devices/device-list'
 import { getState as devicesSettings } from '../../devices/settings'

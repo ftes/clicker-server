@@ -2,6 +2,11 @@ import io from 'socket.io-client'
 
 import console from '../util/console'
 
+export * from './message-types'
+export * from './namespaces'
+export { default as Websocket } from './websocket'
+export { Websocket as TeacherWebsocket } from './teacher'
+
 export const PREFIX = 'clicker/websocket-message/'
 export const CONNECT = 'clicker/websocket/connect'
 export const DISCONNECT = 'clicker/websocket/disconnect'

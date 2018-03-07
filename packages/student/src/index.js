@@ -7,7 +7,7 @@ import createLogger from 'redux-logger'
 
 import reducers from './core/reducers'
 import App from './components/app'
-import getStateMiddleware from '@clickr/common/lib/util/get-state-middleware'
+import { getStateMiddleware } from '@clickr/common/lib/util'
 
 import './index.css'
 
