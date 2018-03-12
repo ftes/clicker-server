@@ -1,47 +1,39 @@
 module.exports = {
   use: [
-    [
-      '@neutrinojs/library',
-      {
-        name: 'clickr-common',
-        babel: {
-          plugins: [
-            [
-              require.resolve('babel-plugin-transform-react-jsx'),
-              { pragma: 'createElement' },
-            ],
-            [
-              require.resolve('babel-plugin-jsx-pragmatic'),
-              {
-                module: 'react',
-                export: 'createElement',
-                import: 'createElement',
-              }
-            ],
-            require.resolve('babel-plugin-transform-object-rest-spread'),
-            [require.resolve('babel-plugin-transform-class-properties'), { spec: true }],
+    
+    ['@neutrinojs/library', {
+      name: '@clickr/common',
+      babel: {
+        plugins: [
+          [
+            require.resolve('babel-plugin-transform-react-jsx'),
+            { pragma: 'createElement' },
           ],
-          presets: [require.resolve('babel-preset-react')]
-        },
+          [
+            require.resolve('babel-plugin-jsx-pragmatic'),
+            {
+              module: 'react',
+              export: 'createElement',
+              import: 'createElement',
+            }
+          ],
+          require.resolve('babel-plugin-transform-object-rest-spread'),
+          [require.resolve('babel-plugin-transform-class-properties'), { spec: true }],
+        ],
+        presets: [require.resolve('babel-preset-react')]
       },
-    ],
-    [
-      '@neutrinojs/jest',
-      {
-        testRegex: `src/.*\\.test\\.js$`,
-      },
-    ],
-    [
-      '@neutrinojs/style-loader',
-      {
-        extract: false,
-      },
-    ],
+    }],
+
+    ['@neutrinojs/style-loader', {
+      extract: false,
+    }],
+
+    ['@neutrinojs/jest', {
+      testRegex: `src/.*\\.test\\.js$`,
+    }],
   ],
 
   options: {
-    output: 'lib',
-    
     mains: {
       'battery-level': 'battery-level',
       'button-press': 'button-press',
@@ -60,6 +52,6 @@ module.exports = {
       'time-offset': 'time-offset',
       'util': 'util',
       'websocket': 'websocket',
-    }
-  }
+    },
+  },
 };
