@@ -1,5 +1,14 @@
 module.exports = {
   use: [
+    ['@neutrinojs/airbnb', {
+      eslint: {
+        rules: {
+          'react/forbid-prop-types': 'off',
+          'no-plusplus': 'off',
+        },
+      },
+    }],
+
     ['@neutrinojs/library', {
       name: '@clickr/common',
       babel: {
@@ -28,7 +37,8 @@ module.exports = {
     }],
 
     ['@neutrinojs/jest', {
-      testRegex: `src/.*\\.test\\.js$`,
+      testRegex: `src/.*\\.test\\.(js|jsx)$`,
+      setupTestFrameworkScriptFile: './test-setup.js',
     }],
 
     // disable source maps (source-map-support is problematic in web projects that include common)

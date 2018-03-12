@@ -12,11 +12,11 @@
     "@clickr/common": "^2.0.7",
     "@clickr/teacher": "^2.0.7",
     "@clickr/whiteboard": "^2.0.7",
-    "chokidar": "^1.6.1",
-    "cors": "^2.8.1",
-    "express": "^4.14.0",
-    "socket.io": "^1.7.2",
-    "yargs": "^6.5.0"
+    "chokidar": "^2.0.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4",
+    "yargs": "^11.0.0"
   },
   "//": "eslint added b/c transitive dependency via @neutrinojs/airbnb-base is not working",
   "devDependencies": {

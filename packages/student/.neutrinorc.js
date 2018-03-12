@@ -1,5 +1,13 @@
 module.exports = {
   use: [
+    ['@neutrinojs/airbnb', {
+      eslint: {
+        rules: {
+          'react/forbid-prop-types': 'off',
+        },
+      },
+    }],
+    
     ['@neutrinojs/react', {
       devServer: {
         port: 4003,
@@ -8,7 +16,7 @@ module.exports = {
     }],
     
     ['@neutrinojs/jest', {
-      testRegex: `\\.test\\.js$`,
+      testRegex: `\\.test\\.(js|jsx)$`,
       setupTestFrameworkScriptFile: './test-setup.js'
     }],
   ]
