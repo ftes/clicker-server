@@ -24,6 +24,10 @@ module.exports = {
     ['@neutrinojs/copy', {
       patterns: [
         {
+          context: './src/static',
+          from: '**/*',
+          to: 'static',
+        }, {
           context: teacherPath,
           from: '**/*',
           to: 'static/teacher'
