@@ -1,6 +1,5 @@
 module.exports = {
   use: [
-    
     ['@neutrinojs/library', {
       name: '@clickr/common',
       babel: {
@@ -31,11 +30,15 @@ module.exports = {
     ['@neutrinojs/jest', {
       testRegex: `src/.*\\.test\\.js$`,
     }],
+
+    // disable source maps (source-map-support is problematic in web projects that include common)
+    neutrino => neutrino.config.devtool(false),
+    neutrino => neutrino.config.plugins.delete('babel-minify'),
   ],
 
   options: {
     output: 'lib',
-    
+
     mains: {
       'battery-level': 'battery-level',
       'button-press': 'button-press',
