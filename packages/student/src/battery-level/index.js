@@ -1,34 +1,33 @@
-import _ from 'lodash'
+import _ from 'lodash';
 
-import { BATTERY_REQUEST, BATTERY_RESPONSE, PREFIX } from '@clickr/common/lib/websocket'
-import { publish } from '../websocket'
-import { get as getSetting, getState as settings } from '../settings'
+import { BATTERY_REQUEST, BATTERY_RESPONSE, PREFIX } from '@clickr/common/lib/websocket';
+import { publish } from '../websocket';
+import { get as getSetting, getState as settings } from '../settings';
 
-export { default as BatteryLevel } from './battery-level'
+export { default as BatteryLevel } from './battery-level';
 
-export const SET = 'clicker/battery-level/SET'
+export const SET = 'clicker/battery-level/SET';
 
-const initialState = null
+const initialState = null;
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-  case SET:
-    return action.level
-  case PREFIX + BATTERY_REQUEST: {
-    _.range(0, getSetting(settings(action.getState()), 'nButtons')).forEach(i =>
-      publish(BATTERY_RESPONSE, { level: state }, action.getState(), i+1)
-    )
-    return state
+    case SET:
+      return action.level;
+    case PREFIX + BATTERY_REQUEST: {
+      _.range(0, getSetting(settings(action.getState()), 'nButtons')).forEach(i =>
+        publish(BATTERY_RESPONSE, { level: state }, action.getState(), i + 1));
+      return state;
+    }
+    default: return state;
   }
-  default: return state
-  }
-}
+};
 
-export default reducer
+export default reducer;
 
 export function set(level) {
-  return { type: SET, level }
+  return { type: SET, level };
 }
 
 export function getState(state) {
-  return state.batteryLevel
+  return state.batteryLevel;
 }

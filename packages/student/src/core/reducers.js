@@ -1,31 +1,30 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import { PRESS } from '@clickr/common/lib/websocket';
+import saveReducer from '@clickr/common/lib/save';
 
-import settings from '../settings'
-import buttons from '../buttons'
-import { PRESS as PRESS_INTERNAL } from '../buttons'
-import { publish } from '../websocket'
-import { PRESS } from '@clickr/common/lib/websocket'
-import batteryLevel from '../battery-level'
-import saveReducer from '@clickr/common/lib/save'
+import settings from '../settings';
+import buttons, { PRESS as PRESS_INTERNAL } from '../buttons';
+import { publish } from '../websocket';
+import batteryLevel from '../battery-level';
 
 const reducers = combineReducers({
   settings,
   buttons,
   batteryLevel,
-})
+});
 
 export const deleteOnSave = {
   buttons: true,
   batteryLevel: true,
-}
+};
 
 const coreReducer = (state = {}, action) => {
-  state = saveReducer(state, action)
+  const reducedState = saveReducer(state, action);
   if (action.type === PRESS_INTERNAL) {
-    const pressed = action.pressed
-    publish(PRESS, { pressed }, state, action.number)
+    const { pressed } = action;
+    publish(PRESS, { pressed }, reducedState, action.number);
   }
-  return reducers(state, action)
-}
+  return reducers(reducedState, action);
+};
 
-export default coreReducer
+export default coreReducer;
