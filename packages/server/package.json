@@ -3,25 +3,31 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0",
-    "start": "PORT=4000 nodemon index.js dummy=/tmp/dummy",
-    "build": "npm run add-clients",
-    "add-clients": "npm run add-client-teacher && npm run add-client-whiteboard",
-    "add-client-teacher": "./add-client.sh v0.1.9 teacher",
-    "add-client-whiteboard": "./add-client.sh v0.1.7 whiteboard"
+    "build": "neutrino build dummy=/tmp/dummy",
+    "start": "neutrino start",
+    "lint": "neutrino lint",
+    "test": "neutrino test"
   },
   "dependencies": {
     "@clickr/common": "^2.0.7",
+    "@clickr/teacher": "^2.0.7",
+    "@clickr/whiteboard": "^2.0.7",
     "chokidar": "^1.6.1",
     "cors": "^2.8.1",
     "express": "^4.14.0",
-    "nodemon": "^1.11.0",
     "socket.io": "^1.7.2",
     "yargs": "^6.5.0"
   },
+  "//": "eslint added b/c transitive dependency via @neutrinojs/airbnb-base is not working",
   "devDependencies": {
-    "eslint": "^3.12.2",
-    "shx": "^0.2.2"
+    "@neutrinojs/airbnb-base": "^8.1.2",
+    "@neutrinojs/jest": "^8.1.2",
+    "@neutrinojs/node": "^8.1.2",
+    "eslint": "^4.18.2",
+    "neutrino": "^8.1.2"
+  },
+  "optionalDependencies": {
+    "xbee-rx": "^3.0.1"
   },
   "version": "2.0.7",
   "description": "Clickr server",
