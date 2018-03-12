@@ -34,7 +34,7 @@
   },
   "scripts": {
     "build": "CLICKR_SERVER_CONFIG_URL=http://192.168.0.1/settings.json neutrino build",
-    "start": "neutrino start",
+    "start": "CLICKR_SERVER_CONFIG_URL=http://localhost:4000/settings.json neutrino start",
     "lint": "neutrino lint",
     "test": "neutrino test",
     "start-cordova": "npm run build-cordova-prepare && cordova run",
