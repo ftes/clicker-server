@@ -1,46 +1,49 @@
-import { connect } from 'react-redux'
-import { saveAs } from 'file-saver'
+import { connect } from 'react-redux';
+import { saveAs } from 'file-saver';
 
-import { Button } from '@clickr/common/lib/components'
-import { console } from '@clickr/common/lib/util'
-import { getName } from '@clickr/common/lib/device-name'
+import { Button } from '@clickr/common/lib/components';
+import { console } from '@clickr/common/lib/util';
+import { getName } from '@clickr/common/lib/device-name';
 import { getQuestionListState as questionList, getAnsweredCount, getAnsweredVector }
-  from '@clickr/common/lib/questions'
-import { getDevices } from '@clickr/common/lib/devices'
-import { getOffset } from '@clickr/common/lib/offset'
+  from '@clickr/common/lib/questions';
+import { getDevices } from '@clickr/common/lib/devices';
+import { getOffset } from '@clickr/common/lib/offset';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   onClick: () => {
-    let questions = questionList(state)
-    let deviceKeys = getDevices(state, /*onlyShown*/ true).map(d => d.deviceKey)
-    let rows = ['Name,Points (total + offset),Total Answered,Offset,'
-      + questions.map(q => q.title).join(',')]
-    for (let deviceKey of deviceKeys) {
-      let name = getName(state, deviceKey)
-      let offset = getOffset(state, deviceKey)
-      let answered = getAnsweredVector(state, deviceKey)
-      let answeredC = getAnsweredCount(state, deviceKey)
-      let points = answeredC + offset
-      rows.push(`${name},${points},${answeredC},${offset},${answered.join(',')}`)
-    }
-    let content = rows.join('\n')
+    const questions = questionList(state);
+    const deviceKeys = getDevices(state, /* onlyShown */ true).map(d => d.deviceKey);
+    const rows = [`Name,Points (total + offset),Total Answered,Offset,${
+      questions.map(q => q.title).join(',')}`];
+
+    deviceKeys.forEach((deviceKey) => {
+      const name = getName(state, deviceKey);
+      const offset = getOffset(state, deviceKey);
+      const answered = getAnsweredVector(state, deviceKey);
+      const answeredC = getAnsweredCount(state, deviceKey);
+      const points = answeredC + offset;
+      rows.push(`${name},${points},${answeredC},${offset},${answered.join(',')}`);
+    });
+
+    const content = rows.join('\n');
 
     try {
-      let file = new File(
+      const file = new File(
         [content],
-        state.className + '.csv',
-        { type: 'text/csv' }
-      )
-      saveAs(file)
+        `${state.className}.csv`,
+        { type: 'text/csv' },
+      );
+      saveAs(file);
     } catch (error) {
-      alert('Error saving file.')
-      console.error(error)
+      // eslint-disable-next-line no-alert
+      alert('Error saving file.');
+      console.error(error);
     }
   },
   label: 'Export Results',
   faIcon: 'save',
-})
+});
 
-const mapDispatchToProps = () => ({})
+const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Button)
+export default connect(mapStateToProps, mapDispatchToProps)(Button);

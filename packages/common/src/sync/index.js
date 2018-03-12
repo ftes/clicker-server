@@ -50,7 +50,7 @@ function publishState(
           console.info('sync: state has changed or this is the first sync client', action.type);
           if (!action.getState) return; // likely redux's @@INIT@@ action
           console.info('sync: action.getState is set by middleware', action.type);
-          const { publish } = websocket(action.getState());
+          const { publish = () => null } = websocket(action.getState());
           publish(TEACHER_STATE, stateToSync);
           console.info('sync: published state for action', action.type);
         }

@@ -42,8 +42,9 @@ export function publish(type, payload) {
   socket.emit(type, payload);
 }
 
-export function set(sckt, pblsh) {
-  return { type: SET, sckt, pblsh };
+// eslint-disable-next-line no-shadow
+export function set(socket, publish) {
+  return { type: SET, socket, publish };
 }
 
 export function bindWebsocket(dispatch, uri, types, namespace) {

@@ -9,7 +9,7 @@ import { START as START_QUESTION } from './question';
 import ask from './ask-question';
 
 export { default as Questions } from './questions';
-export { startQuestion } from './question';
+export { start as startQuestion } from './question';
 export { AskQuestion } from './ask-question';
 export { Showdown } from './showdown';
 export { clear as clearCountdown } from './countdown';
@@ -29,7 +29,7 @@ export default function reducer(state = {}, action) {
     return state;
   }
 
-  const { settings: { durationMs } } = state; // for showdown
+  const { settings: { durationMs } = {} } = state; // for showdown
   if (action.type === START_SHOWDOWN) {
     const lastQuestion = getLastQuestion(state.list); // for showdown
     Object.assign(action, { settings, lastQuestion });
