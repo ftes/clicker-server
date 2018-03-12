@@ -1,4 +1,2 @@
-module.exports = {
-  TEACHER: '/teacher',
-  STUDENT: '/student',
-}
+export const TEACHER = '/teacher';
+export const STUDENT = '/student';
