@@ -4,6 +4,8 @@ import { BATTERY_REQUEST, BATTERY_RESPONSE, PREFIX } from '@clickr/common/lib/we
 import { publish } from '../websocket'
 import { get as getSetting, getState as settings } from '../settings'
 
+export { default as BatteryLevel } from './battery-level'
+
 export const SET = 'clicker/battery-level/SET'
 
 const initialState = null
