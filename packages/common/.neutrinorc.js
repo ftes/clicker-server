@@ -34,6 +34,8 @@ module.exports = {
   ],
 
   options: {
+    output: 'lib',
+    
     mains: {
       'battery-level': 'battery-level',
       'button-press': 'button-press',
