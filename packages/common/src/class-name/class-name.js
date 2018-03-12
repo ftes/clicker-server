@@ -1,13 +1,13 @@
-import { connect } from 'react-redux'
-import EditText from '../edit-text/edit-text'
+import { connect } from 'react-redux';
+import EditText from '../edit-text/edit-text';
 
-const local = (state) => state.className
+const local = state => state.className;
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   editKey: 'className',
   defaultText: local(state),
-})
+});
 
-const mapDispatchToProps = () => ({})
+const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditText)
+export default connect(mapStateToProps, mapDispatchToProps)(EditText);

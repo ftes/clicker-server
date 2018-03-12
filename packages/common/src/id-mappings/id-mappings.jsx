@@ -1,16 +1,19 @@
-import React, { PropTypes } from 'react'
-import { Table } from 'react-bootstrap'
-import { connect } from 'react-redux'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Table } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
-import EditMapping, { keyPrefix } from './edit-mapping'
-import { edit } from '../edit-text'
-import { getDevices } from '../devices/device-list'
-import { getState as local } from './'
+import EditMapping, { keyPrefix } from './edit-mapping';
+import { edit } from '../edit-text';
+import { getDevices } from '../devices/device-list';
+import { getState as local } from './';
 
 // Component
-export const IdMappings = ({ mappings, editMapping, devices,
-  startTabIndex }) => {
-  let tabIndex = startTabIndex.idMappings
+export const IdMappingsComponent = ({
+  mappings, editMapping, devices,
+  startTabIndex,
+}) => {
+  let tabIndex = startTabIndex.idMappings;
 
   return (
     <Table responsive striped condensed>
@@ -22,14 +25,14 @@ export const IdMappings = ({ mappings, editMapping, devices,
         </tr>
       </thead>
       <tbody>
-        {devices.map(device =>
+        {devices.map(device => (
           <tr key={device.deviceKey}>
             <td>{device.deviceType}</td>
             <td>{device.deviceId}</td>
             <td
-              tabIndex='-1'
+              tabIndex="-1"
               onFocus={() => editMapping(device.deviceKey)}
-              title='Click to edit.'
+              title="Click to edit."
             >
               <EditMapping
                 deviceKey={device.deviceKey}
@@ -39,13 +42,13 @@ export const IdMappings = ({ mappings, editMapping, devices,
               />
             </td>
           </tr>
-        )}
+        ))}
       </tbody>
     </Table>
-  )
-}
+  );
+};
 
-IdMappings.propTypes = {
+IdMappingsComponent.propTypes = {
   mappings: PropTypes.objectOf(PropTypes.string).isRequired,
   editMapping: PropTypes.func.isRequired,
   devices: PropTypes.arrayOf(PropTypes.shape({
@@ -54,16 +57,16 @@ IdMappings.propTypes = {
     deviceId: PropTypes.string.isRequired,
   }).isRequired).isRequired,
   startTabIndex: PropTypes.number.isRequired,
-}
+};
 
 // Container
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   mappings: local(state),
   devices: getDevices(state),
-})
+});
 
-const mapDispatchToProps = (dispatch) => ({
-  editMapping: (deviceKey) => dispatch(edit(keyPrefix + deviceKey)),
-})
+const mapDispatchToProps = dispatch => ({
+  editMapping: deviceKey => dispatch(edit(keyPrefix + deviceKey)),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(IdMappings)
+export default connect(mapStateToProps, mapDispatchToProps)(IdMappingsComponent);

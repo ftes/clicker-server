@@ -1,20 +1,27 @@
-import React, { PropTypes } from 'react'
-import EditText from '../edit-text/edit-text'
+import React from 'react';
+import PropTypes from 'prop-types';
+import EditText from '../edit-text/edit-text';
 
-const Text = ({ settingsKey, settings, editKeyPrefix, type }) => (
+const Text = ({
+  settingsKey, settings, editKeyPrefix, type,
+}) => (
   <EditText
     editKey={`${editKeyPrefix}${settingsKey}`}
     defaultText={`${settings[settingsKey]}`}
     type={type}
-    saveImmediately={true}
+    saveImmediately
   />
-)
+);
 
 Text.propTypes = {
   settingsKey: PropTypes.string.isRequired,
   settings: PropTypes.object.isRequired,
   editKeyPrefix: PropTypes.string.isRequired,
   type: PropTypes.string,
-}
+};
 
-export default Text
+Text.defaultProps = {
+  type: '',
+};
+
+export default Text;

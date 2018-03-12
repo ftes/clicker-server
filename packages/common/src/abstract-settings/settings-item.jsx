@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react'
-import { ListGroupItem } from 'react-bootstrap'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { ListGroupItem } from 'react-bootstrap';
 
 const SettingsItem = ({ title, child }) => (
   <ListGroupItem style={{ display: 'flex' }}>
@@ -10,11 +11,11 @@ const SettingsItem = ({ title, child }) => (
       {child}
     </span>
   </ListGroupItem>
-)
+);
 
 SettingsItem.propTypes = {
   title: PropTypes.string.isRequired,
   child: PropTypes.node.isRequired,
-}
+};
 
-export default SettingsItem
+export default SettingsItem;

@@ -1,26 +1,29 @@
-import React, { PropTypes } from 'react'
-import { Panel } from 'react-bootstrap'
-import { connect } from 'react-redux'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Panel } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
-import QuestionList from './question-list/question-list'
-import Countdown from './countdown/countdown'
-import Settings from './settings/settings'
-import { getLastQuestion, getState as questionList } from './question-list'
-import { isActive, getState as countdown } from './countdown'
-import { toClient } from '../time-offset'
+import QuestionList from './question-list/question-list';
+import Countdown from './countdown/countdown';
+import Settings from './settings/settings';
+import { getLastQuestion, getState as questionList } from './question-list';
+import { isActive, getState as countdown } from './countdown';
+import { toClient } from '../time-offset';
 
-import './questions.css'
+import './questions.css';
 
 // Component
-export const Questions = ({ lastQuestion, countdownActive,
-  countdownZIndex }) => (
+export const Questions = ({
+  lastQuestion, countdownActive,
+  countdownZIndex,
+}) => (
   <Panel
     header={<h1>Questions</h1>}
-    collapsible={true}
-    defaultExpanded={true}
-    id='questions'
+    collapsible
+    defaultExpanded
+    id="questions"
   >
-    <Settings/>
+    <Settings />
     {countdownActive &&
       <div
         style={{
@@ -40,13 +43,13 @@ export const Questions = ({ lastQuestion, countdownActive,
       >
         {lastQuestion.title}
         <b style={{ fontSize: '1.5em' }}>
-          <Countdown/>
+          <Countdown />
         </b>
       </div>
     }
-    <QuestionList/>
+    <QuestionList />
   </Panel>
-)
+);
 
 Questions.propTypes = {
   lastQuestion: PropTypes.shape({
@@ -54,14 +57,18 @@ Questions.propTypes = {
   }),
   countdownActive: PropTypes.bool.isRequired,
   countdownZIndex: PropTypes.number.isRequired,
-}
+};
+
+Questions.defaultProps = {
+  lastQuestion: {},
+};
 
 // Container
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   countdownActive: isActive(toClient(countdown(state), state)),
   lastQuestion: getLastQuestion(questionList(state)),
-})
+});
 
-const mapDispatchToProps = () => ({})
+const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Questions)
+export default connect(mapStateToProps, mapDispatchToProps)(Questions);

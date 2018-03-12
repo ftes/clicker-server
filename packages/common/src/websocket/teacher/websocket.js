@@ -1,14 +1,14 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import Websocket from '../websocket'
+import Websocket from '../websocket';
 
-import { bind } from './'
+import { bind } from './';
 
 // CONTAINER
-const mapStateToProps = () => ({})
+const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   bind: () => bind(dispatch),
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Websocket)
+export default connect(mapStateToProps, mapDispatchToProps)(Websocket);

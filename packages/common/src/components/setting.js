@@ -1,10 +1,10 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   showSettings: state.showSettings,
-})
+});
 
-const mapDispatchToProps = () => ({})
+const mapDispatchToProps = () => ({});
 
-export default (component) =>
-  connect(mapStateToProps, mapDispatchToProps)(component)
+export default component =>
+  connect(mapStateToProps, mapDispatchToProps)(component);

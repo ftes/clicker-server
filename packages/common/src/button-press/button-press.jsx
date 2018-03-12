@@ -1,9 +1,10 @@
-import React, { PropTypes } from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-let style = {
+const style = {
   position: 'absolute',
-  display: 'block'
-}
+  display: 'block',
+};
 
 const ButtonPress = ({ pressed }) => (
   <span
@@ -14,10 +15,14 @@ const ButtonPress = ({ pressed }) => (
   >
     pressed
   </span>
-)
+);
 
 ButtonPress.propTypes = {
   pressed: PropTypes.bool,
-}
+};
 
-export default ButtonPress
+ButtonPress.defaultProps = {
+  pressed: false,
+};
+
+export default ButtonPress;
