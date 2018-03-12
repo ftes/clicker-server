@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import createLogger from 'redux-logger';
+import logger from 'redux-logger';
 
 import { getStateMiddleware } from '@clickr/common/lib/util';
 import App from './components/app';
@@ -13,7 +13,7 @@ const middleware = [
 ];
 
 // if (process.env.NODE_ENV === 'development') {
-middleware.push(createLogger());
+middleware.push(logger);
 // }
 
 const store = createStore(

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import createLogger from 'redux-logger';
+import logger from 'redux-logger';
 import { getStateMiddleware } from '@clickr/common/lib/util';
 
 import reducers from './core/reducers';
@@ -17,7 +17,7 @@ const middleware = [
 ];
 // eslint-disable-next-line no-undef
 // if (process.env.NODE_ENV !== 'production') {
-middleware.push(createLogger());
+middleware.push(logger);
 // }
 
 const store = createStore(
