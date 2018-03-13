@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'react-bootstrap';
 import _ from 'lodash';
 import { DragDropContext as dragDropContext } from 'react-dnd';
 import Html5Backend from 'react-dnd-html5-backend';
@@ -82,7 +81,7 @@ export class DeviceListComponent extends React.Component {
     const tabIndex = startTabIndex;
 
     return (
-      <Table responsive bordered>
+      <table className="table table-bordered table-responsive">
         <tbody>
           {rows.map(row => (
             <tr key={rowIndex++}>
@@ -106,7 +105,7 @@ export class DeviceListComponent extends React.Component {
                 </td>))}
             </tr>))}
         </tbody>
-      </Table>
+      </table>
     );
   }
 }

@@ -1,24 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ButtonToolbar } from 'react-bootstrap';
 import { RequestBatteryLevel } from '../battery-level';
 import DeviceList from './device-list/device-list';
 import AddEmpty from './device/add-empty';
-import Settings from './settings/settings';
+import { Settings } from './settings';
 
-export const Devices = ({ showSettings, ...props }) => (
+const Devices = ({ showSettings, ...props }) => (
   <div className="devices">
     <Settings />
     <DeviceList {...props} />
     {showSettings &&
-      <ButtonToolbar
+      <div
+        className="btn-toolbar"
         style={{
           marginBottom: '20px',
         }}
       >
         <RequestBatteryLevel />
         <AddEmpty />
-      </ButtonToolbar>
+      </div>
     }
   </div>
 );

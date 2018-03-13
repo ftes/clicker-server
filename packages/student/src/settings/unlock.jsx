@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  FormGroup, ControlLabel, FormControl,
-  Button, ButtonToolbar,
-} from 'react-bootstrap';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 import { unlock, getState as local, toggleShow } from './';
 
@@ -23,18 +20,24 @@ export class UnlockComponent extends React.Component {
     const { unlockFailed } = this.props;
     return (
       <div>
-        <FormGroup validationState={unlockFailed ? 'error' : null}>
-          <ControlLabel>PIN (default: 0000)</ControlLabel>
-          <FormControl
-            type="number"
-            onChange={e => this.setState({ pin: e.target.value })}
-            onKeyPress={e => e.key === 'Enter' && this.unlock()}
-          />
-        </FormGroup>
-        <ButtonToolbar>
-          <Button onClick={() => this.unlock()}>Unlock</Button>
-          <Button className="pull-right" onClick={this.props.toggleShow}>Close</Button>
-        </ButtonToolbar>
+        <div className="form-group">
+          <label htmlFor="unlock">
+            PIN (default: 0000)
+            <input
+              id="unlock"
+              className={classNames({
+                'is-invalid': unlockFailed,
+              })}
+              type="number"
+              onChange={e => this.setState({ pin: e.target.value })}
+              onKeyPress={e => e.key === 'Enter' && this.unlock()}
+            />
+          </label>
+        </div>
+        <div className="btn-toolbar">
+          <button className="btn" onClick={() => this.unlock()}>Unlock</button>
+          <button className="btn float-right" onClick={this.props.toggleShow}>Close</button>
+        </div>
       </div>
     );
   }

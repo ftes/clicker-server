@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import EditMapping, { keyPrefix } from './edit-mapping';
@@ -16,7 +15,7 @@ export const IdMappingsComponent = ({
   let tabIndex = startTabIndex.idMappings;
 
   return (
-    <Table responsive striped condensed>
+    <table className="table table-responsive table-striped table-sm">
       <thead>
         <tr>
           <th>Type</th>
@@ -44,7 +43,7 @@ export const IdMappingsComponent = ({
           </tr>
         ))}
       </tbody>
-    </Table>
+    </table>
   );
 };
 

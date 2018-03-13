@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Label } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { getName } from '../../device-name/device-name';
@@ -16,16 +15,16 @@ export const QuestionComponent = ({ title, answeredBy, settings }) => {
       <b>{title} ({answeredBy.length}) </b>
       {settings.showWhoAnswered &&
         answeredBy.map(name => (
-          <Label
-            bsStyle="success"
+          <span
+            className="badge badge-success"
             key={i++}
             style={{
-            marginRight: '5px',
-            display: 'inline-block',
-          }}
+              marginRight: '5px',
+              display: 'inline-block',
+            }}
           >
             {name}
-          </Label>
+          </span>
         ))}
     </span>
   );

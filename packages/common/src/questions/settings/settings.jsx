@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { Text, Dropdown, SettingsItem, Radio } from '../../abstract-settings';
@@ -11,7 +10,7 @@ import { getState as getShowSettingsState } from '../../show-settings';
 // Component
 export const SettingsComponent = ({ settings, showSettings }) => (
   showSettings &&
-    <ListGroup>
+    <ul className="list-group">
       <SettingsItem
         title="Question duration (ms)"
         child={<Text
@@ -57,7 +56,7 @@ export const SettingsComponent = ({ settings, showSettings }) => (
         />
         }
       />
-    </ListGroup>
+    </ul>
 );
 
 SettingsComponent.propTypes = {

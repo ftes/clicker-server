@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import { groupQuestionsByLesson } from '../../lessons';
 
 import { deleteQuestion } from './';
@@ -16,12 +15,12 @@ export const QuestionListComponent = ({ questionsByLesson, deleteCallback }) => 
         <h4 style={{ marginTop: 0 }}><Lesson lesson={lesson} /></h4>
         {questions.reverse().map(question => (
           <div key={question.id} className="question">
-            <Button
-              bsSize="xsmall"
+            <button
+              className="btn btn-sm"
               onClick={() => deleteCallback(question.id)}
             >
-              ✕
-            </Button>
+              x
+            </button>
             {' '}
             <Question {...question} />
           </div>

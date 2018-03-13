@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ListGroup } from 'react-bootstrap';
 
 import { Text, SettingsItem, Radio } from '../../abstract-settings';
 import { editKeyPrefix, getState as local } from './';
@@ -10,7 +9,7 @@ import { getState as getShowSettingsState } from '../../show-settings';
 // Component
 export const SettingsComponent = ({ settings, showSettings }) => (
   showSettings &&
-    <ListGroup>
+    <ul className="list-group">
       <SettingsItem
         title="Row width"
         child={<Text
@@ -54,7 +53,7 @@ export const SettingsComponent = ({ settings, showSettings }) => (
           editKeyPrefix={editKeyPrefix}
         />}
       />
-    </ListGroup>
+    </ul>
 );
 
 SettingsComponent.propTypes = {

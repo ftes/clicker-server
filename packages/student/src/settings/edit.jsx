@@ -1,9 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  FormGroup, ControlLabel, FormControl,
-  Button, ButtonToolbar, HelpBlock,
-} from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { getState as local, set, toggleShow, reset, get } from './';
@@ -14,19 +10,22 @@ const FieldGroup = ({
   settings, itemKey, label, help, type,
   connectWebsocket, ...props
 }) => (
-  <FormGroup>
-    <ControlLabel>{label || itemKey}</ControlLabel>
-    <FormControl
-      type={type}
-      value={get(settings, itemKey)}
-      onChange={(e) => {
-        const custom = e.target.value;
-        props.set(itemKey, custom);
-        if (itemKey === 'server') { connectWebsocket(custom || settings.default.server); }
-      }}
-    />
-    <HelpBlock>{help}</HelpBlock>
-  </FormGroup>
+  <div className="form-group">
+    <label htmlFor={itemKey}>
+      {label || itemKey}
+      <input
+        id={itemKey}
+        type={type}
+        value={get(settings, itemKey)}
+        onChange={(e) => {
+          const custom = e.target.value;
+          props.set(itemKey, custom);
+          if (itemKey === 'server') { connectWebsocket(custom || settings.default.server); }
+        }}
+      />
+    </label>
+    <small className="form-text text-muted">{help}</small>
+  </div>
 );
 
 FieldGroup.propTypes = {
@@ -47,10 +46,10 @@ FieldGroup.defaultProps = {
 
 export const EditComponent = props => (
   <div>
-    <HelpBlock>
+    <small className="form-text text-muted">
       Settings are saved immediately when an item is edited.
       No need to click save anywhere.
-    </HelpBlock>
+    </small>
     <FieldGroup
       itemKey="server"
       label="Server"
@@ -77,18 +76,18 @@ export const EditComponent = props => (
       help="PIN that protects this settings page"
       {...props}
     />
-    <ButtonToolbar>
-      <Button onClick={props.toggleShow}>Close</Button>
-      <Button
+    <div className="btn-toolbar">
+      <button className="btn" onClick={props.toggleShow}>Close</button>
+      <button
         onClick={() => {
           props.reset();
           props.connectWebsocket(props.settings.default.server);
         }}
-        className="pull-right"
+        className="btn float-right"
       >
         Reset
-      </Button>
-    </ButtonToolbar>
+      </button>
+    </div>
   </div>
 );
 

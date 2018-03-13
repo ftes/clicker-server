@@ -27,11 +27,10 @@
     "react-test-renderer": "^15.6.2"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "lodash": "^4.17.5",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
-    "react-bootstrap": "^0.32.1",
-    "react-bootstrap-toggle": "^2.2.6",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
     "react-dom": "^16.2.0",

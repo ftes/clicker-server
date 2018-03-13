@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FA from 'react-fontawesome';
-import { ListGroup, ListGroupItem, Panel } from 'react-bootstrap';
 
 import './hints.css';
 
@@ -9,46 +8,49 @@ const Hints = ({ showSettings }) => {
   if (!showSettings) return null;
 
   return (
-    <Panel
+    <div
+      className="card"
       id="hints"
-      header={<h1>Hints</h1>}
-      collapsible
-      defaultExpanded
     >
-      <ListGroup>
-        <ListGroupItem header="Add Devices">
-          Pressing the device button will add it to the list.
-        </ListGroupItem>
-        <ListGroupItem header="Edit Device Names">
-          You can edit device names by clicking on them.
-        </ListGroupItem>
-        <ListGroupItem header="Tab Navigation">
-          You can navigate between elements with the &nbsp;
-          <FA name="exchange" /> Tab key.
-        </ListGroupItem>
-        <ListGroupItem header="Hotkeys">
-          <b>Ctrl + Enter:</b> Ask Question<br />
-        </ListGroupItem>
-        <ListGroupItem header="Drag and Drop">
-          Reorder devices with drag and drop.
-        </ListGroupItem>
-        <ListGroupItem header="Edit Class Name">
-          You can edit the class name by clicking on it.
-        </ListGroupItem>
-        <ListGroupItem header="Map IDs">
-          You can map the technical device IDs to something you can understand
-          using the <FA name="edit" /> ID Mappings dialog.
-        </ListGroupItem>
-        <ListGroupItem header="Understanding the Displayed Names">
-          Each displayed name has an icon next to it that explains where this
-          name is defined. In the list below, each setting overrides the ones
-          below it.<br />
-          <FA name="user-o" />: Custom Device name<br />
-          <FA name="edit" />: ID Mapping<br />
-          <FA name="gear" />: Technical Device ID<br />
-        </ListGroupItem>
-      </ListGroup>
-    </Panel>
+      <div className="card-header">
+        <h1>Hints</h1>
+      </div>
+      <div className="card-body">
+        <ul className="list-group">
+          <li className="list-group-item">
+            Pressing the device button will add it to the list.
+          </li>
+          <li className="list-group-item">
+            You can edit device names by clicking on them.
+          </li>
+          <li className="list-group-item">
+            You can navigate between elements with the &nbsp;
+            <FA name="exchange" /> Tab key.
+          </li>
+          <li className="list-group-item">
+            <b>Ctrl + Enter:</b> Ask Question<br />
+          </li>
+          <li className="list-group-item">
+            Reorder devices with drag and drop.
+          </li>
+          <li className="list-group-item">
+            You can edit the class name by clicking on it.
+          </li>
+          <li className="list-group-item">
+            You can map the technical device IDs to something you can understand
+            using the <FA name="edit" /> ID Mappings dialog.
+          </li>
+          <li className="list-group-item">
+            Each displayed name has an icon next to it that explains where this
+            name is defined. In the list below, each setting overrides the ones
+            below it.<br />
+            <FA name="user-o" />: Custom Device name<br />
+            <FA name="edit" />: ID Mapping<br />
+            <FA name="gear" />: Technical Device ID<br />
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 };
 

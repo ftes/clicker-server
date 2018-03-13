@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Navbar as BsNavbar, Nav, NavItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { IdMappingsModal } from '@clickr/common/lib/id-mappings';
 import { AskQuestion, Showdown } from '@clickr/common/lib/questions';
 import { ShowSettings } from '@clickr/common/lib/show-settings';
-import { Button } from '@clickr/common/lib/components';
 import { getState as isSyncEnabled } from '@clickr/common/lib/sync';
 
 import Save from '../save/save';
@@ -23,41 +21,45 @@ export const NavbarComponent = ({ showSettings, syncEnabled }) => {
 
   return (
     // in front of countdown
-    <BsNavbar collapseOnSelect style={{ zIndex: zIndex.navbar }}>
-      <BsNavbar.Header>
-        <BsNavbar.Brand>Clickr Teacher</BsNavbar.Brand>
-        <BsNavbar.Toggle />
-      </BsNavbar.Header>
-      <BsNavbar.Form pullLeft>
+    <nav
+      className="navbar navbar-expand-lg navbar-light bg-light"
+      style={{ zIndex: zIndex.navbar }}
+    >
+      <span className="navbar-brand">Clickr Teacher</span>
+      <button className="navbar-toggler" type="button" data-toggle="collapse">
+        <span className="navbar-toggler-icon" />
+      </button>
+
+      <form className="form-inline">
         <AskQuestion />
-      </BsNavbar.Form>
-      <Nav pullLeft>
-        <Showdown Wrapper={NavItem} />
-      </Nav>
-      <BsNavbar.Collapse>
-        <Nav pullRight>
-          <ShowSettings Wrapper={NavItem} />
-        </Nav>
+      </form>
+
+      <ul className="navbar-nav">
+        <Showdown />
+      </ul>
+
+      <ul className="navbar-nav">
+        <ShowSettings />
         {showSettings &&
-          <Nav pullRight>
-            <SaveQuestions Wrapper={NavItem} />
-            <Reset Wrapper={NavItem} />
-            <Sync Wrapper={NavItem} enabled={syncEnabled} />
-            <Button
-              Wrapper={NavItem}
+          <span>
+            <SaveQuestions />
+            <Reset />
+            <Sync enabled={syncEnabled} />
+            <li
+              className="nav-item"
               onClick={() => idMappings.open()}
               faIcon="edit"
-              label="ID Mappings"
-            />
-            <Save Wrapper={NavItem} />
-            <Load Wrapper={NavItem} getInput={() => input} />
-          </Nav>
+            >ID Mappings
+            </li>
+            <Save />
+            <Load getInput={() => input} />
+          </span>
         }
-      </BsNavbar.Collapse>
+      </ul>
 
       <input type="file" style={{ display: 'none' }} ref={(c) => { input = c; }} />
       <IdMappingsModal ref={(c) => { idMappings = c; }} startTabIndex={tabIndex.idMappings} />
-    </BsNavbar>
+    </nav>
   );
 };
 

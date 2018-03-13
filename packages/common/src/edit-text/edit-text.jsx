@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormControl } from 'react-bootstrap';
 import FA from 'react-fontawesome';
 
 import { edit, save, close, getState as local } from './';
@@ -52,7 +51,8 @@ class EditText extends React.Component {
     }
 
     return (
-      <FormControl
+      <input
+        // eslint-disable-next-line jsx-a11y/no-autofocus
         autoFocus
         tabIndex={tabIndex}
         type={type || 'text'}

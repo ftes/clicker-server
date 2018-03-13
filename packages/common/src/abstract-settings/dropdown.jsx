@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { save } from './';
@@ -10,15 +9,15 @@ export const Dropdown = ({
   settingsKey, settings, options, onChange,
   editKeyPrefix,
 }) => (
-  <FormControl
-    componentClass="select"
+  <select
+    className="form-control"
     value={settings[settingsKey]}
     onChange={event =>
       onChange(editKeyPrefix, settingsKey, event.target.value)}
   >
     {options.map(o =>
       <option value={o} key={o}>{o}</option>)}
-  </FormControl>
+  </select>
 );
 
 Dropdown.propTypes = {

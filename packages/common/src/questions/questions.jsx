@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import QuestionList from './question-list/question-list';
@@ -17,38 +16,41 @@ export const Questions = ({
   lastQuestion, countdownActive,
   countdownZIndex,
 }) => (
-  <Panel
-    header={<h1>Questions</h1>}
-    collapsible
-    defaultExpanded
+  <div
+    className="card"
     id="questions"
   >
-    <Settings />
-    {countdownActive &&
-      <div
-        style={{
-          position: 'fixed',
-          left: 0,
-          top: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0,0,0,0.1)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'flex-end',
-          fontSize: '6em',
-          zIndex: countdownZIndex,
-        }}
-      >
-        {lastQuestion.title}
-        <b style={{ fontSize: '1.5em' }}>
-          <Countdown />
-        </b>
-      </div>
-    }
-    <QuestionList />
-  </Panel>
+    <div className="card-header">
+      <h1>Questions</h1>
+    </div>
+    <div className="card-body">
+      <Settings />
+      {countdownActive &&
+        <div
+          style={{
+            position: 'fixed',
+            left: 0,
+            top: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.1)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            fontSize: '6em',
+            zIndex: countdownZIndex,
+          }}
+        >
+          {lastQuestion.title}
+          <b style={{ fontSize: '1.5em' }}>
+            <Countdown />
+          </b>
+        </div>
+      }
+      <QuestionList />
+    </div>
+  </div>
 );
 
 Questions.propTypes = {
@@ -60,7 +62,7 @@ Questions.propTypes = {
 };
 
 Questions.defaultProps = {
-  lastQuestion: {},
+  lastQuestion: null,
 };
 
 // Container

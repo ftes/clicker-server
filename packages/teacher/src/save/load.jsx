@@ -1,26 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import yaml from 'js-yaml';
+import FontAwesome from 'react-fontawesome';
 import { connect } from 'react-redux';
 
-import { Button } from '@clickr/common/lib/components';
 import { load } from '@clickr/common/lib/save';
 import { console } from '@clickr/common/lib/util';
 
-// getInput must not be passed to Button
-// eslint-disable-next-line no-unused-vars
-export const LoadComponent = ({ getInput, ...props }) => (
-  <Button {...props} />
+const LoadComponent = ({ onClick }) => (
+  <li
+    className="nav-item"
+    onClick={onClick}
+  >
+    <FontAwesome name="folder-open" />
+    &nbsp;
+    Load
+  </li>
 );
 
 LoadComponent.propTypes = {
-  getInput: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = () => ({});
 
 let added = false;
 
+// TODO better handling of event listener (register, deregister with component lifecycle)
 const mapDispatchToProps = (dispatch, { getInput }) => ({
   onClick: () => {
     const input = getInput();
@@ -48,8 +54,6 @@ const mapDispatchToProps = (dispatch, { getInput }) => ({
     }
     input.click();
   },
-  label: 'Load',
-  glyph: 'open',
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoadComponent);

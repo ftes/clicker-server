@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap';
+import ReactDOM from 'react-dom';
 import IdMappings from './id-mappings';
 
 class IdMappingsModal extends React.Component {
@@ -8,27 +8,35 @@ class IdMappingsModal extends React.Component {
     this.state = { show: false };
   }
 
-  close() {
+  close = () => {
     this.setState({ show: false });
   }
 
-  open() {
+  open = () => {
     this.setState({ show: true });
   }
 
   render() {
-    return (
-      <Modal
-        show={this.state.show}
-        onHide={() => this.close()}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>ID Mappings</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <IdMappings {...this.props} />
-        </Modal.Body>
-      </Modal>
+    const { show } = this.state;
+
+    return show && ReactDOM.createPortal(
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title">ID Mappings</h5>
+            <button type="button" className="close">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div className="modal-body">
+            <IdMappings {...this.props} />
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-secondary" onClick={this.close}>Close</button>
+          </div>
+        </div>
+      </div>,
+      document.body,
     );
   }
 }

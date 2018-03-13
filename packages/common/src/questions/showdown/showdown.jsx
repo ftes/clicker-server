@@ -1,22 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import FontAwesome from 'react-fontawesome';
 
-import { Button } from '../../components';
 import { start } from './';
 import { getState as deviceList } from '../../devices/device-list';
 import { getState as getDevicesSettingsState } from '../../devices/settings';
 
 // Component
 export const Showdown = ({
-  startCallback, devices,
-  devicesSettings, ...props
+  startCallback, devices, devicesSettings,
 }) => (
-  <Button
-    {...props}
+  <button
+    className="btn nav-item nav-link"
     onClick={() => startCallback(devices, devicesSettings)}
     title="Randomly choose a person who knows the answer."
-  />
+  >
+    <FontAwesome name="play" />
+    &nbsp;
+    Pick
+  </button>
 );
 
 Showdown.propTypes = {
@@ -33,8 +36,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   startCallback: (devices, settings) => dispatch(start(devices, settings)),
-  label: 'Pick',
-  faIcon: 'play',
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Showdown);

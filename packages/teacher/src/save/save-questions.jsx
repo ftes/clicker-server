@@ -1,13 +1,30 @@
 import { connect } from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
+import FontAwesome from 'react-fontawesome';
 import { saveAs } from 'file-saver';
 
-import { Button } from '@clickr/common/lib/components';
 import { console } from '@clickr/common/lib/util';
 import { getName } from '@clickr/common/lib/device-name';
 import { getQuestionListState as questionList, getAnsweredCount, getAnsweredVector }
   from '@clickr/common/lib/questions';
 import { getDevices } from '@clickr/common/lib/devices';
 import { getOffset } from '@clickr/common/lib/offset';
+
+const SaveQuestionsComponent = ({ onClick }) => (
+  <li
+    className="nav-item"
+    onClick={onClick}
+  >
+    <FontAwesome name="save" />
+    &nbsp;
+    Export Results
+  </li>
+);
+
+SaveQuestionsComponent.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   onClick: () => {
@@ -40,10 +57,8 @@ const mapStateToProps = state => ({
       console.error(error);
     }
   },
-  label: 'Export Results',
-  faIcon: 'save',
 });
 
 const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Button);
+export default connect(mapStateToProps, mapDispatchToProps)(SaveQuestionsComponent);

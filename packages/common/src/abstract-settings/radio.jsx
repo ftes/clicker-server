@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Bootstrap2Toggle as ReactBootstrapToggle } from 'react-bootstrap-toggle';
-
-import 'react-bootstrap-toggle/dist/bootstrap2-toggle.css';
 
 import { save } from './';
 
@@ -12,12 +9,11 @@ export const Dropdown = ({
   settingsKey, settings, onChange,
   editKeyPrefix,
 }) => (
-  <ReactBootstrapToggle
-    on="true"
-    off="false"
-    active={settings[settingsKey]}
-    onChange={value =>
-      onChange(editKeyPrefix, settingsKey, value)}
+  <input
+    className="form-check-input"
+    type="checkbox"
+    checked={settings[settingsKey]}
+    onChange={e => onChange(editKeyPrefix, settingsKey, e.target.checked)}
   />
 );
 

@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListGroupItem } from 'react-bootstrap';
 
 const SettingsItem = ({ title, child }) => (
-  <ListGroupItem style={{ display: 'flex' }}>
+  <li className="list-group-item d-flex">
     <span>
       <b>{title}:</b> &nbsp;
     </span>
     <span style={{ flexGrow: 1 }}>
       {child}
     </span>
-  </ListGroupItem>
+  </li>
 );
 
 SettingsItem.propTypes = {

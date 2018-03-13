@@ -1,11 +1,28 @@
 import { connect } from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
+import FontAwesome from 'react-fontawesome';
 import { saveAs } from 'file-saver';
 import yaml from 'js-yaml';
 
-import { Button } from '@clickr/common/lib/components';
 import { console, del } from '@clickr/common/lib/util';
 
 import { deleteOnFileSave } from '../core/reducers';
+
+const SaveComponent = ({ onClick }) => (
+  <li
+    className="nav-item"
+    onClick={onClick}
+  >
+    <FontAwesome name="save" />
+    &nbsp;
+    Save
+  </li>
+);
+
+SaveComponent.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   onClick: () => {
@@ -25,10 +42,8 @@ const mapStateToProps = state => ({
       console.error(error);
     }
   },
-  label: 'Save',
-  glyph: 'save',
 });
 
 const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Button);
+export default connect(mapStateToProps, mapDispatchToProps)(SaveComponent);

@@ -1,33 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button as BsButton, Glyphicon } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
+import classNames from 'classnames';
 
 const Button = ({
-  label, glyph, faIcon, Wrapper = BsButton, ...props
+  label, faIcon, className, ...props
 }) => (
-  <Wrapper {...props}>
-    {glyph && <Glyphicon glyph={glyph} />}
+  <button
+    type="button"
+    className={classNames('btn', 'btn-primary', className)}
+    {...props}
+  >
     {faIcon && <FontAwesome name={faIcon} />}
-    {(glyph || faIcon) && <span>&nbsp;</span>}
+    {faIcon && <span>&nbsp;</span>}
     {label}
-  </Wrapper>
+  </button>
 );
 
 Button.propTypes = {
-  bsSize: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
-  glyph: PropTypes.string,
+  className: PropTypes.object,
   faIcon: PropTypes.string,
-  Wrapper: PropTypes.func,
 };
 
 Button.defaultProps = {
-  bsSize: null,
-  glyph: null,
   faIcon: null,
-  Wrapper: null,
+  className: {},
 };
 
 export default Button;

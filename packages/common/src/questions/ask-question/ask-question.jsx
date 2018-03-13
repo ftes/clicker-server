@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormGroup, FormControl, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { start } from '../question';
@@ -11,8 +10,8 @@ import { getState as local, editTitle } from './';
 export const AskQuestion = ({
   onEdit, startCallback, nextId, title,
 }) => (
-  <FormGroup>
-    <FormControl
+  <div className="form-group">
+    <input
       type="text"
       onKeyPress={e => e.key === 'Enter' && startCallback()}
       onChange={e => onEdit(e.target.value)}
@@ -23,13 +22,13 @@ export const AskQuestion = ({
       }}
     />
     {' '}
-    <Button
-      type="submit"
+    <button
+      className="btn"
       onClick={() => this.props.startCallback()}
     >
       Ask
-    </Button>
-  </FormGroup>
+    </button>
+  </div>
 );
 
 AskQuestion.propTypes = {

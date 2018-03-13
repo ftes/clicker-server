@@ -8,7 +8,6 @@ import Offset from '../../offset/offset';
 import { getState as getShowSettingsState } from '../../show-settings';
 import DeviceName from '../../device-name/device-name';
 import { BatteryLevel } from '../../battery-level';
-import { Button } from '../../components';
 import { getState as getSettingsState } from '../settings';
 
 // Component
@@ -64,19 +63,21 @@ export const DeviceItemComponent = ({
       </div>
       {/* right column */}
       {showSettings &&
-        <div style={{
- display: 'flex',
-flexDirection: 'column',
-          padding: '8px',
-borderLeft: '1px solid lightgrey',
-}}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '8px',
+            borderLeft: '1px solid lightgrey',
+          }}
         >
-          <Button
-            bsSize="small"
+          <button
+            className="btn btn-sm"
             onClick={() => deleteCallback(deviceKey)}
             title="Delete"
-            label="x"
-          />
+          >
+            x
+          </button>
           <div style={{ flexGrow: 1 }} />
           {isShown(device, state) &&
             <BatteryLevel deviceKey={deviceKey} />
