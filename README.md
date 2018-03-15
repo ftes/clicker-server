@@ -19,14 +19,7 @@ Install [lerna](https://lernajs.io/) and then:
 
 ## Todo
 - [ ] test cordova build for student app
-- [ ] use npm packages in server: require teacher and whiteboard and serve them instead of handling custom zip files (`add-client.sh`)
-- [ ] connect student app to local server in dev mode (pass different server)
-- [ ] connect client sockets to port 4000 in dev mode
-- [ ] fix errors in teacher: `ReferenceError: DELETE is not defined`
-- [ ] fix error in common: `export 'NEW_LESSON' was not found in '../question`
-- [ ] pass object with default value for env var `CLICKR_SERVER_CONFIG_URL` in student to neutrino
-- [ ] bump react version (`propTypes`, `createClass`)
-- [ ] add unit tests for common
+- [ ] fix styling
 
 ## Architecture
 Clickr consists of:
