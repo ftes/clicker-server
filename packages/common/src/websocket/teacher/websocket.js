@@ -7,8 +7,8 @@ import { bind } from './';
 // CONTAINER
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = dispatch => ({
-  bind: () => bind(dispatch),
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  bind: () => bind(dispatch, ownProps.port),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Websocket);

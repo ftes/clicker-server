@@ -23,7 +23,7 @@ const App = () => (
       <SDevices startTabIndex={tabIndex.devices} />
       <Questions countdownZIndex={zIndex.countdown} />
     </div>
-    <Websocket />
+    <Websocket port={process.env.CLICKR_SERVER_PORT} />
   </div>
 );
 

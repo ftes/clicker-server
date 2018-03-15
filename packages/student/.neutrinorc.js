@@ -12,7 +12,7 @@ module.exports = {
       devServer: {
         port: 4003,
       },
-      env: [ 'CLICKR_SERVER_CONFIG_URL' ]
+      env: [ 'CLICKR_SERVER_CONFIG_URL' ],
     }],
     
     ['@neutrinojs/jest', {

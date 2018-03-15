@@ -39,7 +39,7 @@ export const AppComponent = ({ askQuestion }) => (
       <SHints />
     </div>
     <LocalStorage deleteOnSave={deleteOnLocalStorageSave} />
-    <Websocket />
+    <Websocket port={process.env.CLICKR_SERVER_PORT} />
   </HotKeys>
 );
 

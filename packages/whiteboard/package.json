@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build": "neutrino build",
-    "start": "neutrino start",
+    "start": "CLICKR_SERVER_PORT=4000 neutrino start",
     "lint": "neutrino lint",
     "test": "neutrino test"
   },

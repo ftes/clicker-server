@@ -11,11 +11,10 @@ export const PREFIX = 'clicker/websocket-message/';
 export const CONNECT = 'clicker/websocket/connect';
 export const DISCONNECT = 'clicker/websocket/disconnect';
 
-export function getUri() {
-  // eslint-disable-next-line no-undef
-  const port = process.env.REACT_APP_SERVER_PORT;
-  if (port) return `${document.location.hostname}:${port}`;
-  return '';
+export function getUri(port) {
+  return port
+    ? `${document.location.hostname}:${port}`
+    : '';
 }
 
 // socket & publish in state are used by sync logic, to allow better testing

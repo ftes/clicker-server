@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 // COMPONENT
 export default class Websocket extends Component {
   componentWillMount() {
-    this.props.bind();
+    const { bind, port } = this.props;
+    bind(port);
   }
 
   render() {
@@ -14,4 +15,9 @@ export default class Websocket extends Component {
 
 Websocket.propTypes = {
   bind: PropTypes.func.isRequired,
+  port: PropTypes.string,
+};
+
+Websocket.defaultProps = {
+  port: undefined,
 };
