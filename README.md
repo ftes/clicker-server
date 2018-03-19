@@ -12,9 +12,10 @@ Clickr aims to be cheap to deploy and easy to set up.
 - common: [![@clickr/common badge](https://img.shields.io/npm/v/@clickr/common.svg)](https://www.npmjs.com/package/@clickr/common)
 
 ## Setup
-Install [lerna v3](https://lernajs.io/) (currently in beta) and then:
-1. `lerna bootstrap`
-2. `lerna run start`
+1. `git clone git@github.com:ftes/clickr && cd clickr`
+2. `npm install`
+3. `npm run build` (delegates to [lerna](https://www.npmjs.com/package/lerna) for mono-repo management)
+2. `npm run start`
 3. Open clients: http://localhost:4001, http://localhost:4002, http://localhost:4003
 
 ## Todo
