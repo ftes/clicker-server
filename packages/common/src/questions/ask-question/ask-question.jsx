@@ -25,7 +25,7 @@ export const AskQuestion = ({
     {' '}
     <button
       className="btn btn-outline-light my-2 my-sm-0"
-      onClick={() => this.props.startCallback()}
+      onClick={() => startCallback()}
     >
       Ask
     </button>
