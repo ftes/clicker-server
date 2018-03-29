@@ -2,6 +2,8 @@
   "description": "Clickr: An Audience Response System for Schools",
   "license": "MIT",
   "scripts": {
+    "postinstall": "lerna bootstrap",
+    "build": "lerna run build",
     "start": "lerna run start",
     "test": "lerna run test",
     "docs": "npm run diagrams",
@@ -17,7 +19,7 @@
   },
   "homepage": "https://github.com/ftes/clickr#readme",
   "devDependencies": {
-    "lerna": "^3.0.0-alpha.1",
+    "lerna": "^2.9.0",
     "mermaid": "^6.0.0"
   }
 }
