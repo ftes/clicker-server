@@ -17,7 +17,7 @@
     "webpack-bundle-analyzer": "^2.11.1"
   },
   "dependencies": {
-    "@clickr/common": "^2.0.7",
+    "@clickr/common": "^2.1.0",
     "bootstrap": "^4.0.0",
     "classnames": "^2.2.5",
     "isomorphic-fetch": "^2.2.1",
@@ -45,7 +45,7 @@
     "build-cordova-prepare": "npm run build && shx rm -rf www/* && shx cp -r build/* www/ && cordova-icon",
     "postinstall": "cordova platform add android && cordova prepare || true"
   },
-  "version": "2.0.7",
+  "version": "2.1.0",
   "description": "Clickr student client",
   "repository": {
     "type": "git",

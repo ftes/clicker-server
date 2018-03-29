@@ -15,7 +15,7 @@
     "webpack-bundle-analyzer": "^2.11.1"
   },
   "dependencies": {
-    "@clickr/common": "^2.0.7",
+    "@clickr/common": "^2.1.0",
     "bootstrap": "^4.0.0",
     "classnames": "^2.2.5",
     "file-saver": "^1.3.3",
@@ -41,7 +41,7 @@
     "test": "neutrino test",
     "analyze": "ANALYZE=true neutrino build"
   },
-  "version": "2.0.7",
+  "version": "2.1.0",
   "description": "Clickr teacher client",
   "repository": {
     "type": "git",

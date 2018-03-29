@@ -15,7 +15,7 @@
     "webpack-bundle-analyzer": "^2.11.1"
   },
   "dependencies": {
-    "@clickr/common": "^2.0.7",
+    "@clickr/common": "^2.1.0",
     "bootstrap": "^4.0.0",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.5",
@@ -37,7 +37,7 @@
     "test": "neutrino test",
     "analyze": "ANALYZE=true neutrino build"
   },
-  "version": "2.0.7",
+  "version": "2.1.0",
   "description": "Clickr whiteboard client",
   "repository": {
     "type": "git",
