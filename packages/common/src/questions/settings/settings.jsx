@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { Text, Dropdown, SettingsItem, Radio } from '../../abstract-settings';
+import { Text, Dropdown, SettingsItem, Checkbox } from '../../abstract-settings';
 import { functions } from '../showdown';
 import { editKeyPrefix, getState as local } from './';
 import { getState as getShowSettingsState } from '../../show-settings';
@@ -49,7 +49,8 @@ export const SettingsComponent = ({ settings, showSettings }) => (
       }
       <SettingsItem
         title="Show who answered"
-        child={<Radio
+        childFirst
+        child={<Checkbox
           settingsKey="showWhoAnswered"
           settings={settings}
           editKeyPrefix={editKeyPrefix}

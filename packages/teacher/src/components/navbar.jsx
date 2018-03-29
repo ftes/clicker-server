@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import FA from 'react-fontawesome';
 
 import { IdMappingsModal } from '@clickr/common/lib/id-mappings';
 import { AskQuestion, Showdown } from '@clickr/common/lib/questions';
@@ -22,7 +23,7 @@ export const NavbarComponent = ({ showSettings, syncEnabled }) => {
   return (
     // in front of countdown
     <nav
-      className="navbar navbar-expand-lg navbar-light bg-light"
+      className="navbar navbar-expand-lg navbar-dark bg-dark  justify-content-between"
       style={{ zIndex: zIndex.navbar }}
     >
       <span className="navbar-brand">Clickr Teacher</span>
@@ -30,32 +31,29 @@ export const NavbarComponent = ({ showSettings, syncEnabled }) => {
         <span className="navbar-toggler-icon" />
       </button>
 
-      <form className="form-inline">
-        <AskQuestion />
-      </form>
+      <AskQuestion />
 
-      <ul className="navbar-nav">
-        <Showdown />
-      </ul>
+      <Showdown />
 
-      <ul className="navbar-nav">
-        <ShowSettings />
+      <span className="btn-group">
         {showSettings &&
-          <span>
+          <span className="btn-group">
             <SaveQuestions />
             <Reset />
             <Sync enabled={syncEnabled} />
-            <li
-              className="nav-item"
+            <button
+              className="btn btn-outline-secondary"
               onClick={() => idMappings.open()}
-              faIcon="edit"
-            >ID Mappings
-            </li>
+            >
+              <FA name="edit" />
+              ID Mappings
+            </button>
             <Save />
             <Load getInput={() => input} />
           </span>
         }
-      </ul>
+        <ShowSettings />
+      </span>
 
       <input type="file" style={{ display: 'none' }} ref={(c) => { input = c; }} />
       <IdMappingsModal ref={(c) => { idMappings = c; }} startTabIndex={tabIndex.idMappings} />

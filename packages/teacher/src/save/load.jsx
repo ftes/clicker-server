@@ -8,14 +8,14 @@ import { load } from '@clickr/common/lib/save';
 import { console } from '@clickr/common/lib/util';
 
 const LoadComponent = ({ onClick }) => (
-  <li
-    className="nav-item"
+  <button
+    className="btn btn-outline-secondary"
     onClick={onClick}
   >
     <FontAwesome name="folder-open" />
     &nbsp;
     Load
-  </li>
+  </button>
 );
 
 LoadComponent.propTypes = {

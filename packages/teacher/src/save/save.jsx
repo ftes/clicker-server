@@ -10,14 +10,14 @@ import { console, del } from '@clickr/common/lib/util';
 import { deleteOnFileSave } from '../core/reducers';
 
 const SaveComponent = ({ onClick }) => (
-  <li
-    className="nav-item"
+  <button
+    className="btn btn-outline-secondary"
     onClick={onClick}
   >
     <FontAwesome name="save" />
     &nbsp;
     Save
-  </li>
+  </button>
 );
 
 SaveComponent.propTypes = {

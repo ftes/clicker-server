@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { Text, SettingsItem, Radio } from '../../abstract-settings';
+import { Text, SettingsItem, Checkbox } from '../../abstract-settings';
 import { editKeyPrefix, getState as local } from './';
 import { getState as getShowSettingsState } from '../../show-settings';
 
@@ -39,7 +39,8 @@ export const SettingsComponent = ({ settings, showSettings }) => (
       />
       <SettingsItem
         title="Hide Devices without custom name"
-        child={<Radio
+        childFirst
+        child={<Checkbox
           settingsKey="hideNonCustomNames"
           settings={settings}
           editKeyPrefix={editKeyPrefix}
@@ -47,7 +48,8 @@ export const SettingsComponent = ({ settings, showSettings }) => (
       />
       <SettingsItem
         title="Show Button presses"
-        child={<Radio
+        childFirst
+        child={<Checkbox
           settingsKey="showButtonPress"
           settings={settings}
           editKeyPrefix={editKeyPrefix}

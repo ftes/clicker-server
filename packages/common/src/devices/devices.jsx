@@ -11,7 +11,7 @@ const Devices = ({ showSettings, ...props }) => (
     <DeviceList {...props} />
     {showSettings &&
       <div
-        className="btn-toolbar"
+        className="btn-group"
         style={{
           marginBottom: '20px',
         }}

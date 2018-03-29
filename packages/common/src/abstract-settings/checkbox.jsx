@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { save } from './';
 
 // component
-export const Dropdown = ({
+export const Checkbox = ({
   settingsKey, settings, onChange,
   editKeyPrefix,
 }) => (
@@ -17,7 +17,7 @@ export const Dropdown = ({
   />
 );
 
-Dropdown.propTypes = {
+Checkbox.propTypes = {
   settingsKey: PropTypes.string.isRequired,
   settings: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
@@ -32,4 +32,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(save(editKeyPrefix, key, value)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dropdown);
+export default connect(mapStateToProps, mapDispatchToProps)(Checkbox);

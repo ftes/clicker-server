@@ -8,7 +8,7 @@ const Button = ({
 }) => (
   <button
     type="button"
-    className={classNames('btn', 'btn-primary', className)}
+    className={classNames('btn', 'btn-outline-primary', className)}
     {...props}
   >
     {faIcon && <FontAwesome name={faIcon} />}

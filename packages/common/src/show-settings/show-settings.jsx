@@ -7,8 +7,8 @@ import FontAwesome from 'react-fontawesome';
 import { toggle, getState as local } from './';
 
 const ShowSettingsComponent = ({ active, onClick }) => (
-  <li
-    className={classNames('nav-item', {
+  <button
+    className={classNames('nav-item', 'btn', 'btn-outline-secondary', {
       active,
     })}
     onClick={onClick}
@@ -16,7 +16,7 @@ const ShowSettingsComponent = ({ active, onClick }) => (
     <FontAwesome name="wrench" />
     &nbsp;
     Settings
-  </li>
+  </button>
 );
 
 ShowSettingsComponent.propTypes = {

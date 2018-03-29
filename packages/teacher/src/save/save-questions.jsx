@@ -12,14 +12,14 @@ import { getDevices } from '@clickr/common/lib/devices';
 import { getOffset } from '@clickr/common/lib/offset';
 
 const SaveQuestionsComponent = ({ onClick }) => (
-  <li
-    className="nav-item"
+  <button
+    className="btn btn-outline-secondary"
     onClick={onClick}
   >
     <FontAwesome name="save" />
     &nbsp;
     Export Results
-  </li>
+  </button>
 );
 
 SaveQuestionsComponent.propTypes = {

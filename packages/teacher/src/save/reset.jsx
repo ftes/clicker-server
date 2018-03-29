@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 import { reset } from '@clickr/common/lib/save';
 
 const ResetComponent = ({ onClick }) => (
-  <li
-    className="nav-item"
+  <button
+    className="btn btn-outline-secondary"
     onClick={onClick}
   >
     <FontAwesome name="undo" />
     &nbsp;
     Reset
-  </li>
+  </button>
 );
 
 ResetComponent.propTypes = {

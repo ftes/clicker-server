@@ -12,7 +12,7 @@ export const Showdown = ({
   startCallback, devices, devicesSettings,
 }) => (
   <button
-    className="btn nav-item nav-link"
+    className="btn btn-outline-light"
     onClick={() => startCallback(devices, devicesSettings)}
     title="Randomly choose a person who knows the answer."
   >

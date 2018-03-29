@@ -6,8 +6,8 @@ import FontAwesome from 'react-fontawesome';
 import { set } from '@clickr/common/lib/sync';
 
 const SyncComponent = ({ onClick, enabled }) => (
-  <li
-    className={classNames('nav-item', {
+  <button
+    className={classNames('btn btn-outline-secondary', {
       active: enabled,
     })}
     onClick={onClick}
@@ -15,7 +15,7 @@ const SyncComponent = ({ onClick, enabled }) => (
     <FontAwesome name="refresh" />
     &nbsp;
     Sync
-  </li>
+  </button>
 );
 
 SyncComponent.propTypes = {

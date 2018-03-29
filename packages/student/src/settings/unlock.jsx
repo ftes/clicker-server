@@ -34,7 +34,7 @@ export class UnlockComponent extends React.Component {
             />
           </label>
         </div>
-        <div className="btn-toolbar">
+        <div className="btn-group">
           <button className="btn" onClick={() => this.unlock()}>Unlock</button>
           <button className="btn float-right" onClick={this.props.toggleShow}>Close</button>
         </div>

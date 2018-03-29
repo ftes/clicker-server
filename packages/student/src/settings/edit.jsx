@@ -76,7 +76,7 @@ export const EditComponent = props => (
       help="PIN that protects this settings page"
       {...props}
     />
-    <div className="btn-toolbar">
+    <div className="btn-group">
       <button className="btn" onClick={props.toggleShow}>Close</button>
       <button
         onClick={() => {

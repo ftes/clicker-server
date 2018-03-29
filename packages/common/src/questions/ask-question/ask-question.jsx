@@ -10,8 +10,9 @@ import { getState as local, editTitle } from './';
 export const AskQuestion = ({
   onEdit, startCallback, nextId, title,
 }) => (
-  <div className="form-group">
+  <div className="form-inline">
     <input
+      className="form-control mr-sm-2"
       type="text"
       onKeyPress={e => e.key === 'Enter' && startCallback()}
       onChange={e => onEdit(e.target.value)}
@@ -23,7 +24,7 @@ export const AskQuestion = ({
     />
     {' '}
     <button
-      className="btn"
+      className="btn btn-outline-light my-2 my-sm-0"
       onClick={() => this.props.startCallback()}
     >
       Ask
