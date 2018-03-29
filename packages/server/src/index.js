@@ -1,5 +1,4 @@
 import http from 'http';
-// import path from 'path';
 import express from 'express';
 import socketIO from 'socket.io';
 import { argv } from 'yargs';
