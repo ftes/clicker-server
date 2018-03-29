@@ -6,11 +6,12 @@ import FontAwesome from 'react-fontawesome';
 
 import { toggle, getState as local } from './';
 
-const ShowSettingsComponent = ({ active }) => (
+const ShowSettingsComponent = ({ active, onClick }) => (
   <li
     className={classNames('nav-item', {
       active,
     })}
+    onClick={onClick}
   >
     <FontAwesome name="wrench" />
     &nbsp;
@@ -20,12 +21,11 @@ const ShowSettingsComponent = ({ active }) => (
 
 ShowSettingsComponent.propTypes = {
   active: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  className: classNames({
-    active: local(state),
-  }),
+  active: local(state),
 });
 
 const mapDispatchToProps = dispatch => ({
