@@ -8,7 +8,8 @@
   "scripts": {
     "build": "neutrino build",
     "lint": "neutrino lint",
-    "test": "neutrino test"
+    "test": "neutrino test",
+    "analyze": "ANALYZE=true neutrino build"
   },
   "devDependencies": {
     "@neutrinojs/airbnb": "^8.1.2",
@@ -24,7 +25,8 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint-plugin-react": "^7.7.0",
     "neutrino": "^8.1.2",
-    "react-test-renderer": "^15.6.2"
+    "react-test-renderer": "^15.6.2",
+    "webpack-bundle-analyzer": "^2.11.1"
   },
   "dependencies": {
     "classnames": "^2.2.5",

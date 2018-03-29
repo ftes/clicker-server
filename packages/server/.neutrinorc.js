@@ -1,3 +1,4 @@
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 
 // `require` can only resolve files, not directories
@@ -39,4 +40,14 @@ module.exports = {
       ],
     }],
   ],
+
+  env: {
+    ANALYZE: {
+      true: {
+        use: [
+          neutrino => neutrino.config.plugin('bundleAnalyzer').use(BundleAnalyzerPlugin),
+        ]
+      }
+    }
+  },
 };

@@ -1,3 +1,5 @@
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = {
   use: [
     '@neutrinojs/airbnb',
@@ -14,5 +16,15 @@ module.exports = {
       testRegex: `\\.test\\.(js|jsx)$`,
       setupTestFrameworkScriptFile: './test-setup.js',
     }],
-  ]
+  ],
+
+  env: {
+    ANALYZE: {
+      true: {
+        use: [
+          neutrino => neutrino.config.plugin('bundleAnalyzer').use(BundleAnalyzerPlugin),
+        ]
+      }
+    }
+  },
 };

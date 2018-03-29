@@ -11,7 +11,8 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "neutrino": "^8.1.2",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.2.0",
+    "webpack-bundle-analyzer": "^2.11.1"
   },
   "dependencies": {
     "@clickr/common": "^2.0.7",
@@ -33,7 +34,8 @@
     "build": "neutrino build",
     "start": "CLICKR_SERVER_PORT=4000 neutrino start",
     "lint": "neutrino lint",
-    "test": "neutrino test"
+    "test": "neutrino test",
+    "analyze": "ANALYZE=true neutrino build"
   },
   "version": "2.0.7",
   "description": "Clickr whiteboard client",

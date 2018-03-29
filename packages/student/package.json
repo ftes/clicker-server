@@ -13,7 +13,8 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "neutrino": "^8.1.2",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.2.0",
+    "webpack-bundle-analyzer": "^2.11.1"
   },
   "dependencies": {
     "@clickr/common": "^2.0.7",
@@ -37,6 +38,7 @@
     "start": "CLICKR_SERVER_CONFIG_URL=http://localhost:4000/settings.json neutrino start",
     "lint": "neutrino lint",
     "test": "neutrino test",
+    "analyze": "ANALYZE=true neutrino build",
     "start-cordova": "npm run build-cordova-prepare && cordova run",
     "build-cordova": "npm run build-cordova-prepare && cordova build",
     "build-cordova-release": "npm run build-cordova-prepare && cordova build --release",
