@@ -43,11 +43,7 @@ module.exports = {
 
   env: {
     ANALYZE: {
-      true: {
-        use: [
-          neutrino => neutrino.config.plugin('bundleAnalyzer').use(BundleAnalyzerPlugin),
-        ]
-      }
+      true: neutrino => neutrino.config.plugin('bundleAnalyzer').use(BundleAnalyzerPlugin),
     }
   },
 };
