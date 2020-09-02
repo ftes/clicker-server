@@ -20,6 +20,6 @@
   "homepage": "https://github.com/ftes/clickr#readme",
   "devDependencies": {
     "lerna": "^2.9.0",
-    "mermaid": "^6.0.0"
+    "mermaid": "^8.2.3"
   }
 }
